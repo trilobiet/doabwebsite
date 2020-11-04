@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/cache
+    http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+	<aop:config>
+
+		<aop:advisor advice-ref="sectionAdvice"
+			pointcut="execution(* com.trilobiet.graphqlweb.implementations.aexpgraphql2.service.SectionService.*(..))" />
+
+		<aop:advisor advice-ref="topicAdvice"
+			pointcut="execution(* com.trilobiet.graphqlweb.implementations.aexpgraphql2.service.TopicService.*(..))" />
+
+		<aop:advisor advice-ref="articleAdvice"
+			pointcut="execution(* com.trilobiet.graphqlweb.implementations.aexpgraphql2.service.ArticleService.*(..))" />
+
+		<aop:advisor advice-ref="fileAdvice"
+			pointcut="execution(* com.trilobiet.graphqlweb.implementations.aexpgraphql2.service.FileService.*(..))" />
+
+		<aop:advisor advice-ref="snippetAdvice"
+			pointcut="execution(* com.trilobiet.graphqlweb.implementations.aexpgraphql2.service.SnippetService.*(..))" />
+
+	</aop:config>
+
+	<cache:advice id="sectionAdvice">
+		<cache:caching>
+			<cache:cacheable method="getSections" cache="sectionsCache" key="#root.methodName" />
+			<cache:cacheable method="getSectionBySlug" cache="sectionsCache" key="#slug" />
+		</cache:caching>
+	</cache:advice>
+
+	<cache:advice id="topicAdvice">
+		<cache:caching>
+			<cache:cacheable method="getTopicBySlug" cache="topicsCache" key="#slug" />
+		</cache:caching>
+	</cache:advice>
+
+	<cache:advice id="articleAdvice">
+		<cache:caching>
+			<cache:cacheable method="getArticlesByTopic" cache="articlesCache" key="#topic.id" />
+			<cache:cacheable method="getArticleBySlug" cache="articlesCache" key="#slug" />
+			<cache:cacheable method="getByFieldValue" cache="articlesCache" key="#field+'-is-'+#value" />
+			<!--<cache:cacheable method="getByFieldContainsValue" cache="articlesCache" key="#field+'-contains-'+#value" />-->
+			<cache:cacheable method="selectArticlesForTopic" cache="articlesCache" key="#topic.id" />
+		</cache:caching>
+	</cache:advice>
+
+	<cache:advice id="fileAdvice">
+		<cache:caching>
+			<cache:cacheable method="get" cache="filesCache" key="#id" />
+			<cache:cacheable method="getByName" cache="filesCache" key="#name" />
+			<cache:cacheable method="getFirstWithName" cache="filesCache" key="#name" />
+			<cache:cacheable method="getByFieldValue" cache="filesCache" key="#field+'-'+#value" />
+		</cache:caching>
+	</cache:advice>
+
+	<cache:advice id="snippetAdvice">
+		<cache:caching>
+			<cache:cacheable method="getSnippet" cache="snippetsCache" key="#name" />
+			<cache:cacheable method="getMarkdownSnippet" cache="snippetsCache" key="#name" />
+		</cache:caching>
+	</cache:advice>
+
+</beans>

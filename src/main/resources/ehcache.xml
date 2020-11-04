@@ -1,0 +1,52 @@
+<ehcache xsi:noNamespaceSchemaLocation="ehcache.xsd"
+	updateCheck="true"
+	monitoring="autodetect"
+	dynamicConfig="true"
+	maxBytesLocalHeap="250M">
+
+	<diskStore path="java.io.tmpdir/ehcache/doabooks"/>
+	<sizeOfPolicy maxDepth="10000" maxDepthExceededBehavior="continue"/>
+	
+	<!-- Total of added caches may not exceed maxBytesLocalHeap of entire cache -->
+	
+	<cache name="sectionsCache"
+		maxBytesLocalHeap="25M"
+		timeToLiveSeconds="330"
+		overflowToDisk="true"/>
+	
+	<cache name="topicsCache"
+		maxBytesLocalHeap="25M"
+		timeToLiveSeconds="330"
+		overflowToDisk="true"/>
+	
+	<cache name="articlesCache"
+		maxBytesLocalHeap="25M"
+		timeToLiveSeconds="270"
+		overflowToDisk="true"/>
+		
+	<cache name="filesCache"
+		maxBytesLocalHeap="25M"
+		timeToLiveSeconds="36000"
+		overflowToDisk="true"/>
+		
+	<cache name="snippetsCache"
+		maxBytesLocalHeap="25M"
+		timeToLiveSeconds="36000"
+		overflowToDisk="true"/>
+		
+	<cache name="dspaceCache"
+		maxBytesLocalHeap="25M"
+		timeToLiveSeconds="14400"
+		overflowToDisk="true"/>
+		
+	<cache name="rssCache"
+		maxBytesLocalHeap="25M"
+		timeToLiveSeconds="43200"
+		overflowToDisk="true"/>
+
+	<cache name="translationsCache"
+		maxBytesLocalHeap="25M"
+		timeToLiveSeconds="330"
+		overflowToDisk="true"/>
+
+</ehcache>

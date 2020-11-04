@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name=”robots” content=”noindex,follow”/>
+    <title>OAPEN Featured Titles</title>
+</head>
+<body>
+
+<!--
+	Searchform
+~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<th:block th:fragment="featured">
+
+	<div id="FeaturedTitles">
+
+		<div class="title doab-section-caption" th:text="#{top_subjects}">Top Subjects</div>
+		
+		<hr class="is-hidden"/>
+
+		<div class="columns is-mobile is-multiline">
+		
+			<div th:each="item,cnt: ${featuredItems}" class="column is-one-third-tablet is-one-fifth-desktop is-half-mobile">
+			   
+				<div class="doab-col-card">
+			   
+					<header>
+						<!--/ <span th:text="#{no_of_titles( ${#numbers.formatInteger(12839,1)} ) }">1234 titles</span> /-->
+						<h2>
+							<!--/  
+								a th:href="@{'/blog/?link='+ ${@viewhelpers.urlEncode(blogPost.link)}}" th:text="${blogPost.title}">Title</a>
+							/-->	
+							<a th:href="${settings.dspace_site+settings.dspace_subject_path+@viewhelpers.urlEncode(topSubjects[cnt.index])}" 
+							   th:text="${topSubjects[cnt.index]}">Bla bla bla</a>
+						</h2>
+					</header>
+				   
+					<figure class="image">
+						<a th:href="${item.url}">
+							<img th:src="${item.thumbnailPath}!=''?${settings.dspace_api}+${item.thumbnailPath}:@{'/static-assets/images/missing.png'}" alt="cover"/>
+						</a>
+						<figcaption>
+						</figcaption>
+					</figure>
+				
+				</div>
+				
+			</div>
+	
+		</div>
+		
+	</div>
+
+</th:block>
+
+<footer th:fragment="footer">
+	<p>2020 trilobiet.nl</p>
+</footer>
+
+</body>
+</html>
+

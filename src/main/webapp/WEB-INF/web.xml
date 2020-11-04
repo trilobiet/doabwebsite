@@ -1,0 +1,27 @@
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee" 
+	xmlns:web="http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee">
+
+	<display-name>Doabooks Website</display-name>
+
+	<context-param>
+		<param-name>spring.profiles.active</param-name>
+		<param-value>dev</param-value>
+	</context-param>
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<mime-mapping>
+    	<extension>.manifest</extension>
+    	<mime-type>text/cache-manifest</mime-type>
+	</mime-mapping>    
+	
+</web-app>
+         
+         
+         
+         

@@ -1,0 +1,26 @@
+<!doctype html>
+<html layout:decorate="~{layout/main}"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+<head>
+    <title>OApen Web - Google Analytics</title>
+</head>
+
+<body>
+
+	<th:block th:fragment="script">
+	
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async th:src="'https://www.googletagmanager.com/gtag/js?id='+${settings.google_analytics_id}"></script>
+		
+		<script th:inline="javascript">
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		  gtag('config', [[${settings.google_analytics_id}]]);
+		</script>
+	
+	</th:block>
+
+</body>
+
+</html>

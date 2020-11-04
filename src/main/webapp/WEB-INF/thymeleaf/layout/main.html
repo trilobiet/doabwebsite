@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+
+<head>
+
+	<meta charset="utf-8"/>
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title layout:title-pattern="$CONTENT_TITLE | $LAYOUT_TITLE">Directory of Open Access Books</title>
+	<link rel="stylesheet" th:href="@{/static-assets/css/styles.css?v=1.00}"/>
+	<link rel="stylesheet" th:href="@{/static-assets/css/contenttypes.css?v=1.00}"/>
+	
+	<link rel="stylesheet" th:href="@{/static-assets/fontawesome-pro-5.12.1-web/css/all.min.css?v=1.00}"/>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+	
+	<link rel="shortcut icon" th:href="@{/favicon.ico}" type="image/x-icon">
+	<link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">	
+	
+    <meta property="og:title" content="Directory of Open Access Books"/>
+    <!-- TODO -->
+    <!--/ <meta property="og:image" content="//oapen.org/static-assets/images/doablogo-banner.png"/>/-->
+	
+</head>
+
+<body th:classappend="${bodyClass}">
+
+	<!--
+		HEADER
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<header>
+
+		<div class="container">
+
+			<!-- logo, search/deposit/join -->
+			<nav class="doab-topnav" role="navigation">
+
+				<div class="level topnav">
+
+					<div class="level-left">
+
+						<a th:href="@{'/'+${language}}">
+							<img th:src="@{/static-assets/images/layout/doab.png}" width="250" alt="Logo Doab" class="doab-logo">
+							<div class="is-hidden">
+								<span>directory of</span><span>open access</span><span>books</span>
+							</div>
+						</a>
+
+					</div>
+
+					<div class="level-right">
+
+						<ul class="buttons">
+
+							<!--/ 	
+							<li>
+								<a th:href="${settings.dspace_site}"
+								   class="button doab-btn-search">
+									Search
+								</a>
+							</li>
+							/-->
+							
+							<li th:each="mnusection: ${headerSections}">
+								<a th:text="${@translator.translate(mnusection,language).name}"
+								   th:href="@{'/'+${language}+'/'+${mnusection.slug}}"
+								   class="button" th:classappend="doab-btn-+${mnusection.slug}">
+									Button right
+								</a>
+							</li>
+							
+							<li>
+								<div class="control has-icons-left">
+									<div class="select">
+										<select name="setlanguage"
+										    onchange="window.location.href=this.options[this.selectedIndex].value">
+											<option th:value="@{'/setlanguage?lang=en'}" th:text="#{choose_language}">[Choose language]</option>
+											<option th:value="@{'/setlanguage?lang=en'}">English</option>
+											<option th:value="@{'/setlanguage?lang=fr'}">Français</option>
+										</select>
+									</div>
+									<span class="icon is-left">
+										<i class="doab-lang-icon fas fa-globe"></i>
+									</span>
+								</div>	
+							</li>						
+
+						</ul>
+
+					</div>
+
+				</div>
+
+			</nav>
+
+		</div><!-- /container -->
+
+		<nav class="navbar doab-mainnav" role="navigation">
+
+			<div class="container">
+
+				<div class="navbar-brand">
+
+					<!-- hamburger -->
+					<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
+						<span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span>
+					</a>
+
+				</div>
+
+				<div id="navbarMain" class="navbar-menu">
+
+					<ul class="navbar-start">
+
+						<li th:each="mnusection: ${menuLeftSections}" class="doab-nav-dropdown">
+							<th:block th:insert="layout/submenu :: section_navigation">
+								sub menu
+							</th:block>
+						</li>
+
+					</ul>
+					
+					<ul class="navbar-end doab-nav-right">
+
+						<li th:each="mnusection: ${menuRightSections}" class="doab-nav-dropdown">
+							<th:block th:insert="layout/submenu :: section_navigation">
+								sub menu
+							</th:block>
+						</li>
+
+					</ul>
+
+				</div>
+
+			</div>
+
+		</nav>
+
+	</header>
+	
+	<div layout:fragment="hero" th:remove="tag"> 
+	</div>
+
+	<!--
+		MAIN
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<div class="doab-page-wrapper">
+	
+		<main layout:fragment="content">
+	
+			<hr class="is-sr-only"/>
+	
+			<div class="container content">
+	
+				<!-- content -->
+				<!-- ============================================================================ -->
+				<!-- This content is only used for static prototyping purposes (natural templates)-->
+				<!-- and is therefore entirely optional, as this markup fragment will be included -->
+				<!-- from "fragments/header.html" at runtime.                                     -->
+				<!-- ============================================================================ -->
+	
+				<h1>Static content for prototyping purposes only</h1>
+	
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					Praesent scelerisque neque neque, ac elementum quam dignissim interdum.
+					Phasellus et placerat elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					Praesent scelerisque neque neque, ac elementum quam dignissim interdum.
+					Phasellus et placerat elit.
+				</p>
+				<!-- /content -->
+	
+			</div>
+			
+		</main>	
+
+	</div>
+
+
+	<!--
+		FOOTER
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<footer class="footer">
+
+		<div class="container">
+
+			<div class="doab-ftr-header">
+				<div class="is-sr-only">Doabooks</div>
+				<hr class="is-hidden"/>
+			</div>
+
+			<div class="columns doab-footer-columns">
+
+		  		<div class="column doab-footer-nav">
+
+		  			<ul class="menu-list">
+
+						<li th:each="mnusection: ${footerSections}">
+							<a th:href="@{'/'+${language}+'/'+${mnusection.slug}}"
+							   th:text="${@translator.translate(mnusection,language).name}">
+							   Footer Menu Item
+							</a>
+						</li>
+
+					</ul>
+
+				</div><!-- /footer-nav -->
+
+				<div class="column">
+
+					<div class="doab-newsletter">
+
+						<div class="title" th:text="#{newsletter}">Newsletter</div>
+						
+						<hr class="is-hidden"/>
+
+						<i class="fal fa-envelope-open-text"></i>
+
+						<ul>
+							<li>
+								<a href="https://oapen.us4.list-manage.com/subscribe?u=314fa411ba5eaaee7244c95e1&id=a362459f54"
+								   th:text="#{subscribe_newsletter}">
+									Subscribe to our newsletter
+								</a>
+							</li>
+							<li>
+								<a href="https://us4.campaign-archive.com/home/?u=314fa411ba5eaaee7244c95e1&id=a362459f54"
+								   th:text="#{archive_newsletter}">
+									view our news archive
+								</a>
+							</li>
+						</ul>
+
+					</div>
+
+					<div class="doab-social-links">
+
+						<div class="title" th:text="#{follow_us_on}">Follow us on</div>
+						
+						<hr class="is-hidden"/>
+
+						<ul>
+							<li>
+								<a href="https://twitter.com/doabooks">
+									<i class="fab fa-twitter-square"></i>
+									<span class="is-sr-only">Twitter</span>
+								</a>
+							</li>
+						</ul>
+
+					</div>
+
+				</div>
+
+				<div class="column doab-credits">
+
+					<div class="title" th:text="#{hosted_by}">Hosted by</div>
+					
+					<hr class="is-hidden"/>
+
+					<ul>
+						<li>
+							<a href="https://www.huma-num.fr/">
+								<img th:src="@{/static-assets/images/logo-humanum.png}" width="100" alt="Doabooks is hosted by Huma-Num"/>
+								<span class="is-sr-only">Huma-Num</span>
+							</a>
+						</li>
+					</ul>
+
+					<div class="title" th:text="#{credits}">Credits</div>
+					
+					<hr class="is-hidden"/>
+
+					<ul>
+						<li>
+							<a href="https://www.scoss.org/">
+								<img th:src="@{/static-assets/images/logo-scoss.png}" width="100" alt="logo Scoss"/>
+								<span class="is-sr-only">Scoss</span>
+							</a>
+						</li>
+						<li>
+							<a href="https://europa.eu/european-union/index_en">
+								<img th:src="@{/static-assets/images/eu-flag.png}" width="100" alt="logo EU"/>
+								<span class="is-sr-only">European Union</span>
+								<br/>
+								<small class="is-size-7" th:utext="#{footer_text_2}">
+									This project received funding from the European Union’s Horizon 2020 research 
+									and innovation programme under grant agreement No 871069.								
+								</small>
+							</a>
+						</li>
+					</ul>
+
+				</div>
+
+				<div class="column doab-addresses">
+
+					<hr class="is-sr-only"/>
+
+					<p th:utext="#{footer_text_1}">
+						Directory of Open Access Books is a joint service of OAPEN, OpenEdition, CNRS and 
+						Aix-Marseille Université, provided by DOAB Foundation
+					</p>
+					<p>
+						Website:<br/>
+						<a href="https://www.doabooks.org">www.doabooks.org</a>
+					</p>
+
+				</div>
+
+
+			</div><!-- /footer columns -->
+
+
+			<div class="content has-text-centered">
+
+				<div class="is-size-7">
+					&copy;2019-<span th:text="${#dates.year(#dates.createNow())}">2020</span> OAPEN
+					|
+					<a href="https://www.trilobiet.nl">website by Trilobiet</a>
+				</div>
+
+			</div>
+
+		</div>
+
+	</footer>
+
+	<!-- / Local version of the cdn scripts are available in static-assets/js/ in case the CDN disappears / -->
+
+	<script th:src="@{/static-assets/js/jquery-3.4.1.min.js}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
+	<script th:src="@{/static-assets/js/scripts.js?v=1.01}"></script>
+	<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+	<!-- /* Loaded locally <script src="https://kit.fontawesome.com/33a853ba11.js" crossorigin="anonymous"></script> */ -->
+	
+	<th:block th:insert="include/googleanalyticsscript :: script">
+		Google Analytics
+	</th:block>
+	
+	<th:block th:insert="include/cookiespopupscript :: thescript">
+		Cookies Consent Popup
+	</th:block>
+	
+	<!----------------------------------- 
+	Website by	 
+    _____     _ _       _     _      _   
+   |_   _| __(_) | ___ | |__ (_) ___| |_ 
+     | || '__| | |/ _ \| '_ \| |/ _ \ __|
+     | || |  | | | (_) | |_) | |  __/ |_ 
+     |_||_|  |_|_|\___/|_.__/|_|\___|\__|
+                                       	
+	2020 www.trilobiet.nl
+	------------------------------------>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!doctype html>
+<html layout:decorate="~{layout/main}"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+<head>
+    <title>Online Library and Publication Platform</title>
+</head>
+
+<body class="doab-home">
+
+	<!--
+		HERO
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<div layout:fragment="hero" th:insert="home/hero :: hero">
+	</div> 
+
+
+	<!--
+		MAIN
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+	<!-- /* Content of this page will be decorated by the elements of layout.html (layout/main) */ -->
+	<main layout:fragment="content" class="doab-main home">
+
+		<section class="section doab-home-intro">
+
+			<div class="container">
+				<p class="is-size-5"> <!-- th:utext="${home_intro}" -->
+					Ingenium distineo fatua sudo dignissim singularis. Mollis saluto maecenas semper rhoncus jugis vindico. 
+					Modo appellatio roto proprius viverra imperdiet. Ut proin suscipitludus malesuada opes bene mattis immitto egestas. 
+					Neque aliquet amet iaculis pneum. Distineo quam refoveo nascetur pharetra nostrud.
+					Nam adsum quadrum quadrum jus cogo. Consectetuer brevitas brevitas premo minim scelerisque varius viverra. 
+				</p>
+				<p>
+					<img th:src="@{/static-assets/images/layout/doab-peerreview-no-fonts.svg}" 
+					 alt="Peer Review Certified by Doab" class="doab-peer-review">
+				</p>
+			</div>
+
+		</section>
+		
+		<div class="section">
+
+			<div class="container">
+
+				<div class="columns">
+
+					<!-- Left column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+					<div class="column">
+
+						<section class="section doab-home-showcases">
+				
+							<div class="container">
+								<th:block th:insert="home/showcases :: showcases">
+									Showcases
+								</th:block>
+							</div>
+				
+						</section>
+						
+						<section class="section doab-home-featured">
+						
+							<div class="container">
+							
+								<a class="is-hidden" th:href="@{'/featuredtitles'}">Featured Titles</a>
+						
+								<div class="carouselloader" th:data-src="@{'/featuredtitles'} + ' #FeaturedTitles'">
+								</div>
+								
+							</div>	
+				
+						</section>
+				
+						<section class="section doab-home-spotlights">
+
+							<div class="container">
+							
+								<div class="title is-6 doab-section-caption">Spotlights</div>
+	
+								<hr class="is-hidden">
+							
+								<div class="columns is-multiline">
+	
+									<th:block th:insert="home/spotlights :: spotlights">
+										Spotlights
+									</th:block>
+									
+								</div>	
+								
+							</div>
+
+						</section>
+
+						<section class="section doab-home-blogposts">
+
+							<div class="container">
+							
+								<div class="title is-6 doab-section-caption">Blog Posts</div>
+	
+								<hr class="is-hidden">
+							
+								<div class="columns is-multiline">
+	
+									<th:block th:insert="home/blogposts :: blogposts">
+										Blog Posts
+									</th:block>
+									
+								</div>	
+								
+							</div>
+
+						</section>
+
+					</div>
+
+					<!-- Right column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+					<div class="column is-4 doab-sidebar-right">
+
+						<section class="section doab-home-serviceof">
+
+							<div class="container">
+							
+								<th:block th:insert="home/serviceof :: serviceof">
+									DOAB is a service of
+								</th:block>
+
+							</div>
+
+						</section>
+						
+						<section class="section doab-home-newsarchive">
+
+							<div class="container">
+							
+								<th:block th:insert="home/newsarchive :: newsarchive">
+									News archive
+								</th:block>
+
+							</div>
+
+						</section>
+
+						<section class="section doab-home-social">
+
+							<div class="container">
+							
+								<th:block th:insert="home/socialmedia :: socialmedia">
+									Social Media
+								</th:block>
+							</div>
+
+						</section>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+		
+		<section class="section doab-home-sponsors">
+
+			<div class="container">
+				<th:block th:insert="home/sponsors :: sponsors">
+					DOAB is sponsored by
+				</th:block>
+			</div>
+
+		</section>						
+
+		<span th:text="${ip}" style="display:none">your ip</span>
+
+	</main>
+
+</body>
+</html>
+

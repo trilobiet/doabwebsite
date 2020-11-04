@@ -1,0 +1,43 @@
+html {
+	background: $col_footerbg;
+}	
+
+body {
+	background: $col_bodybg;
+}	
+
+.doab-page-wrapper {
+	// max-width: 1344px;
+	margin: auto;
+	background: $col_mainbg;	
+}	
+
+.section .section {
+	padding-right: 0;
+	padding-left: 0;	
+}	
+
+.doab-error-page {
+	
+	height: 100%;	
+	
+	.section { 
+		padding: 3rem;
+		text-align: center;
+	}
+
+	.content {
+		
+		.doab-is404, .doab-is500 {
+			display: inline;
+			margin: 2rem;
+			font-size: 20em;
+			font-weight: 100;
+		}			 
+	
+		p {
+			max-width: 100%;	
+		}
+	}		
+	
+}	

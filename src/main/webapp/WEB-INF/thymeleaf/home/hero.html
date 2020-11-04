@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Boot Thymeleaf Application - Fragments</title>
+</head>
+<body>
+
+<div th:fragment="header">
+    <h1>Thymeleaf Fragments</h1>
+</div>
+
+<th:block th:fragment="hero">
+
+	<!--
+		HERO
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<div class="doab-home-hero">
+
+		<div class="container">
+	
+			<div class="columns">
+			
+				<div class="column is-three-fifths">
+					<h1 class="title is-1">Directory of <br/>Open Access Books</h1>
+					<div class="doab-hero-sub">
+						 <span th:text="${count_titles}">31.982</span> 
+						 Academic peer-reviewed books <wbr/>from 
+						 <span th:text="${count_publishers}">423</span> publishers 
+					</div>
+				</div>
+				
+				<form th:action="${settings.dspace_site+'discover'}" class="column doab-hero-search-form">
+				
+					<div>
+		
+						<div class="field has-addons doab-hero-search-input">
+							<div class="control">
+								<input class="input" type="text" name="query" th:placeholder="#{search_doab_placeholder}">
+							</div>
+							<div class="control">
+								<button type="submit" class="button is-dark" th:text="#{search_button}">
+									Search
+								</button>
+							</div>
+						</div>
+			
+						<div class="field doab-hero-search-browse">
+			
+							<span th:text="#{browse_by}">
+								Browse by:
+							</span>
+							<ul>
+								<li><a th:href="${settings.dspace_site+'browse?type=language'}" th:text="#{browse_subject_btn}">Title</a></li>
+								<li><a th:href="${settings.dspace_site+'browse?type=classification_text'}" th:text="#{browse_title_btn}">Subject</a></li>
+								<li><a th:href="${settings.dspace_site+'browse?type=publisher'}" th:text="#{browse_publisher_btn}">Publisher</a></li>
+							</ul>
+			
+						</div>
+					
+					</div>	
+		
+				</form>
+		
+			</div>
+			
+		</div>
+		
+	</div>		
+
+</th:block>
+
+<footer th:fragment="footer">
+	<p>2020 trilobiet.nl</p>
+</footer>
+
+</body>
+</html>
+

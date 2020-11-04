@@ -1,0 +1,43 @@
+<!doctype html>
+<html layout:decorate="~{layout/main}"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+<head>
+    <title>OApen web - Related Articles</title>
+</head>
+
+<body>
+
+	<!--
+		BODY
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<main class="section doab-main" layout:fragment="content">
+
+		<th:block th:fragment="attachments" th:with="attachments=${@viewhelpers.attachments(article.media)}">
+
+			<div class="doab-attachments content" th:if="${not #lists.isEmpty(attachments)}">
+			
+				<div class="doab-attachments-header">Files</div>
+				
+				<hr class="is-hidden"/>
+			
+				<ul>
+					<li th:each="attachment:${attachments}">
+						<a data-fancybox="gallery" th:href="${attachment.url}" th:text="${attachment.name}">
+							Attachment name
+						</a>
+					</li>
+				</ul>
+				
+			</div>
+
+		</th:block>
+
+	</main>
+
+</body>
+
+</html>
+
+
+
+

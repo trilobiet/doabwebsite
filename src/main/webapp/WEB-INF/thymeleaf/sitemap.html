@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/main}"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+
+  <head>
+    <title>Sitemap</title>
+  </head>
+  <body>
+    <!-- /* Content of this page will be decorated by the elements of layout.html (layout/main) */ -->
+    <div layout:fragment="content">
+
+		<div class="section">
+
+			<div class="container content">
+
+				<h2>Sitemap</h2>
+
+				<!--<p th:text=${sections}></p>-->
+
+				<ul>
+					<li th:each="section: ${sections}">
+
+						<span th:text="${section.groupNumber}">groupNumber</span>
+						-
+						<span th:text="${section.index}">index</span>
+						<h3>
+							<a th:href="@{'/'+${section.slug}}" th:text="${section.name}">
+								Section name
+							</a>
+						</h3>
+
+						<ul>
+							<li th:each="topic: ${section.topics}">
+
+								<span th:text="${topic.index}">topic index</span>
+
+								<a th:href="@{'/topic/'+${topic.slug}}" th:text="${topic.name}">
+									topic name
+								</a>
+
+								<ul>
+									<li th:each="article: ${topic.articles}">
+
+										<a th:href="@{'/article/'+${article.slug}}"
+										   th:text="${article.title}">article title</a>
+									</li>
+								</ul>
+
+							</li>
+						</ul>
+
+					</li>
+
+				</ul>
+
+				<p>I am in WEB-INF/thymeleaf/sitemap.html</p>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
+</html>
+

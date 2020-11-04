@@ -1,0 +1,26 @@
+
+//
+// Css for class names entered in CMS 
+//
+
+.doab-members-overview {
+	
+	.content>div {
+		
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+
+		a {
+			margin: 20px;
+			display: block;
+		}	
+		
+		a[target="_blank"]::after {	
+			content: "";
+			font-size: 0;
+			margin: 0;
+		}
+	}
+}

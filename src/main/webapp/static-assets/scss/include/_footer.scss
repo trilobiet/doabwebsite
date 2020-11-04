@@ -1,0 +1,93 @@
+
+.footer {
+	
+	@include footerfont;
+	color: white;
+	background-color: $col_footerbg;
+	border-top: solid 1px #ccc;
+	
+	a {
+		color: white;	
+	}		
+
+	.menu-list {
+		margin-bottom: 1.25rem;
+	}	
+
+	.doab-ftr-header {
+		height: 52px;
+		color: #fff;
+ 		padding-bottom: .5em;
+		margin-bottom: 2em;
+		border-bottom: solid 1px #AAA;
+		background-image: url('../images/layout/oapenlogo_01_white_no_text_small.png');
+		background-repeat: no-repeat;
+		background-size: 80px auto;
+	}
+	
+	.title {
+		@include captionfont;
+		color: #999;
+	}	
+
+	.doab-social-links {
+		
+		li {
+			display: inline-block;	
+			margin-right: 10px;
+		}	
+	
+		i {
+			color: white;
+			font-size: 3em; 	
+		}	
+	}	
+
+	.doab-newsletter {
+		
+		margin-bottom: 2rem;
+	
+		i {
+			float: left;
+			margin-right: 14px;
+			color: white;
+			font-size: 2.25em;
+			line-height: 1.35em;	
+		}	
+	}	
+
+
+	.doab-credits {
+		
+		li {
+			margin: 0  0 20px 0;
+			text-align: center;	
+		}	
+		
+		img { 
+			max-height: 80px;
+		}		
+	}	
+
+	.doab-addresses { 
+		
+		p, address {
+			margin: 0  0 .75rem 0;
+			font-size: .875rem;
+			font-style: normal;	
+		}	
+		
+	}	
+
+}	
+
+.doab-footer-columns {
+
+	.column { 
+		border-left: solid 2px #4f4f4f;
+		&:first-child {
+			border: none;
+		}	 	
+	}		
+}
+
