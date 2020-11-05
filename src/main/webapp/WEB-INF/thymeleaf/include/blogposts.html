@@ -1,0 +1,48 @@
+<!doctype html>
+<html layout:decorate="~{layout/main}"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+<head>
+    <title>OApen web - Related Articles</title>
+</head>
+
+<body>
+
+	<!--
+		BODY
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<main class="oapen-main" layout:fragment="content">
+
+		<aside class="oapen-hypotheses-items" th:fragment="hypotheses" th:if="${not #lists.isEmpty(blogPosts)}">
+
+			<h2 class="is-title is-5 oapen-section-caption">More blog posts</h2>
+
+			<ul class="content">
+
+				<li th:each="blogPost:${blogPosts}">
+					<p class="oapen-date" th:text="${#temporals.format(blogPost.publicationDate,'E dd MMM yyyy')}">
+						THU 26 Mar 2020				
+					</p>
+					<h3 class="oapen-blogpost-title">
+						<a th:href="@{'/blog/?link='+${@viewhelpers.urlEncode(blogPost.link)}}" th:text="${blogPost.title}">
+							Blogpost title
+						</a>
+					</h3>
+					<p class="oapen-blogpost-description" th:utext="${@viewhelpers.abbreviate(blogPost.description,300)}">
+						Blogpost Description
+					</p>
+					 
+				</li>
+
+			</ul>
+
+		</aside>
+
+	</main>
+
+</body>
+
+</html>
+
+
+
+

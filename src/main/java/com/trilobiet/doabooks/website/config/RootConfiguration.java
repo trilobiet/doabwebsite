@@ -116,7 +116,8 @@ public class RootConfiguration {
 	public RepositoryService repositoryService() {
 		// wrap in a proxy that caches request
 		return new DSpaceRepositoryProxy(
-			new DSpaceRepositoryService(env.getProperty("url_dspace_api"))
+			new DSpaceRepositoryService(env.getProperty("url_dspace_api")), 
+			120 // refresh interval in minutes (default 60)
 		);
 	}
 	

@@ -1,0 +1,84 @@
+<!doctype html>
+<html layout:decorate="~{layout/main}"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+<head>
+    <title>Blog</title>
+</head>
+
+<body>
+
+	<!--
+		BODY
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<main layout:fragment="content" class="section oapen-blog oapen-main">
+	
+		<div class="container">
+		
+			<nav class="breadcrumb" aria-label="breadcrumbs">
+				<ul>
+					<li>
+						<a th:href="@{'/'}">Home</a>
+					</li>
+					<li class="is-active">
+						<a href="#" aria-current="page">OAPEN Blog</a>
+					</li>
+				</ul>
+			</nav>
+		
+			<div class="columns">
+			
+				<!-- main content left -->
+				<div class="column is-three-quarters">
+				
+					<p th:if="${featuredPost==null}">Nothing here yet...</p>
+
+					<article th:if="${featuredPost}"
+						class="is-clearfix oapen-blogpost">
+						
+						<div class="oapen-primary content">
+						
+							<h1 th:text="${featuredPost.title}">Blog Title</h1>
+							
+							<h3 th:text="${featuredPost.author}">Author</h3>
+							<p class="oapen-date">
+								<strong th:text="${#temporals.format(featuredPost.publicationDate,'E dd MMM yyyy')}">Publication Date</strong>
+							</p>	
+							
+							<div class="oapen-blogpost-hbar">
+								Read this article at 
+								<a th:href="${featuredPost.link}" target="_blank">
+									<img th:src="@{/static-assets/images/logo-hypotheses.png}" alt="hypothèses.org" width="100"/>
+								</a>
+							</div>
+							
+							<hr/>
+						
+							<p th:utext="${featuredPost.contents}">
+								Blog Post
+							</p>
+						
+						</div>
+	
+					</article>
+				
+				</div>
+			
+				<!-- sidebar right -->
+				<div class="column">
+				
+					<th:block th:insert="include/blogposts :: hypotheses"/>
+				
+				</div>
+			
+			</div>
+
+		</div>
+
+	</main>
+
+</body>
+</html>
+
+
+
+

@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.cache.annotation.Cacheable;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -26,7 +25,6 @@ public class DSpaceRepositoryService implements RepositoryService {
 	}
 
 	@Override
-	@Cacheable(value="dspaceCache",key="#root.methodName") // key="'somefancyname'" or any SpEL expression
 	public List<RepositoryItem> getFeaturedItems(List<String> subjects) throws RepositoryException {
 		
 		List<String> usedHandles = new ArrayList<>();
@@ -40,7 +38,6 @@ public class DSpaceRepositoryService implements RepositoryService {
 
 	
 	@Override
-	@Cacheable(value="dspaceCache",key="#root.methodName + '-' + #communities")
 	public Integer getCommunitiesCount(List<String> communities) throws RepositoryException {
 
 		List<String> lcCommunities = 
@@ -77,7 +74,6 @@ public class DSpaceRepositoryService implements RepositoryService {
 		// https://library.oapen.org/rest/search?query=dc.subject.classification:%22Politics+%26+Government%22&sort=dc.date.accessioned_dt&limit=1&expand=all
 
 		sb.append("/rest/search?query=dc.subject.classification:%22")
-		  //.append("::JP+")	
 		  .append(URLEncoder.encode(subject,StandardCharsets.UTF_8))
 		  .append("%22%20AND%20dc.type=book");
 		
