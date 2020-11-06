@@ -24,9 +24,10 @@
 				<div class="column is-three-fifths">
 					<h1 class="title is-1">Directory of <br/>Open Access Books</h1>
 					<div class="doab-hero-sub">
-						 <span th:text="${count_titles}">31.982</span> 
-						 Academic peer-reviewed books <wbr/>from 
-						 <span th:text="${count_publishers}">423</span> publishers 
+						 <span th:text="${#numbers.formatInteger(count_titles,1,'DEFAULT')}">31.982</span> 
+						 academic peer-reviewed books <wbr/>from 
+						 <span th:text="${#numbers.formatInteger(count_publishers,1,'DEFAULT')}">423</span> 
+						 publishers 
 					</div>
 				</div>
 				

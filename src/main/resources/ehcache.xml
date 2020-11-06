@@ -33,11 +33,12 @@
 		maxBytesLocalHeap="25M"
 		timeToLiveSeconds="36000"
 		overflowToDisk="true"/>
-		
+	
+	<!-- DSpace calls are behind a proxy that implements its own caching strategy	
 	<cache name="dspaceCache"
 		maxBytesLocalHeap="25M"
 		timeToLiveSeconds="14400"
-		overflowToDisk="true"/>
+		overflowToDisk="true"/> -->
 		
 	<cache name="rssCache"
 		maxBytesLocalHeap="25M"

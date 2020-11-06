@@ -22,7 +22,7 @@ public class RootController {
 	@CacheEvict(value={
 		"sectionsCache","topicsCache","articlesCache",
 		"filesCache","snippetsCache","translationsCache",
-		"dspaceCache","rssCache"}, allEntries=true)
+		"rssCache"}, allEntries=true)
 	@RequestMapping("/clearCache") 
 	public ModelAndView clearCache(Model model) {
 		return new ModelAndView("redirect:/home");
