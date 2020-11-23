@@ -78,14 +78,6 @@ public class HomeController extends BaseController {
 		}
 		
 		try {
-			// Get latest mailchimp post(s)
-			List<RssItem> rssItems = rssMailchimpService.getItems(5);
-			mv.addObject("rssMailchimpItems",rssItems);
-		} catch (Exception e) {
-			log.error("mailchimp: " + e.getMessage());
-		}
-		
-		try {
 			Optional<SnippetImp> otwitter = snippetService.getSnippet("twitter-timeline");
 			Snippet ttl = otwitter.orElseGet(()->new SnippetImp());
 			mv.addObject("twittertimeline",ttl);

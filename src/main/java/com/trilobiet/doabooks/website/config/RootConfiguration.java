@@ -107,10 +107,11 @@ public class RootConfiguration {
 		return new RssServiceImp(env.getProperty("url_feed_hypotheses"));
 	}
 
+	/* Not used anymore
 	@Bean(name="rssMailchimpService") 
 	public RssService rssMailchimpService() {
 		return new RssServiceImp(env.getProperty("url_feed_mailchimp"));
-	}
+	} */
 	
 	@Bean(initMethod="init",destroyMethod="exit" )
 	public RepositoryService repositoryService() {
