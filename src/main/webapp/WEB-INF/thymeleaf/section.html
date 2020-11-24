@@ -26,7 +26,7 @@
 
 			</div>
 			
-			<div class="doab-toc content">
+			<div class="doab-toc content" th:if="${#lists.size(section.topics) gt 0}">
 
 				<div class="doab-toc-header" th:text="#{this_section}">In this section</div>
 				

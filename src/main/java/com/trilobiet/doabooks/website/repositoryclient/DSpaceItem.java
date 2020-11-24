@@ -22,6 +22,12 @@ public class DSpaceItem implements RepositoryItem, Serializable {
 	private List<Metadata> metadata;
 	private List<Bitstream> bitstreams;
 	
+	// These fields are initialized on first request
+	private Optional<List<String>> editors = Optional.empty();
+	private Optional<List<String>> authors = Optional.empty();
+	private Optional<String> url = Optional.empty();
+	private Optional<String> thumbnailPath = Optional.empty();
+	
 	@Override
 	public String getTitle() {
 		return name;
@@ -47,51 +53,74 @@ public class DSpaceItem implements RepositoryItem, Serializable {
 	@JsonIgnore
 	public List<String> getEditors() {
 		
-		List<String> editors = metadata.stream()
-			.filter(m -> m.getKey().equals("dc.contributor.editor"))
-			.map(m -> m.getValue() )
-			.collect(Collectors.toList());
+		// Lazy init
+		if (!editors.isPresent()) {	
+			editors = Optional.of(metadata.stream()
+				.filter(m -> m.getKey().equals("dc.contributor.editor"))
+				.map(m -> m.getValue() )
+				.collect(Collectors.toList())
+			);
+		}
 		
-		return editors;
+		return editors.get();
 	}
 
 	@JsonIgnore
 	public List<String> getAuthors() {
 		
-		List<String> authors = metadata.stream()
+		// Lazy init
+		if (!authors.isPresent()) {
+			authors = Optional.of(metadata.stream()
 				.filter(m -> m.getKey().equals("dc.contributor.author"))
 				.map(m -> m.getValue() )
-				.collect(Collectors.toList());
+				.collect(Collectors.toList())
+			);
+		}	
 			
-		return authors;
+		return authors.get();
 	}
 
 	@JsonIgnore
 	public String getUrl() {
 		
-		Optional<String> url = metadata.stream()
+		// Lazy init
+		if(!url.isPresent()) {
+		
+			url = metadata.stream()
 				.filter(m -> m.getKey().equals("dc.identifier.uri"))
 				.map(m -> m.getValue() )
-				.findFirst();
+				.findFirst()
+				.or(()-> Optional.of(""));
+		}		
 		
-		return url.orElse("");
+		return url.get();
 	}
 	
 	@Override
 	public String getThumbnailPath() {
-
-		Optional<Bitstream> obs = bitstreams.stream()
-			.filter( b -> b.isThumbnail() )
-			.findFirst();
 		
-		if (obs.isPresent()) {
+		String tp = "";
+		
+		// Lazy init
+		if(!thumbnailPath.isPresent()) {
+
+			Optional<Bitstream> obs = bitstreams.stream()
+				.filter( b -> b.isThumbnail() )
+				.findFirst();
 			
-			return "/bitstream/handle/" 
-					+ getHandle() + "/"
-					+ obs.get().getName() + "?sequence="
-					+ obs.get().getSequenceId();
-		}
-		else return "";
+			if (obs.isPresent()) {
+				
+				tp = "/bitstream/handle/" 
+						+ getHandle() + "/"
+						+ obs.get().getName() + "?sequence="
+						+ obs.get().getSequenceId();
+			}
+			else tp = "";
+			
+			thumbnailPath = Optional.of(tp);
+		}	
+			
+		return thumbnailPath.get();
 	}
 
 	@Override

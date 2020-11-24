@@ -23,21 +23,23 @@
 			
 				<div class="column is-three-fifths">
 					<h1 class="title is-1">Directory of <br/>Open Access Books</h1>
-					<div class="doab-hero-sub">
-						 <span th:text="${#numbers.formatInteger(count_titles,1,'DEFAULT')}">31.982</span> 
-						 academic peer-reviewed books <wbr/>from 
-						 <span th:text="${#numbers.formatInteger(count_publishers,1,'DEFAULT')}">423</span> 
-						 publishers 
+					<div class="doab-hero-sub" 
+						 th:text="#{books_from_publishers(
+						 	${#numbers.formatInteger(count_titles,1,'DEFAULT')},
+						 	${#numbers.formatInteger(count_publishers,1,'DEFAULT')}
+						 )}">
+						<!-- /* 33385 Livres académiques validés par les pairs provenant de 406 éditeurs */ --> 
 					</div>
 				</div>
 				
-				<form th:action="${settings.dspace_site+'discover'}" class="column doab-hero-search-form">
+				<form th:action="${settings.dspace_site+'discover'}" class="column doab-hero-search-form" method="get">
 				
 					<div>
 		
 						<div class="field has-addons doab-hero-search-input">
 							<div class="control">
 								<input class="input" type="text" name="query" th:placeholder="#{search_doab_placeholder}">
+								<input type="hidden" name="locale-attribute" th:value="${language}" />
 							</div>
 							<div class="control">
 								<button type="submit" class="button is-dark" th:text="#{search_button}">
@@ -52,9 +54,9 @@
 								Browse by:
 							</span>
 							<ul>
-								<li><a th:href="${settings.dspace_site+'browse?type=language'}" th:text="#{browse_subject_btn}">Title</a></li>
-								<li><a th:href="${settings.dspace_site+'browse?type=classification_text'}" th:text="#{browse_title_btn}">Subject</a></li>
-								<li><a th:href="${settings.dspace_site+'browse?type=publisher'}" th:text="#{browse_publisher_btn}">Publisher</a></li>
+								<li><a th:href="${settings.dspace_site+'browse?type=language&locale-attribute='+language}" th:text="#{browse_subject_btn}">Title</a></li>
+								<li><a th:href="${settings.dspace_site+'browse?type=classification_text&locale-attribute='+language}" th:text="#{browse_title_btn}">Subject</a></li>
+								<li><a th:href="${settings.dspace_site+'browse?type=publisher&locale-attribute='+language}" th:text="#{browse_publisher_btn}">Publisher</a></li>
 							</ul>
 			
 						</div>

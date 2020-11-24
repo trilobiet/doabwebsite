@@ -2,6 +2,7 @@
 @import "compass";
 @import "compass/css3";
 
+@import "include/mixins";
 @import "include/settings";
 @import "include/settings-font";
 
@@ -18,20 +19,42 @@
 	}	
 }	
 
-
 .doab-home-intro {
 	margin-top: 1.5em;
 }	
 
 .doab-home-showcases {
 	
+	margin-bottom: 2rem;	
+	padding: 2rem;
+	background: #f9f3f3;	
+
 	.title {
 		margin-bottom: 1rem;	
 		@include h2style;
-	}			
+		
+		a {
+			color: #444;
+		}
+	}	
+	
+	h1:not([class*='title']) {
+		display: none;
+	}
+	
+	p {
+		display: inline;
+	}
+	
+	a.doab-more {
+		@include fa-before('\f0da', 1em, .15em, bottom) {font-weight: 900};
+	}
+	
 }	
 
 .doab-home-featured {
+	
+	margin-bottom: 2rem;
 	
 	.title {
 		margin-bottom: .5rem;	

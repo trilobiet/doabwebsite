@@ -15,7 +15,7 @@ import com.trilobiet.graphqlweb.implementations.aexpgraphql2.snippet.SnippetImp;
 @Controller
 public class DSpaceController extends BaseController {
 	
-	@RequestMapping("/featuredtitles")
+	@RequestMapping("/{language}/featuredtitles")
 	public ModelAndView showFeatured() {
 		
 		ModelAndView mv = new ModelAndView("include/featuredtitles");  

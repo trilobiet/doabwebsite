@@ -24,3 +24,32 @@
 		}
 	}
 }
+
+.doab-faq {
+	
+	article.doab-primary {
+		
+		h2 {
+			color: $doaborange;
+		}
+
+		/*
+		.content > *:not(div):not(h1):not(h2):not(h3):not(ul) {
+			margin-left: 1em;
+		}	
+		
+		.content > ul {
+			margin-left: 3em;
+		}
+		*/	
+		
+	}
+}
+
+.doab-sponsors-overview {
+	a[target='_blank']::after{
+		content: '';
+		font-size: 0;
+		margin: 0;
+	} 
+}

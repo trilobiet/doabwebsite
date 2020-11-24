@@ -10,6 +10,9 @@ body {
 	// max-width: 1344px;
 	margin: auto;
 	background: $col_mainbg;	
+	body:not(.doab-home) & {
+		padding-bottom: 1.5rem;	
+	}
 }	
 
 .section .section {

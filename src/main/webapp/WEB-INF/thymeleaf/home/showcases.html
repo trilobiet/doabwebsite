@@ -19,44 +19,21 @@
 	
 	<hr class="is-hidden"/>
 
-	<div class="columns is-multiline is-desktop">
-		<div class="column is-half-desktop doab-home-showcase doab-scoss">
+	<div th:each="article: ${showcases}" class="doab-home-showcase content" th:classappend="${article.cssClass}">
 
-			<div>
-				<h2 class="title is-4">
-					<a href="">Certification</a>
-				</h2>
-				<p>Publish your books at one of our connected publishers!
-				metuo leo vehicula turpis neo sociosqu mattis. nunc vulpes
-				posuere demoveo saluto sino premo. rutrum per libero si
-				foras proin. abbas cogo nibh sociis penatibus turpis. esca
-				tincidunt ex sociosqu orem. magna iaculis porta eu dignissim
-				ingenium</p>
-			</div>
-
-		</div>
-
-		<div class="column is-half-desktop doab-home-showcase doab-deposit">
-
-			<div>
-				<h2 class="title is-4">
-					<a href="">Doab is supported by SCOSS!</a>
-				</h2>
-				<p>Become also a scoss supporter!
-				Interdico egestas pertineo rutrum qui consequat praemitto
-				feugiat. antehabeo interdum venio habitasse saluto immitto
-				varius ullamcorper proin dis. capto congue cras feugait nisl
-				populus cursus acsi lobortis. conubia abbas odio letalis a
-				modo.</p>
-			</div>
-
-		</div>
+		<h2 class="title is-4">
+			<a th:href="@{'/'+${language}+'/article/'+${article.slug}}" th:text="${article.title}">
+				Showcase title
+			</a>
+		</h2>
+		<th:block th:utext="${article.summary}">
+			Showcase dummy text
+		</th:block>
+		<a th:href="@{'/'+${language}+'/article/'+${article.slug}}" th:text="#{read_more}" class="doab-more">
+			Read more
+		</a>
 
 	</div>
-
-
-
-
 
 </th:block>
 

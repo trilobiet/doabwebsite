@@ -52,14 +52,12 @@
 
 						<ul class="buttons">
 
-							<!--/ 	
 							<li>
-								<a th:href="${settings.dspace_site}"
+								<a th:href="${settings.dspace_site+'?locale-attribute='+language}"
 								   class="button doab-btn-search">
 									Search
 								</a>
 							</li>
-							/-->
 							
 							<li th:each="mnusection: ${headerSections}">
 								<a th:text="${@translator.translate(mnusection,language).name}"
@@ -315,7 +313,7 @@
 			<div class="content has-text-centered">
 
 				<div class="is-size-7">
-					&copy;2019-<span th:text="${#dates.year(#dates.createNow())}">2020</span> OAPEN
+					&copy;2020-<span th:text="${#dates.year(#dates.createNow())}">2021</span> OAPEN
 					|
 					<a href="https://www.trilobiet.nl">website by Trilobiet</a>
 				</div>

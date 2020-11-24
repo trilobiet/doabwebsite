@@ -16,24 +16,19 @@
 <th:block th:fragment="spotlights">
 
 	<!-- spotlights -->
-	<div class="column is-half-desktop doab-home-spotlight">
+	<div class="column is-half-desktop doab-home-spotlight" th:each="article: ${spotlights}">
+	
+		<div class="title is-6 doab-section-caption">Spotlight</div>
+
+		<hr class="is-hidden">
 
 		<h2 class="title is-5">
-			<a href="">Launch of the Open Access Books Network</a>
+			<a th:href="@{'/'+${language}+'/article/'+${article.slug}}" th:text="${article.title}">Title</a>
 		</h2>
 
-		<p>Together with OPERAS, ScholarLed and SPARC Europe we will be launching the Open Access Books Network (OABN): a space for passionate conversations about OA Books.</p>
-
-	</div>
-
-	<div class="column is-half-desktop doab-home-spotlight">
-
-		<h2 class="title is-5">
-			<a href="">Launch of the OAPEN Open Access Books Toolkit</a>
-		</h2>
-
-		<p>A freely available toolkit: helping academic book authors to better understand open access book publishing.</p>
-		<p>The Hague, 30 September 2020. The OAPEN Foundation has launched a new open access (OA) books toolkit for researchers and academic book authors.</p>
+		<th:block th:utext="${article.summary}">
+			Showcase dummy text
+		</th:block>
 
 	</div>
 								

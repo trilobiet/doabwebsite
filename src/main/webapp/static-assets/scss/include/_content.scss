@@ -22,10 +22,17 @@
 		}	
 	}	
 	
-	p, ul {
-		max-width: 55em;	
+	p, h1, h2, h3, h4, h5, h6, blockquote {
+		max-width: 55rem;	
 	}
-	
+
+	ul {
+		max-width: 53rem;
+		@media screen and (max-width: 768px) {
+			margin-left: 1em;
+		}		
+	}
+
 	hr {
 		background-color: #ccc;
 		height: 1px;
@@ -36,11 +43,12 @@
 	} */		
 	
 	h1, h2, h3, h4, h5, h6 {
+		line-height: 1.5;
 		a { word-break: break-word; }
 	}	
 
 	h1 { @include h1style; }	
-	h2 { @include h2style; }	
+	h2 { @include h2style {border-bottom: solid 1px #999;padding-bottom:.15em;} }	
 	h3 { @include h3style; }	
 	h4 { @include h4style; }	
 	h5 { @include h5style; }	
@@ -49,12 +57,6 @@
 	a[target="_blank"] { 
 		@include fa-after('\f08e', .85em);
 	} 
-
-	ul {
-		@media screen and (max-width: 768px) {
-			margin-left: 1em;
-		}		
-	}
 
 	h1, .title {
 		@extend %hx;
@@ -83,7 +85,8 @@
 
 .doab-toc {
 	
-	background-color: col_tocbg; 
+	padding: 2rem;
+	background-color: $col_tocbg; 
 	
 	.doab-toc-header {
 		@include h3style;
@@ -125,13 +128,6 @@
 		h1 { @include h6style; }	
 	}	
 	
-	.content {
-		
-		p,ul,ol,li {
-			max-width: 50em;	
-		}	
-	}
-
 	.column:empty {
 		display: none;	
 	}			

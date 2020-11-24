@@ -30,13 +30,29 @@
 					Neque aliquet amet iaculis pneum. Distineo quam refoveo nascetur pharetra nostrud.
 					Nam adsum quadrum quadrum jus cogo. Consectetuer brevitas brevitas premo minim scelerisque varius viverra. 
 				</p>
+				<!-- /* 
 				<p>
 					<img th:src="@{/static-assets/images/layout/doab-peerreview-no-fonts.svg}" 
 					 alt="Peer Review Certified by Doab" class="doab-peer-review">
-				</p>
+				</p> */ -->
 			</div>
 
 		</section>
+		
+		
+		<section class="section doab-home-featured">
+		
+			<div class="container">
+			
+				<a class="is-hidden" th:href="@{'/'+${language}+'/featuredtitles'}">Featured Titles</a>
+		
+				<div class="carouselloader" th:data-src="@{'/'+${language}+'/featuredtitles'} + ' #FeaturedTitles'">
+				</div>
+				
+			</div>	
+	
+		</section>
+		
 		
 		<div class="section">
 
@@ -45,98 +61,68 @@
 				<div class="columns">
 
 					<!-- Left column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+					<div class="column doab-home-showcases">
+
+						<div class="container">
+							<th:block th:insert="home/showcases :: showcases">
+								Showcases
+							</th:block>
+						</div>
+				
+					</div>
+					
+					<!-- Right column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+					<div class="column is-4 doab-home-serviceof">
+				
+						<div class="container">
+						
+							<th:block th:insert="home/serviceof :: serviceof">
+								DOAB is a service of
+							</th:block>
+
+						</div>
+					
+					</div>
+					
+				</div>
+				
+			</div>
+		
+			
+			<div class="container">
+
+				<div class="columns">
+
+					<!-- Left column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 					<div class="column">
 
-						<section class="section doab-home-showcases">
-				
-							<div class="container">
-								<th:block th:insert="home/showcases :: showcases">
-									Showcases
+						<div class="container">
+						
+							<div class="columns is-multiline is-desktop">
+
+								<th:block th:insert="home/spotlights :: spotlights">
+									Spotlights
 								</th:block>
-							</div>
-				
-						</section>
-						
-						<section class="section doab-home-featured">
-						
-							<div class="container">
-							
-								<a class="is-hidden" th:href="@{'/featuredtitles'}">Featured Titles</a>
-						
-								<div class="carouselloader" th:data-src="@{'/featuredtitles'} + ' #FeaturedTitles'">
-								</div>
 								
+								<th:block th:insert="home/blogposts :: blogposts">
+									Blog Posts
+								</th:block>
+
 							</div>	
-				
-						</section>
-				
-						<section class="section doab-home-spotlights">
-
-							<div class="container">
 							
-								<div class="title is-6 doab-section-caption">Spotlights</div>
-	
-								<hr class="is-hidden">
-							
-								<div class="columns is-multiline">
-	
-									<th:block th:insert="home/spotlights :: spotlights">
-										Spotlights
-									</th:block>
-									
-								</div>	
-								
-							</div>
-
-						</section>
-
-						<section class="section doab-home-blogposts">
-
-							<div class="container">
-							
-								<div class="title is-6 doab-section-caption">Blog Posts</div>
-	
-								<hr class="is-hidden">
-							
-								<div class="columns is-multiline">
-	
-									<th:block th:insert="home/blogposts :: blogposts">
-										Blog Posts
-									</th:block>
-									
-								</div>	
-								
-							</div>
-
-						</section>
-
+						</div>
+						
 					</div>
 
 					<!-- Right column ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-					<div class="column is-4 doab-sidebar-right">
-
-						<section class="section doab-home-serviceof">
-
-							<div class="container">
-							
-								<th:block th:insert="home/serviceof :: serviceof">
-									DOAB is a service of
-								</th:block>
-
-							</div>
-
-						</section>
+					<div class="column is-4">
 						
-						<section class="section doab-home-social">
-
-							<div class="container">
-							
-								<th:block th:insert="home/socialmedia :: socialmedia">
-									Social Media
-								</th:block>
-							</div>
-
-						</section>
+						<div class="container doab-home-social">
+						
+							<th:block th:insert="home/socialmedia :: socialmedia">
+								Social Media
+							</th:block>
+						</div>
 
 					</div>
 
@@ -145,6 +131,7 @@
 			</div>
 
 		</div>
+		
 		
 		<section class="section doab-home-sponsors">
 

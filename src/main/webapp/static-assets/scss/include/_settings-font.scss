@@ -56,14 +56,14 @@ $family-sans-serif: "Roboto", sans serif;
 }
 @mixin h2style {
 	@extend %hx;
-	font-size: 1.7rem;
+	font-size: 1.6rem;
 	color: #333;
 	font-weight: 600;
 	@content;
 }	
 @mixin h3style {
 	@extend %hy;
-	font-size: 1.2rem;
+	font-size: 1.15rem;
 	color: #333;
 	font-weight: 500;
 	@content;

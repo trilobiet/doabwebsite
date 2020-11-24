@@ -18,6 +18,10 @@
 	<!-- blogposts -->
 	<div class="column is-half-desktop doab-home-spotlight" th:each="blogPost: ${rssHypothesesItems}">
 
+		<div class="title is-6 doab-section-caption">Blogpost</div>
+
+		<hr class="is-hidden">
+	
 		<h2 class="title is-5">
 			<a th:href="@{'/blog/?link='+ ${@viewhelpers.urlEncode(blogPost.link)}}" th:text="${blogPost.title}">Title</a>
 		</h2>

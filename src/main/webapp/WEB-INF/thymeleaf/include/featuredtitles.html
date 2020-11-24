@@ -31,13 +31,13 @@
 							<!--/  
 								a th:href="@{'/blog/?link='+ ${@viewhelpers.urlEncode(blogPost.link)}}" th:text="${blogPost.title}">Title</a>
 							/-->	
-							<a th:href="${settings.dspace_site+settings.dspace_subject_path+@viewhelpers.urlEncode(topSubjects[cnt.index])}" 
+							<a th:href="${settings.dspace_site+settings.dspace_subject_path+@viewhelpers.urlEncode(topSubjects[cnt.index])+'&locale-attribute='+language}" 
 							   th:text="${topSubjects[cnt.index]}">Bla bla bla</a>
 						</h2>
 					</header>
 				   
 					<figure class="image">
-						<a th:href="${item.url}">
+						<a th:href="${item.url+'?locale-attribute='+language}">
 							<img th:src="${item.thumbnailPath}!=''?${settings.dspace_api}+${item.thumbnailPath}:@{'/static-assets/images/missing.png'}" alt="cover"/>
 						</a>
 						<figcaption>
