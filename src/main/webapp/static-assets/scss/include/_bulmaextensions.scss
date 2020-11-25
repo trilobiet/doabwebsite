@@ -21,19 +21,26 @@
 
 }
 
-.breadcrumb li {
+.breadcrumb {
 	
-	@include textfont;
-	font-size: .9rem;
-	overflow: hidden;
+	&:not(:last-child) {
+		margin-bottom: 2rem;
+	}
 	
-	a {
-		display: inline-block;
+	li {
+	
+		@include textfont;
+		font-size: .9rem;
 		overflow: hidden;
-		text-overflow: ellipsis;
-		color: #444;
-		&:hover {
-			color: $col_contentlink;
-		} 
+		
+		a {
+			display: inline-block;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			color: #777;
+			&:hover {
+				color: $col_contentlink;
+			} 
+		}
 	}		
 }	

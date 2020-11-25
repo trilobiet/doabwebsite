@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DSpaceItem implements RepositoryItem, Serializable {
 	
-	private static final long serialVersionUID = 5161385077323821050L;
+	private static final long serialVersionUID = 1;
 
 	@JsonProperty("name") 
 	private String name;

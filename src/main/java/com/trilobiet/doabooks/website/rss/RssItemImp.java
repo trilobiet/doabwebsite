@@ -1,4 +1,4 @@
-package com.trilobiet.oapen.oapenwebsite.rss;
+package com.trilobiet.doabooks.website.rss;
 
 import java.io.Serializable;
 import java.time.LocalDate;

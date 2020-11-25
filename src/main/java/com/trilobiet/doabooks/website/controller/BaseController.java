@@ -21,6 +21,7 @@ import org.springframework.web.servlet.LocaleResolver;
 
 import com.trilobiet.doabooks.website.helpers.Translator;
 import com.trilobiet.doabooks.website.repositoryclient.RepositoryService;
+import com.trilobiet.doabooks.website.rss.RssService;
 import com.trilobiet.graphqlweb.implementations.aexpgraphql2.article.ArticleImp;
 import com.trilobiet.graphqlweb.implementations.aexpgraphql2.file.FileImp;
 import com.trilobiet.graphqlweb.implementations.aexpgraphql2.section.SectionImp;
@@ -31,7 +32,6 @@ import com.trilobiet.graphqlweb.implementations.aexpgraphql2.service.SnippetServ
 import com.trilobiet.graphqlweb.implementations.aexpgraphql2.service.TopicService;
 import com.trilobiet.graphqlweb.implementations.aexpgraphql2.snippet.SnippetImp;
 import com.trilobiet.graphqlweb.implementations.aexpgraphql2.topic.TopicImp;
-import com.trilobiet.oapen.oapenwebsite.rss.RssService;
 
 @Controller
 public class BaseController {

@@ -75,11 +75,17 @@ public class DSpaceRepositoryService implements RepositoryService {
 
 		sb.append("/rest/search?query=dc.subject.classification:%22")
 		  .append(URLEncoder.encode(subject,StandardCharsets.UTF_8))
-		  .append("%22%20AND%20dc.type=book");
+		  .append("%22")
+		  .append("%20AND%20dc.type=book");
 		
 		// usedHandles contains titles already included, 
 		// so that we must skip them in subsequent queries
-		usedHandles.stream().forEach(h -> sb.append("%20AND%20-handle:").append(h));
+		usedHandles.stream().forEach(h -> sb.append("%20-handle:").append(h));
+		
+		/* To be able to do the same with usedPublishers (max one title per publisher):
+			AND -publisher:"Verlag+Barbara+Budrich"
+			But at the moment Item objects do not store publisher info. 
+		*/
 		
 		String url = sb.append("&sort=dc.date.accessioned_dt")
 		  .append("&limit=1")

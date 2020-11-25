@@ -13,6 +13,8 @@ import com.trilobiet.doabooks.website.helpers.Translator;
 import com.trilobiet.doabooks.website.repositoryclient.DSpaceRepositoryProxy;
 import com.trilobiet.doabooks.website.repositoryclient.DSpaceRepositoryService;
 import com.trilobiet.doabooks.website.repositoryclient.RepositoryService;
+import com.trilobiet.doabooks.website.rss.RssService;
+import com.trilobiet.doabooks.website.rss.RssServiceImp;
 import com.trilobiet.graphqlweb.implementations.aexpgraphql2.article.ArticleImp;
 import com.trilobiet.graphqlweb.implementations.aexpgraphql2.file.FileImp;
 import com.trilobiet.graphqlweb.implementations.aexpgraphql2.section.SectionImp;
@@ -30,8 +32,6 @@ import com.trilobiet.graphqlweb.markdown2html.Md2HtmlSectionConverter;
 import com.trilobiet.graphqlweb.markdown2html.Md2HtmlSnippetConverter;
 import com.trilobiet.graphqlweb.markdown2html.Md2HtmlTopicConverter;
 import com.trilobiet.graphqlweb.markdown2html.StringFunction;
-import com.trilobiet.oapen.oapenwebsite.rss.RssService;
-import com.trilobiet.oapen.oapenwebsite.rss.RssServiceImp;
 
 @Configuration
 @ComponentScan (

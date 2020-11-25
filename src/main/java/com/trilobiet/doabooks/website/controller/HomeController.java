@@ -10,11 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.trilobiet.doabooks.website.rss.RssItem;
 import com.trilobiet.graphqlweb.datamodel.Snippet;
 import com.trilobiet.graphqlweb.implementations.aexpgraphql2.article.ArticleImp;
 import com.trilobiet.graphqlweb.implementations.aexpgraphql2.section.SectionImp;
 import com.trilobiet.graphqlweb.implementations.aexpgraphql2.snippet.SnippetImp;
-import com.trilobiet.oapen.oapenwebsite.rss.RssItem;
 
 @Controller
 public class HomeController extends BaseController {

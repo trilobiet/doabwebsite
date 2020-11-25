@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.trilobiet.oapen.oapenwebsite.rss.RssItem;
+import com.trilobiet.doabooks.website.rss.RssItem;
 
 @Controller
 public class BlogController extends BaseController {

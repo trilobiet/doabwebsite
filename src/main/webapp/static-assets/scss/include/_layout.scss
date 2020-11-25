@@ -9,7 +9,8 @@ body {
 .doab-page-wrapper {
 	// max-width: 1344px;
 	margin: auto;
-	background: $col_mainbg;	
+	background: $col_mainbg;
+	padding-top: 1rem;	
 	body:not(.doab-home) & {
 		padding-bottom: 1.5rem;	
 	}
