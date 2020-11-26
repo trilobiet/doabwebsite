@@ -1,6 +1,7 @@
 package com.trilobiet.doabooks.website.repositoryclient;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -19,8 +20,8 @@ public class DSpaceItem implements RepositoryItem, Serializable {
 	private String handle;
 	private String description;
 	
-	private List<Metadata> metadata;
-	private List<Bitstream> bitstreams;
+	private List<Metadata> metadata = Collections.emptyList();
+	private List<Bitstream> bitstreams = Collections.emptyList();
 	
 	// These fields are initialized on first request
 	private Optional<List<String>> editors = Optional.empty();
@@ -51,78 +52,91 @@ public class DSpaceItem implements RepositoryItem, Serializable {
 	}
 	
 	@JsonIgnore
+	@Override
 	public List<String> getEditors() {
 		
 		// Lazy init
-		if (!editors.isPresent()) {	
-			editors = Optional.of(metadata.stream()
-				.filter(m -> m.getKey().equals("dc.contributor.editor"))
-				.map(m -> m.getValue() )
-				.collect(Collectors.toList())
-			);
-		}
-		
+		if (!editors.isPresent()) initEditors(metadata);
 		return editors.get();
 	}
 
+	private void initEditors(List<Metadata> metadata) {
+		
+		editors = Optional.of(metadata.stream()
+			.filter(m -> m.getKey().equals("dc.contributor.editor"))
+			.map(m -> m.getValue() )
+			.collect(Collectors.toList())
+		);	
+	}
+	
+	
 	@JsonIgnore
+	@Override
 	public List<String> getAuthors() {
 		
 		// Lazy init
-		if (!authors.isPresent()) {
-			authors = Optional.of(metadata.stream()
-				.filter(m -> m.getKey().equals("dc.contributor.author"))
-				.map(m -> m.getValue() )
-				.collect(Collectors.toList())
-			);
-		}	
-			
+		if (!authors.isPresent()) initAuthors(metadata);
 		return authors.get();
 	}
+	
+	private void initAuthors(List<Metadata> metadata) {
+		
+		authors = Optional.of(metadata.stream()
+			.filter(m -> m.getKey().equals("dc.contributor.author"))
+			.map(m -> m.getValue() )
+			.collect(Collectors.toList())
+		);	
+	}
+
 
 	@JsonIgnore
+	@Override
 	public String getUrl() {
 		
 		// Lazy init
-		if(!url.isPresent()) {
-		
-			url = metadata.stream()
-				.filter(m -> m.getKey().equals("dc.identifier.uri"))
-				.map(m -> m.getValue() )
-				.findFirst()
-				.or(()-> Optional.of(""));
-		}		
-		
+		if(!url.isPresent()) initUrl(metadata);
 		return url.get();
 	}
+	
+	private void initUrl(List<Metadata> metadata) {
+		
+		url = metadata.stream()
+			.filter(m -> m.getKey().equals("dc.identifier.uri"))
+			.map(m -> m.getValue() )
+			.findFirst()
+			.or(()-> Optional.of(""));
+	}
+	
 	
 	@Override
 	public String getThumbnailPath() {
 		
-		String tp = "";
-		
 		// Lazy init
-		if(!thumbnailPath.isPresent()) {
-
-			Optional<Bitstream> obs = bitstreams.stream()
-				.filter( b -> b.isThumbnail() )
-				.findFirst();
-			
-			if (obs.isPresent()) {
-				
-				tp = "/bitstream/handle/" 
-						+ getHandle() + "/"
-						+ obs.get().getName() + "?sequence="
-						+ obs.get().getSequenceId();
-			}
-			else tp = "";
-			
-			thumbnailPath = Optional.of(tp);
-		}	
-			
+		if(!thumbnailPath.isPresent()) initThumbnail(bitstreams);
 		return thumbnailPath.get();
 	}
 
+	private void initThumbnail(List<Bitstream> bitstreams) {
+		
+		Optional<Bitstream> obs = bitstreams.stream()
+			.filter( b -> b.isThumbnail() )
+			.findFirst();
+
+		String tp = "";
+			
+		if (obs.isPresent()) {
+			
+			tp = "/bitstream/handle/" 
+				+ getHandle() + "/"
+				+ obs.get().getName() + "?sequence="
+				+ obs.get().getSequenceId();
+		}
+		else tp = "";
+			
+		thumbnailPath = Optional.of(tp);
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Item [name=" + getTitle() + ", url=" + getUrl() + "]";
