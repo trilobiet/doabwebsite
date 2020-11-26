@@ -84,7 +84,8 @@ public class DSpaceRepositoryService implements RepositoryService {
 		
 		/* To be able to do the same with usedPublishers (max one title per publisher):
 			AND -publisher:"Verlag+Barbara+Budrich"
-			But at the moment Item objects do not store publisher info. 
+			WARNING: filtering on publisher AND subject may result in empty result sets! 
+			NB DSpaceItem has no publishers field yet
 		*/
 		
 		String url = sb.append("&sort=dc.date.accessioned_dt")
@@ -95,7 +96,7 @@ public class DSpaceRepositoryService implements RepositoryService {
 		log.debug(url);
 		
 		ObjectMapper mapper = new ObjectMapper();
-		DSpaceItem item = null;
+		DSpaceItem item = new DSpaceItem(); // just an empty item
 		
 		try {
 			DSpaceItem[] items = mapper.readValue(new URL(url), DSpaceItem[].class);
@@ -103,10 +104,7 @@ public class DSpaceRepositoryService implements RepositoryService {
 				item = items[0];
 				usedHandles.add(items[0].getHandle());
 			}
-		} catch (IOException e) {
-			item = new DSpaceItem(); // just an empty item
-			log.warn(e);
-		}
+		} catch (IOException e) { log.warn(e); }
 		
 		return item;
 	}

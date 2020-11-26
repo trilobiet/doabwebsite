@@ -28,9 +28,6 @@
 					<header>
 						<!--/ <span th:text="#{no_of_titles( ${#numbers.formatInteger(12839,1)} ) }">1234 titles</span> /-->
 						<h2>
-							<!--/  
-								a th:href="@{'/blog/?link='+ ${@viewhelpers.urlEncode(blogPost.link)}}" th:text="${blogPost.title}">Title</a>
-							/-->	
 							<a th:href="${settings.dspace_site+settings.dspace_subject_path+@viewhelpers.urlEncode(topSubjects[cnt.index])+'&locale-attribute='+language}" 
 							   th:text="${topSubjects[cnt.index]}">Bla bla bla</a>
 						</h2>

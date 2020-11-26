@@ -67,10 +67,10 @@ public class DSpaceRepositoryProxy implements RepositoryService {
 			@Override
 			public void run() {
 				
-				log.info("Populating featuredItems and communitiesCount ");
+				log.info("Repopulating featuredItems and communitiesCount ");
 				
 				/* These streams will be initialized on the first request.
-				 * We don't know the keys yet - they must be set by a caller.
+				 * We can't know the keys yet - they must be set by a caller.
 				*/
 				featuredItems.keySet().stream()
 					.forEach(k -> populateFeaturedItems(k) );
