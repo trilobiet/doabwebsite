@@ -27,14 +27,6 @@ import com.trilobiet.graphqlweb.implementations.aexpgraphql2.snippet.SnippetImp;
  * @author acdhirr
  *
  */
-/*  
- * TODO: implement
- *  
- * Edit I18nConfiguration as well. You must replace (remove) the messageSource bean. 
- * 
- * To make this class the message source add:
- * @Component("messageSource")
- */
 public class SnippetMessageSource extends AbstractMessageSource {
 
 	// Use Snippets to store i18n language message files like messages_fr.properties
