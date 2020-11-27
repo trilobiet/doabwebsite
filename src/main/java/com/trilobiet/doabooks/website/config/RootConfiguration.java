@@ -18,6 +18,11 @@ import com.trilobiet.doabooks.website.rss.RssServiceImp;
 import com.trilobiet.graphqlweb.implementations.aexpgraphql2.article.ArticleImp;
 import com.trilobiet.graphqlweb.implementations.aexpgraphql2.file.FileImp;
 import com.trilobiet.graphqlweb.implementations.aexpgraphql2.section.SectionImp;
+import com.trilobiet.graphqlweb.implementations.aexpgraphql2.service.ArticleService;
+import com.trilobiet.graphqlweb.implementations.aexpgraphql2.service.FileService;
+import com.trilobiet.graphqlweb.implementations.aexpgraphql2.service.SectionService;
+import com.trilobiet.graphqlweb.implementations.aexpgraphql2.service.SnippetService;
+import com.trilobiet.graphqlweb.implementations.aexpgraphql2.service.TopicService;
 import com.trilobiet.graphqlweb.implementations.aexpgraphql2.service.html.HtmlArticleService;
 import com.trilobiet.graphqlweb.implementations.aexpgraphql2.service.html.HtmlFileService;
 import com.trilobiet.graphqlweb.implementations.aexpgraphql2.service.html.HtmlSectionService;
@@ -56,7 +61,7 @@ public class RootConfiguration {
 	}
 
 	@Bean(name="sectionService")
-	public HtmlSectionService<SectionImp> sectionService() {
+	public SectionService<SectionImp> sectionService() {
 		return new HtmlSectionService<>( env.getProperty("url_strapi"), sectionMdConverter());
 	}
 	
@@ -67,7 +72,7 @@ public class RootConfiguration {
 	}
 
 	@Bean 
-	public HtmlTopicService<TopicImp> topicService() {
+	public TopicService<TopicImp> topicService() {
 		return new HtmlTopicService<>( env.getProperty("url_strapi"), topicMdConverter() );
 	}
 	
@@ -77,7 +82,7 @@ public class RootConfiguration {
 	}
 	
 	@Bean 
-	public HtmlArticleService<ArticleImp> articleService() {
+	public ArticleService<ArticleImp> articleService() {
 		return new HtmlArticleService<>( env.getProperty("url_strapi"), articleMdConverter() );
 	}
 	
@@ -87,13 +92,13 @@ public class RootConfiguration {
 		return new Md2HtmlSnippetConverter<SnippetImp>( markdownflavour() );
 	}
 
-	@Bean 
-	public HtmlSnippetService<SnippetImp> snippetService() {
+	@Bean
+	public SnippetService<SnippetImp> snippetService() {
 		return new HtmlSnippetService<>( env.getProperty("url_strapi"), snippetMdConverter() );
 	}
 	
 	@Bean 
-	public HtmlFileService<FileImp> fileService() {
+	public FileService<FileImp> fileService() {
 		return new HtmlFileService<>( env.getProperty("url_strapi") );
 	}
 	
@@ -121,7 +126,6 @@ public class RootConfiguration {
 			120 // refresh interval in minutes (default 60)
 		);
 	}
-	
-	
+
 }
 

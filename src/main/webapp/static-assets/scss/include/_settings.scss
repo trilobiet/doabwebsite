@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-$doaborange: #f38415;
+$doaborange: #FF9830;
 $orange1: orange;
 $orange2: #ffaf47;
 $green1: #6b8e23;
@@ -32,7 +32,7 @@ $col_footerlink: #eee;
 
 $navbar-background-color: #555; 
 $navbar-item-hover-background-color: #444;
-$navbar-item-active-background-color: #FF9830;  
+$navbar-item-active-background-color: $doaborange;  
 $navbar-item-active-color: #fff;  
 $navbar-item-color: #fff;
 $navbar-item-hover-color: #fff;
