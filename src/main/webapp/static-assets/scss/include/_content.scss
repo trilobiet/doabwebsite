@@ -26,7 +26,12 @@
 		max-width: 55rem;	
 	}
 
-	ul {
+	pre {
+		max-width: 55rem;
+		overflow: scroll;	
+	}
+
+	ul, ol {
 		max-width: 53rem;
 		@media screen and (max-width: 768px) {
 			margin-left: 1em;

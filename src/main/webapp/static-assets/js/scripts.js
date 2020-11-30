@@ -10,9 +10,9 @@ jQuery(document).ready( function() {
 	});
 	  
 	// make iframes full height
-	$('.oapen-snippet iframe').on("load", function() {
+	$('.doab-snippet iframe').on("load", function() {
 
-		var iframe = $(window.top.document).find(".oapen-snippet iframe");
+		var iframe = $(window.top.document).find(".doab-snippet iframe");
 		iframe.height(iframe[0].ownerDocument.body.scrollHeight+'px' );
 	});	  
 	  

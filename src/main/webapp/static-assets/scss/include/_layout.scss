@@ -23,6 +23,8 @@ body {
 
 .doab-error-page {
 	
+	background: #fff;
+	
 	height: 100%;	
 	
 	.section { 
@@ -31,6 +33,8 @@ body {
 	}
 
 	.content {
+		
+		overflow: visible;
 		
 		.doab-is404, .doab-is500 {
 			display: inline;
@@ -41,6 +45,10 @@ body {
 	
 		p {
 			max-width: 100%;	
+		}
+		
+		a.button {
+			color: #fff;
 		}
 	}		
 	

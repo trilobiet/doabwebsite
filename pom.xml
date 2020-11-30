@@ -23,7 +23,7 @@
 			<artifactId>graphqlweb</artifactId>
 			<version>1.0.0</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/graphqlweb-0.0.42-jar-with-dependencies.jar</systemPath>
+			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/graphqlweb-0.0.43-jar-with-dependencies.jar</systemPath>
 		</dependency>	
 	
 		<dependency>

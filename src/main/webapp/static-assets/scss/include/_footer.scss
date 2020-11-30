@@ -78,6 +78,11 @@
 		}	
 		
 	}	
+	
+	.doab-footermsg {
+		@include textfont; 
+		opacity: .5;
+	}
 
 }	
 
