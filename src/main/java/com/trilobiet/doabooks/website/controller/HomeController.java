@@ -31,7 +31,7 @@ public class HomeController extends BaseController {
 		// Catch all errors here: home page must always be rendered, erroneous sections can be empty
 		
 		try {
-			Optional<SnippetImp> introText = snippetService.getSnippet("home-intro");
+			Optional<SnippetImp> introText = snippetService.getSnippet("home-intro-"+language);
 			if (introText.isPresent() ) mv.addObject("home_intro",introText.get().getCode());
 		} catch (Exception e) {
 			log.error("home-intro: " + e.getMessage());

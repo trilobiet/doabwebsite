@@ -9,12 +9,12 @@ jQuery(document).ready( function() {
 		$(".navbar-menu").toggleClass("is-active");
 	});
 	  
-	// make iframes full height
-	$('.doab-snippet iframe').on("load", function() {
+	// make iframes full height OBSOLETE: set iframe height attribute in snippet code
+	/*$('.doab-snippet iframe').on("load", function() {
 
 		var iframe = $(window.top.document).find(".doab-snippet iframe");
 		iframe.height(iframe[0].ownerDocument.body.scrollHeight+'px' );
-	});	  
+	});*/	  
 	  
 	$(".ajaxloader").each( function() {
 		
