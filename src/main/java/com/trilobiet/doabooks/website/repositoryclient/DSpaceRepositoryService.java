@@ -76,7 +76,8 @@ public class DSpaceRepositoryService implements RepositoryService {
 		sb.append("/rest/search?query=dc.subject.classification:%22")
 		  .append(URLEncoder.encode(subject,StandardCharsets.UTF_8))
 		  .append("%22")
-		  .append("%20AND%20dc.type=book");
+		  //.append("%20AND%20dc.type=book")
+		  ;
 		
 		// usedHandles contains titles already included, 
 		// so that we must skip them in subsequent queries
@@ -94,6 +95,7 @@ public class DSpaceRepositoryService implements RepositoryService {
 		  .toString();
 		
 		log.debug(url);
+		// System.out.println(url);
 		
 		ObjectMapper mapper = new ObjectMapper();
 		DSpaceItem item = new DSpaceItem(); // just an empty item

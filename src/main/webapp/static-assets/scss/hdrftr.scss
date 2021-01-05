@@ -1,0 +1,19 @@
+
+// Renders a separate header/footer stylesheet for external 
+// use (DSpace library site)
+
+@import "compass";
+@import "compass/css3";
+
+@import "include/mixins";
+@import "include/settings";
+@import "include/settings-font";
+@import "../bulma-0.8.0/bulma.sass";
+@import "include/mixins";
+
+@import "include/bulmaextensions"; 
+
+@import "include/header";
+@import "include/footer";
+
+

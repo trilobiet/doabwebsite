@@ -28,7 +28,7 @@
 	<!--
 		HEADER
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-	<header>
+	<header id="Doab-header">
 
 		<div class="container">
 
@@ -69,7 +69,7 @@
 							
 							<li>
 								<div class="control has-icons-left">
-									<div class="select">
+									<div class="select doab-langswitch">
 										<select name="setlanguage"
 										    onchange="window.location.href=this.options[this.selectedIndex].value">
 											<option th:value="@{'/setlanguage?lang=en'}" th:text="#{choose_language}">[Choose language]</option>
@@ -142,7 +142,7 @@
 	<!--
 		MAIN
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-	<div class="doab-page-wrapper">
+	<div class="doab-page-wrapper" id="Doab-main">
 	
 		<main layout:fragment="content">
 	
@@ -178,7 +178,7 @@
 	<!--
 		FOOTER
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-	<footer class="footer">
+	<footer class="footer" id="Doab-footer">
 
 		<div class="container">
 
@@ -299,13 +299,21 @@
 						Directory of Open Access Books is a joint service of OAPEN, OpenEdition, CNRS and 
 						Aix-Marseille Université, provided by DOAB Foundation
 					</p>
+					<p><b>Websites:</b></p>
 					<p>
-						Website:<br/>
+						DOAB<br>
 						<a href="https://www.doabooks.org">www.doabooks.org</a>
 					</p>
+					<p>	
+						OAPEN Home<br>
+						<a href="https://www.oapen.org">www.oapen.org</a><br>
+					</p>
+					<p>
+						OAPEN OA Books Toolkit<br>
+						<a href="https://www.oabooks-toolkit.org">www.oabooks-toolkit.org</a>
+					</p>					
 
 				</div>
-
 
 			</div><!-- /footer columns -->
 
