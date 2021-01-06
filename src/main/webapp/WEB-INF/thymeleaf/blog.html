@@ -10,7 +10,7 @@
 	<!--
 		BODY
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-	<main layout:fragment="content" class="section oapen-blog oapen-main">
+	<main layout:fragment="content" class="section doab-blog doab-main">
 	
 		<div class="container">
 		
@@ -20,7 +20,7 @@
 						<a th:href="@{'/'}">Home</a>
 					</li>
 					<li class="is-active">
-						<a href="#" aria-current="page">OAPEN Blog</a>
+						<a href="#" aria-current="page">Blog</a>
 					</li>
 				</ul>
 			</nav>
@@ -33,18 +33,18 @@
 					<p th:if="${featuredPost==null}">Nothing here yet...</p>
 
 					<article th:if="${featuredPost}"
-						class="is-clearfix oapen-blogpost">
+						class="is-clearfix doab-blogpost">
 						
-						<div class="oapen-primary content">
+						<div class="doab-primary content">
 						
 							<h1 th:text="${featuredPost.title}">Blog Title</h1>
 							
 							<h3 th:text="${featuredPost.author}">Author</h3>
-							<p class="oapen-date">
+							<p class="doab-date">
 								<strong th:text="${#temporals.format(featuredPost.publicationDate,'E dd MMM yyyy')}">Publication Date</strong>
 							</p>	
 							
-							<div class="oapen-blogpost-hbar">
+							<div class="doab-blogpost-hbar">
 								Read this article at 
 								<a th:href="${featuredPost.link}" target="_blank">
 									<img th:src="@{/static-assets/images/logo-hypotheses.png}" alt="hypothèses.org" width="100"/>

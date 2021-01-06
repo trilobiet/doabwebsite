@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.thymeleaf.org">
 <head>
-<title>OApen Web - Cookie Popup</title>
+<title>Doabooks - Cookie Popup</title>
 </head>
 
 <body>
@@ -31,8 +31,10 @@
 					"corners" : "small",
 					"transparency" : "5",
 					"content" : {
-						"href" : "[[@{/article/privacy-statement}]]",
-						"link" : "Privacy Statement"
+						"href" : "[[@{/}+${language}+'/article/'+${language}+'-privacy-policy']]",
+						"link" : "[[#{cookie_link_text}]]",
+						"message" : "[[#{cookie_message}]]",
+						"button" : "[[#{cookie_button_text}]]"
 					}
 				})
 			});
