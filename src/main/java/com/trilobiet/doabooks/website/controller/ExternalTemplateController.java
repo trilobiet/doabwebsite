@@ -77,10 +77,12 @@ public class ExternalTemplateController extends BaseController {
 		parseRelativePaths(doc);
 		
 		doc.select("[rel='stylesheet']").not("[href*='fontawesome']").remove();
-		doc.getElementsByTag("script").remove();
 		doc.getElementsByClass("doab-home-hero").remove();
 		doc.getElementsByClass("doab-footermsg").remove();
 		doc.select(".doab-main *").remove();
+
+		// remove scripts
+		doc.select("script").not("[src*='menu']").remove();
 		
 		// remove submenus
 		doc.select(".navbar-dropdown").remove();
@@ -89,7 +91,7 @@ public class ExternalTemplateController extends BaseController {
 		removeComments(doc.root());
 		
 		// attach minimal css only header footer
-		String newCss = "<link rel=\"stylesheet\" href=\"" + baseUrl + "/static-assets/css/hdrftr.css?v=1.00\">"; 
+		String newCss = "<link rel=\"stylesheet\" href=\"" + baseUrl + "/static-assets/css/hdrftr.css?v=1.01\">"; 
 		doc.select("head").append(newCss);
 		
 		if (selection != null) html = doc.select(selection).outerHtml();
