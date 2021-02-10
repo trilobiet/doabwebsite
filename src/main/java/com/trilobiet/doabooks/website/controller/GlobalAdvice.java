@@ -35,6 +35,8 @@ public class GlobalAdvice {
 		settings.put("dspace_api", environment.getProperty("url_dspace_api"));
 		settings.put("google_analytics_id", environment.getProperty("google_analytics_id"));
 		settings.put("dspace_subject_path", environment.getProperty("dspace_subject_path"));
+		settings.put("missing_img", environment.getProperty("missingImg"));
+		
 		return settings;
 	}
 	

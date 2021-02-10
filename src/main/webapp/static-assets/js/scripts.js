@@ -34,6 +34,15 @@ jQuery(document).ready( function() {
 	$(".content table").wrap("<div class='doab-table-wrapper'></div>");
 	$("<div class='doab-table-swipe'>swipe to view table</div>").insertBefore($(".doab-table-wrapper"));
 	
+	// faqs
+	$(".doab-faq .doab-article h3").click( function(){
+	
+		$(this).toggleClass("expanded")
+	
+	});
+	
+	
+	
 });
 
 

@@ -123,10 +123,10 @@ public class DSpaceRepositoryService implements RepositoryService {
 
 	static public void main(String[] args) throws Exception {
 		
-		DSpaceRepositoryService rs = new DSpaceRepositoryService("https://library.oapen.org");
+		DSpaceRepositoryService rs = new DSpaceRepositoryService("https://doab-test.huma-num.fr/");
 		
 		String[] p = {"publishers"};
-		String[] q = {"books","books chapters"};
+		String[] q = {"books","book chapters","OAPEN harvesting"};
 		
 		Integer publishers = rs.getCommunitiesCount(Arrays.asList(p));
 		System.out.println("Publishers: " + publishers);

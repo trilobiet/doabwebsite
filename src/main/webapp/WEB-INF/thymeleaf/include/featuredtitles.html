@@ -33,14 +33,22 @@
 						</h2>
 					</header>
 				   
-					<figure class="image">
+					<figure class="image" th:if="${!@viewhelpers.isMissingImage(item.thumbnailPath,settings.missing_img)}">
 						<a th:href="${item.url+'?locale-attribute='+language}">
-							<img th:src="${item.thumbnailPath}!=''?${settings.dspace_api}+${item.thumbnailPath}:@{'/static-assets/images/missing.png'}" alt="cover"/>
+							<img th:src="${settings.dspace_api}+${item.thumbnailPath}" th:alt="${item.title}"/>
 						</a>
-						<figcaption>
-						</figcaption>
 					</figure>
 				
+					<figure class="image doab-missing-cover" th:if="${@viewhelpers.isMissingImage(item.thumbnailPath,settings.missing_img)}">
+						<a th:href="${item.url+'?locale-attribute='+language}">
+							<!--/   
+							<img th:src="${item.thumbnailPath}!=''?${settings.dspace_api}+${item.thumbnailPath}:@{'/static-assets/images/missing.png'}" alt="cover"/>
+							/-->
+							<span th:text="${@viewhelpers.abbreviate(item.title,75)}" class='doab-cover-title'></span>
+							<span th:text="${item.firstAuthor}" class='doab-cover-author'></span>
+						</a>
+					</figure>
+
 				</div>
 				
 			</div>

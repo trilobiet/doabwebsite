@@ -88,6 +88,16 @@ public class DSpaceItem implements RepositoryItem, Serializable {
 		);	
 	}
 
+	@JsonIgnore
+	public String getFirstAuthor() {
+		
+		List<String> authors =  getAuthors();
+		int num = authors.size();
+		
+		if (num == 0) return "";
+		else if (num == 1) return authors.get(0);
+		else return authors.get(0) + " et al.";
+	}
 
 	@JsonIgnore
 	@Override

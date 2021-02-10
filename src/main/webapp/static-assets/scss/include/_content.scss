@@ -13,7 +13,7 @@
 	@include textfont;
 	
 	// some full out written links may cross the border...
-	overflow-x: hidden;
+	overflow: clip; // overflow-x:hidden creates a vertical scrollbar!
 	a {
 		overflow-wrap: anywhere;		
 		color: $col_contentlink;

@@ -42,6 +42,24 @@ public class RssServiceImp implements RssService {
 	}
 	
 	@Override
+	public List<RssItem> getItems(int count, List<String> categories) throws RssException {
+		
+		Optional<SyndFeed> feed = getFeed();
+		List<RssItem> items = new ArrayList<>();
+		
+		feed.ifPresent( f -> {
+			f.getEntries().stream()
+			 .filter(e ->
+			 	// show all, or only from listed categories (case sensitive!)
+			  	categories.isEmpty() || e.getCategories().stream().anyMatch(c -> categories.contains(c.getName()))
+			 )
+			 .limit(count).forEach(e -> items.add(rssItem(e)));
+		});
+
+		return items;
+	}
+	
+	@Override
 	public Optional<RssItem> getItemByLink(List<RssItem> items, String link) {
 		
 		Optional<RssItem> oItem = items.parallelStream()
@@ -103,12 +121,13 @@ public class RssServiceImp implements RssService {
 	// Test
 	public static void main(String[] args) {
 
-		String url = "https://dariahopen.hypotheses.org/feed";
+		String url = "https://oapen.hypotheses.org/feed";
 		
 		RssServiceImp service = new RssServiceImp(url);
+		List<String> cats = List.of("Uncategorized");
 		
 		try {
-			List<RssItem> items = service.getItems(12);
+			List<RssItem> items = service.getItems(10,cats);
 			items.forEach(System.out::println);
 			
 		} catch (RssException e) {

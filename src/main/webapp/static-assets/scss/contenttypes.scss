@@ -95,7 +95,46 @@
 			width: auto;
 			box-shadow: 2px 2px 4px -1px rgba(50,50,50,0.25)
 		}		
+		
+		figcaption {
+			display: none;
+		}
 	}	
+	
+	.doab-missing-cover {
+		
+		padding: 2em 1em;
+		width: 140px;
+		border: solid 1px #eee; 
+		background-image: url(../images/missing.png);
+		background-size: cover;
+		background-color:#faf9f9;
+		box-shadow: 2px 2px 4px -1px rgba(50,50,50,0.15);
+		
+		a {
+			display: block;
+			height: 100%;
+			background: #faf9f999;
+			overflow: clip;
+		}
+	
+		.doab-cover-title {
+			display: block;
+			margin: 0 0 1em 0;
+			text-align: center;
+			font-weight: bold;
+			font-size: 80%;
+			font-family: "Times New Roman", serif;
+			line-height: 1.2;
+			color: #555;
+		}
+
+		.doab-cover-author {
+			@extend .doab-cover-title;
+			font-weight: normal;
+		}	
+
+	}	 
 	
 }	
 
@@ -204,5 +243,34 @@
 		margin: 1rem 2rem;	
 	}	
 }
+
+
+.doab-faq .doab-article {
+
+	h3 {
+		margin: .5em 0;
+		font-size: 1rem;
+		cursor: pointer;
+		
+		& + blockquote {
+			display: none;
+		}
+		
+		&:hover {
+			color: #666;
+		} 
+	}
+
+
+	h3.expanded {
+		
+		@include h3style;
+		
+		& + blockquote {
+			display: block;
+		}
+	}
+	
+}	
 
 	 	

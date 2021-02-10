@@ -32,4 +32,14 @@ public class SectionController extends BaseController {
 		return mv;
 	}
 	
+	@RequestMapping({
+		"/{language}/login"
+	}) 
+	public ModelAndView showLogin(
+			@PathVariable( "language" ) Optional<String> language
+		) throws Exception { 
+		
+		return null;
+		
+	}
 }

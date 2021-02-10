@@ -1,6 +1,7 @@
 package com.trilobiet.doabooks.website.controller;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -70,8 +71,11 @@ public class HomeController extends BaseController {
 		}
 		
 		try {
-			// Get latest hypotheses blog post(s)
-			List<RssItem> rssItems = rssBlogService.getItems(2);
+			// Get latest blog post(s) of selected categories
+			String cats = environment.getProperty("blog_categories");
+			// NB: cats.split would produce a single empty list item on an empty string, hence the test!
+			List<String> categories = cats.equals("") ? Collections.emptyList() : Arrays.asList(cats.split(","));
+			List<RssItem> rssItems = rssBlogService.getItems(2,categories);
 			mv.addObject("rssHypothesesItems",rssItems);
 		} catch (Exception e) {
 			log.error("hypotheses: " + e.getMessage());

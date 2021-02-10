@@ -22,6 +22,15 @@ public class OapenHelpers extends ViewHelpers {
 		return WordUtils.abbreviate(input, length, -1, "...");
 	}
 	
+	
+	public static Boolean isMissingImage(String path, String placeholderImage) {
+		
+		if (path.trim().equals("")) return true;
+		if (path.toLowerCase().contains("open-access-no-cover.png")) return true;
+		else return false;
+	}
+	
+	
 	/**
 	 * https://stackoverflow.com/questions/31868404/how-to-abbreviate-string-at-the-middle-without-cutting-words
 	 * 

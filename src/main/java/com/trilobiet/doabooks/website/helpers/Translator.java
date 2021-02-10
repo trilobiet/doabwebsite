@@ -36,6 +36,8 @@ public class Translator<S extends Section, T extends Topic, A extends Article> {
 	
 	private Optional<Translation> getTranslation(List<Translation> translations, String language) {
 		
+		if (translations == null || language == null) return Optional.empty();
+		
 		return translations.stream()
 			.filter(t -> t.getLanguageCode().equalsIgnoreCase(language))
 			.findFirst();

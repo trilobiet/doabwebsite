@@ -14,6 +14,15 @@ public interface RssService {
 	List<RssItem> getItems(int count) throws RssException;
 	
 	/**
+	 * Get [count] items belonging to one of [categories] from Rss feed
+	 * @param count
+	 * @param categories
+	 * @return
+	 * @throws RssException
+	 */
+	List<RssItem> getItems(int count, List<String> categories) throws RssException;
+	
+	/**
 	 * Get item from Rss feed by link value
 	 * @param items
 	 * @param link
