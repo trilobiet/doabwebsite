@@ -62,6 +62,8 @@ public class DSpaceRepositoryProxy implements RepositoryService {
 	 */
 	public void init() {
 		
+		log.info("DSPaceRepositoryProxy initialized. Hello everybody.");
+		
 		Runnable r = new Runnable() {
 
 			@Override
@@ -120,6 +122,8 @@ public class DSpaceRepositoryProxy implements RepositoryService {
 	public void exit() {
 		
 		executorService.shutdown(); // Disable new tasks from being submitted
+		
+		log.info("DSPaceRepositoryProxy stopped gracefully. Bye bye!");
 		
 		try {
 			// Wait a while for existing tasks to terminate
