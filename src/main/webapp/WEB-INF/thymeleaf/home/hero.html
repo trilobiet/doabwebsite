@@ -38,7 +38,8 @@
 		
 						<div class="field has-addons doab-hero-search-input">
 							<div class="control">
-								<input class="input" type="text" name="query" th:placeholder="#{search_doab_placeholder}">
+								<label for="ipt_search" class="is-hidden">Search query</label>
+								<input class="input" type="text" name="query" th:placeholder="#{search_doab_placeholder}" id="ipt_search">
 								<input type="hidden" name="locale-attribute" th:value="${language}" />
 							</div>
 							<div class="control">
