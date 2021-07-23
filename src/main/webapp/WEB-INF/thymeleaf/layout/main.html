@@ -258,19 +258,6 @@
 
 				<div class="column doab-credits">
 
-					<div class="title" th:text="#{hosted_by}">Hosted by</div>
-					
-					<hr class="is-hidden"/>
-
-					<ul>
-						<li>
-							<a href="https://www.huma-num.fr/">
-								<img th:src="@{/static-assets/images/logo-humanum.png}" width="100" alt="Doabooks is hosted by Huma-Num"/>
-								<span class="is-sr-only">Huma-Num</span>
-							</a>
-						</li>
-					</ul>
-
 					<div class="title" th:text="#{credits}">Credits</div>
 					
 					<hr class="is-hidden"/>
@@ -294,6 +281,28 @@
 							</a>
 						</li>
 					</ul>
+					
+					<div class="title is-6" th:text="#{donate}">Donate</div>
+					
+					<hr class="is-hidden"/>
+
+					<ul>
+						<li>
+							<img th:src="@{/static-assets/images/donation-qr-code.png}" alt="Donate"
+								style="width:128px;height:128px;max-height:none;max-width:none;"/>
+								<br/>
+							<small class="is-size-7" th:utext="#{footer_text_3}">
+								Support DOAB and the OAPEN Library
+							</small>
+						</li>
+						<li>
+							<form action="https://www.paypal.com/donate" method="post" target="_top">
+								<input type="hidden" name="hosted_button_id" value="VPW4DRBLBM9J8" />
+								<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" style="border:none" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+								<img alt="" border="0" src="https://www.paypal.com/en_NL/i/scr/pixel.gif" width="1" height="1" />
+							</form>
+						</li>
+					</ul>					
 
 				</div>
 
