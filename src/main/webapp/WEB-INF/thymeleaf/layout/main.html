@@ -237,7 +237,7 @@
 
 					</div>
 
-					<div class="doab-social-links">
+					<div class="doab-social-links" style="margin-bottom:2rem">
 
 						<div class="title" th:text="#{follow_us_on}">Follow us on</div>
 						
@@ -253,6 +253,32 @@
 						</ul>
 
 					</div>
+					
+					<div>
+					
+						<div class="title is-6" th:text="#{donate}">Donate</div>
+						
+						<hr class="is-hidden"/>
+	
+						<ul style="text-align:center">
+							<li>
+								<img th:src="@{/static-assets/images/donation-qr-code.png}" alt="Donate"
+									style="width:128px;height:128px;max-height:none;max-width:none;"/>
+									<br/>
+								<small class="is-size-7" th:utext="#{footer_text_3}">
+									Support DOAB and the OAPEN Library
+								</small>
+							</li>
+							<li>
+								<form action="https://www.paypal.com/donate" method="post" target="_top" style="margin-top:1em;">
+									<input type="hidden" name="hosted_button_id" value="VPW4DRBLBM9J8" />
+									<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" style="border:none" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+									<img alt="" border="0" src="https://www.paypal.com/en_NL/i/scr/pixel.gif" width="1" height="1" />
+								</form>
+							</li>
+						</ul>
+						
+					</div>						
 
 				</div>
 
@@ -270,6 +296,18 @@
 							</a>
 						</li>
 						<li>
+							<a href="https://www.enseignementsup-recherche.gouv.fr/pid24578/investissements-d-avenir.html/">
+								<img th:src="@{/static-assets/images/investirlavenir.png}" width="100" alt="logo Investir l'avenir"/>
+								<span class="is-sr-only">Investir l'avenir</span>
+							</a>
+						</li>
+						<li>
+							<a href="https://fundit.fr/fr/institutions/ministere-lenseignement-superieur-et-recherche-france-menesr-0">
+								<img th:src="@{/static-assets/images/logo_MESRI_2021.jpg}" width="100" alt="logo MESRI"/>
+								<span class="is-sr-only">MESRI</span>
+							</a>
+						</li>
+						<li>
 							<a href="https://europa.eu/european-union/index_en">
 								<img th:src="@{/static-assets/images/eu-flag.png}" width="100" alt="logo EU"/>
 								<span class="is-sr-only">European Union</span>
@@ -282,28 +320,6 @@
 						</li>
 					</ul>
 					
-					<div class="title is-6" th:text="#{donate}">Donate</div>
-					
-					<hr class="is-hidden"/>
-
-					<ul>
-						<li>
-							<img th:src="@{/static-assets/images/donation-qr-code.png}" alt="Donate"
-								style="width:128px;height:128px;max-height:none;max-width:none;"/>
-								<br/>
-							<small class="is-size-7" th:utext="#{footer_text_3}">
-								Support DOAB and the OAPEN Library
-							</small>
-						</li>
-						<li>
-							<form action="https://www.paypal.com/donate" method="post" target="_top">
-								<input type="hidden" name="hosted_button_id" value="VPW4DRBLBM9J8" />
-								<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" style="border:none" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-								<img alt="" border="0" src="https://www.paypal.com/en_NL/i/scr/pixel.gif" width="1" height="1" />
-							</form>
-						</li>
-					</ul>					
-
 				</div>
 
 				<div class="column doab-addresses">
