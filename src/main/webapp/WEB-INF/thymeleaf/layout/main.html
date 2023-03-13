@@ -5,8 +5,8 @@
 
 	<meta charset="utf-8"/>
 	<title layout:title-pattern="$CONTENT_TITLE | $LAYOUT_TITLE">Directory of Open Access Books</title>
-	<link rel="stylesheet" th:href="@{/static-assets/css/styles.css?v=1.03}"/>
-	<link rel="stylesheet" th:href="@{/static-assets/css/contenttypes.css?v=1.03}"/>
+	<link rel="stylesheet" th:href="@{/static-assets/css/styles.css?v=1.04}"/>
+	<link rel="stylesheet" th:href="@{/static-assets/css/contenttypes.css?v=1.04}"/>
 	
 	<link rel="stylesheet" th:href="@{/static-assets/fontawesome-pro-5.12.1-web/css/all.min.css?v=1.00}"/>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
@@ -212,6 +212,28 @@
 
 				<div class="column">
 
+					<div class="doab-footer-licence">
+						
+						<div class="title is-6" th:text="#{licence}">Licence</div>
+						
+						<hr class="is-hidden"/>
+						
+						<p>
+							<th:block th:utext="#{licence_text_1}">
+								If not noted otherwise all contents are available under Attribution 4.0
+								International
+							</th:block> 
+							<a th:href="#{licence_url}">(CC BY 4.0)</a>
+						</p> 
+						
+						<p>
+							<a th:href="#{licence_url}">
+								<img th:src="@{/static-assets/images/CC-BY-300x105.png}" width="100" alt="CC-BY"/>
+							</a>
+						</p>
+					
+					</div>
+
 					<div class="doab-newsletter">
 
 						<div class="title" th:text="#{newsletter}">Newsletter</div>
@@ -290,12 +312,6 @@
 
 					<ul>
 						<li>
-							<a href="https://www.scoss.org/">
-								<img th:src="@{/static-assets/images/logo-scoss.png}" width="100" alt="logo Scoss"/>
-								<span class="is-sr-only">Scoss</span>
-							</a>
-						</li>
-						<li>
 							<a href="https://www.enseignementsup-recherche.gouv.fr/pid24578/investissements-d-avenir.html/">
 								<img th:src="@{/static-assets/images/investirlavenir.png}" width="100" alt="logo Investir l'avenir"/>
 								<span class="is-sr-only">Investir l'avenir</span>
@@ -352,8 +368,6 @@
 			<div class="doab-footermsg has-text-centered">
 
 				<div class="is-size-7">
-					&copy;2020-<span th:text="${#dates.year(#dates.createNow())}">2021</span> OAPEN
-					|
 					<a href="https://www.trilobiet.nl">website by Trilobiet</a>
 				</div>
 

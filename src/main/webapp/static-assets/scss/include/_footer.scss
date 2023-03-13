@@ -21,14 +21,11 @@
 	}	
 
 	.doab-ftr-header {
-		height: 52px;
 		color: #fff;
  		padding-bottom: .5em;
 		margin-bottom: 2em;
 		border-bottom: solid 1px #AAA;
-		background-image: url('../images/layout/oapenlogo_01_white_no_text_small.png');
 		background-repeat: no-repeat;
-		background-size: 80px auto;
 	}
 	
 	.title {
@@ -75,6 +72,7 @@
 		}		
 	}	
 
+	.doab-footer-licence,
 	.doab-addresses { 
 		
 		p, address {
