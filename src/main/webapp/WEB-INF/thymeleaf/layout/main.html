@@ -267,9 +267,13 @@
 						<hr class="is-hidden"/>
 
 						<ul>
-							<li>
+							<li style="height:32px;width:32px;">
 								<a href="https://twitter.com/doabooks">
-									<i class="fab fa-twitter-square"></i>
+									<svg height="100%" width="100%" viewBox="0 0 24 24" style="fill:#FBFEFF">
+										<g>
+											<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+										</g>
+									</svg>
 									<span class="is-sr-only">Twitter</span>
 								</a>
 							</li>
@@ -330,8 +334,7 @@
 								<span class="is-sr-only">European Union</span>
 								<br/>
 								<small class="is-size-7" th:utext="#{footer_text_2}">
-									This project received funding from the European Union’s Horizon 2020 research 
-									and innovation programme under grant agreement No 871069.								
+									Footer_text_2								
 								</small>
 							</a>
 						</li>
@@ -342,11 +345,18 @@
 				<div class="column doab-addresses">
 
 					<hr class="is-sr-only"/>
-
+					
 					<p th:utext="#{footer_text_1}">
-						Directory of Open Access Books is a joint service of OAPEN, OpenEdition, CNRS and 
-						Aix-Marseille Université, provided by DOAB Foundation
+						Footer_text_1
 					</p>
+					
+					<p><b>Address:</b></p>
+					<address>
+						Directory of Open Access Books<br/>
+						Prins Willem-Alexanderhof 5<br/>
+						2595 BE The Hague
+					</address>
+					
 					<p><b>Websites:</b></p>
 					<p>
 						DOAB<br>
@@ -357,7 +367,7 @@
 						<a href="https://www.oapen.org">www.oapen.org</a><br>
 					</p>
 					<p>
-						OAPEN OA Books Toolkit<br>
+						OA Books Toolkit<br>
 						<a href="https://www.oabooks-toolkit.org">www.oabooks-toolkit.org</a>
 					</p>					
 
