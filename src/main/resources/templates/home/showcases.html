@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Boot Thymeleaf Application - Fragments</title>
+</head>
+<body>
+
+<div th:fragment="header">
+    <h1>Thymeleaf Fragments</h1>
+</div>
+
+<!--
+	Showcases
+~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<th:block th:fragment="showcases">
+
+	<div class="title is-6 doab-section-caption is-hidden">Showcase</div>
+	
+	<hr class="is-hidden"/>
+
+	<div th:each="article: ${showcases}" class="doab-home-showcase content" th:classappend="${article.cssClass}">
+
+		<h2 class="title is-4">
+			<a th:href="@{'/'+${language}+'/article/'+${article.slug}}" th:text="${article.title}">
+				Showcase title
+			</a>
+		</h2>
+		<th:block th:utext="${article.summary}">
+			Showcase dummy text
+		</th:block>
+		<a th:href="@{'/'+${language}+'/article/'+${article.slug}}" th:text="#{read_more}" class="doab-more">
+			Read more
+		</a>
+
+	</div>
+
+</th:block>
+
+<footer th:fragment="footer">
+	<p>2020 trilobiet.nl</p>
+</footer>
+
+</body>
+</html>
+
+
+			
+
+
+

@@ -1,0 +1,42 @@
+<!doctype html>
+<html layout:decorate="~{layout/main}"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+<head>
+    <title>Doabooks - Related Articles</title>
+</head>
+
+<body>
+
+	<!--
+		BODY
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<main class="section doab-main" layout:fragment="content">
+
+		<nav th:fragment="breadcrumbs" class="breadcrumb" aria-label="breadcrumbs">
+			<ul>
+				<li>
+					<a th:href="@{'/'}">Home</a>
+				</li>
+				<li th:if="${section}">
+					<a th:href="@{'/'+${language}+'/'+${section.slug}}" 
+					   th:text="${@translator.translate(section,language).name}">Section</a>
+				</li>
+				<li th:if="${section} and ${topic}">
+					<a th:href="@{'/'+${language}+'/'+${section.slug}+'/'+${topic.slug}}" 
+					   th:text="${@translator.translate(topic,language).name}">Topic</a>
+				</li>
+				<li th:if="${article}" class="is-active">
+					<a href="#" aria-current="page" th:text="${article.title}">Article</a>
+				</li>
+			</ul>
+		</nav>
+
+	</main>
+
+</body>
+
+</html>
+
+
+
+

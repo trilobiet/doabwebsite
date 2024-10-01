@@ -19,7 +19,8 @@ import com.trilobiet.graphqlweb.implementations.aexpgraphql2.section.SectionImp;
 public class TopicController extends BaseController {
 
 	@RequestMapping({
-		"/{language}/{sectionslug}/{slug}",
+		//"/{language}/{sectionslug}/{slug}", <-- captures static-assets!
+		"/{language:(?!static-assets).*$}/{sectionslug}/{slug}",
 		"/{language}/topic/{slug}"
 	})
 	public ModelAndView showTopic(

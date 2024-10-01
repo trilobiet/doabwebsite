@@ -1,53 +1,72 @@
-<ehcache xsi:noNamespaceSchemaLocation="ehcache.xsd"
-	updateCheck="true"
-	monitoring="autodetect"
-	dynamicConfig="true"
-	maxBytesLocalHeap="250M">
+<config xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xmlns='http://www.ehcache.org/v3'
+	xmlns:jsr107='http://www.ehcache.org/v3/jsr107'>
+	
+	<!-- specify cache persistence directory --> <!-- alternatively use ${user.home} -->
+	<!-- Do not use disk - some list of objects are empty when coming from cache  -->
+	<!-- persistence directory="${java.io.tmpdir}/ehcache/oatoolkit2024" /> -->
+	
+	<cache alias="sectionsCache">
+		<expiry>
+			<ttl unit="seconds">330</ttl>
+		</expiry>
+		<resources>
+			<heap unit="entries">100</heap>
+		</resources>
+	</cache>	
 
-	<diskStore path="java.io.tmpdir/ehcache/doabooks"/>
-	<sizeOfPolicy maxDepth="10000" maxDepthExceededBehavior="continue"/>
+	<cache alias="topicsCache">
+		<expiry>
+			<ttl unit="seconds">300</ttl>
+		</expiry>
+		<resources>
+			<heap unit="entries">500</heap>
+		</resources>
+	</cache>
 	
-	<!-- Total of added caches may not exceed maxBytesLocalHeap of entire cache -->
-	
-	<cache name="sectionsCache"
-		maxBytesLocalHeap="25M"
-		timeToLiveSeconds="330"
-		overflowToDisk="true"/>
-	
-	<cache name="topicsCache"
-		maxBytesLocalHeap="25M"
-		timeToLiveSeconds="330"
-		overflowToDisk="true"/>
-	
-	<cache name="articlesCache"
-		maxBytesLocalHeap="25M"
-		timeToLiveSeconds="270"
-		overflowToDisk="true"/>
+	<cache alias="articlesCache">
+		<expiry>
+			<ttl unit="seconds">270</ttl>
+		</expiry>
+		<resources>
+			<heap unit="entries">500</heap>
+		</resources>
+	</cache>	
 		
-	<cache name="filesCache"
-		maxBytesLocalHeap="25M"
-		timeToLiveSeconds="36000"
-		overflowToDisk="true"/>
-		
-	<cache name="snippetsCache"
-		maxBytesLocalHeap="25M"
-		timeToLiveSeconds="36000"
-		overflowToDisk="true"/>
-	
-	<!-- DSpace calls are behind a proxy that implements its own caching strategy	
-	<cache name="dspaceCache"
-		maxBytesLocalHeap="25M"
-		timeToLiveSeconds="14400"
-		overflowToDisk="true"/> -->
-		
-	<cache name="rssCache"
-		maxBytesLocalHeap="25M"
-		timeToLiveSeconds="43200"
-		overflowToDisk="true"/>
+	<cache alias="filesCache">
+		<expiry>
+			<ttl unit="minutes">60</ttl>
+		</expiry>
+		<resources>
+			<heap unit="entries">500</heap>
+		</resources>
+	</cache>	
 
-	<cache name="translationsCache"
-		maxBytesLocalHeap="25M"
-		timeToLiveSeconds="330"
-		overflowToDisk="true"/>
+	<cache alias="snippetsCache">
+		<expiry>
+			<ttl unit="hours">12</ttl>
+		</expiry>
+		<resources>
+			<heap unit="entries">100</heap>
+		</resources>
+	</cache>	
 
-</ehcache>
+	<cache alias="rssCache">
+		<expiry>
+			<ttl unit="hours">12</ttl>
+		</expiry>
+		<resources>
+			<heap unit="entries">50</heap>
+		</resources>
+	</cache>	
+
+	<cache alias="translationsCache">
+		<expiry>
+			<ttl unit="seconds">600</ttl>
+		</expiry>
+		<resources>
+			<heap unit="entries">50</heap>
+		</resources>
+	</cache>	
+
+</config>

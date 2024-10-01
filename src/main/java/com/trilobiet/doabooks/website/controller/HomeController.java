@@ -21,7 +21,7 @@ import com.trilobiet.graphqlweb.implementations.aexpgraphql2.snippet.SnippetImp;
 public class HomeController extends BaseController {
 
 	@RequestMapping({
-		"/home","/{language}","/home/{language}"
+		"/", "/home","/{language}","/home/{language}"
 	})
 	public ModelAndView showHome(HttpServletRequest request) {
 		
@@ -40,14 +40,18 @@ public class HomeController extends BaseController {
 		
 		// Totals books & publishers
 		try {
+			/* TODO: uncomment this code
 			Integer countTitles = repositoryService.getCommunitiesCount(
 				Arrays.asList(environment.getProperty("communities_with_titles").split(","))	
 			);
 			mv.addObject("count_titles",countTitles);
-			Integer countPublishers = repositoryService.getCommunitiesCount(
+			*/
+			mv.addObject("count_titles",0);
+			/*Integer countPublishers = repositoryService.getCommunitiesCount(
 				Arrays.asList(environment.getProperty("communities_with_publishers").split(","))	
 			);
-			mv.addObject("count_publishers",countPublishers);			
+			mv.addObject("count_publishers",countPublishers);*/
+			mv.addObject("count_publishers",1); // not used
 		} catch (Exception e) {	
 			log.error("communities: " + e.getMessage());
 		}

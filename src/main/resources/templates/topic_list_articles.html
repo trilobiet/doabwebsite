@@ -1,0 +1,85 @@
+<!doctype html>
+<html layout:decorate="~{layout/main}"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+<head>
+    <title th:text="${@translator.translate(topic,language).name}">topic name</title>
+</head>
+
+<body>
+
+	<!--
+		BODY
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<main layout:fragment="content" class="section doab-topic doab-main" th:classappend="${topic.cssClass}">
+	
+		<div class="container">
+		
+			<th:block th:insert="include/breadcrumbs :: breadcrumbs"/>
+		
+			<div class="columns">
+			
+				<!-- main content left -->
+				<div class="column is-three-quarters">
+				
+					<p th:if="${#lists.isEmpty(articles)}" th:text="#{no_articles}">Nothing here yet...</p>
+
+					<th:block th:each="article: ${articles}"> 
+
+						<article 
+							class="is-clearfix doab-article doab-primary" th:classappend="${article.cssClass}">
+							
+							<div class="columns">
+							
+								<div class="column">
+		
+									<div th:utext="${article.content}" class="content">
+										Article content
+									</div>
+									
+								</div>
+			
+								<div class="column is-one-quarter" th:if="${not #lists.isEmpty(article.media)}">
+	
+									<figure class="doab-image" th:each="media: ${@viewhelpers.images(article.media)}">
+										<a data-fancybox="gallery" th:href="${media.url}">
+											<img th:src="${media.url}" alt="">
+										</a>
+									</figure>
+	
+								</div>
+								
+							</div>
+							
+							<th:block th:insert="include/snippets :: snippets"/>
+		
+						</article>
+						
+						<th:block th:insert="include/attachments :: attachments"/>
+						
+					</th:block>	
+					
+				</div>
+			
+				<!-- sidebar right -->
+				<div class="column">
+				
+					<th:block th:insert="include/currentsection :: topics"/>
+
+					<th:block th:insert="include/relatedarticles :: linked"/>
+
+					<th:block th:insert="include/relatedarticles :: related"/>
+				
+				</div>
+			
+			</div>
+
+		</div>
+
+	</main>
+
+</body>
+</html>
+
+
+
+

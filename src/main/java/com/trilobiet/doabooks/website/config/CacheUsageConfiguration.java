@@ -5,7 +5,7 @@ import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.ImportResource;
 
 @Configuration
-@ImportResource("classpath:ehcachebeans.xml")
+@ImportResource("ehcachebeans.xml")
 @DependsOn({"cacheManager","sectionService"})
 public class CacheUsageConfiguration {
 

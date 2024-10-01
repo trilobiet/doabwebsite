@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html th:lang="${language}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+
+<head>
+
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!--/* <title layout:title-pattern="$CONTENT_TITLE | $LAYOUT_TITLE">Directory of  Open Access Books</title> */-->
+	<title layout:title-pattern="$CONTENT_TITLE">Page Title</title>
+	<link rel="stylesheet" th:href="@{/static-assets/css/styles.css?v=1.04}"/>
+	<link rel="stylesheet" th:href="@{/static-assets/css/contenttypes.css?v=1.04}"/>
+	
+	<link rel="stylesheet" th:href="@{/static-assets/fontawesome-pro-5.12.1-web/css/all.min.css?v=1.00}"/>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+	
+	<link rel="shortcut icon" th:href="@{/favicon.ico}" type="image/x-icon">
+	<link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon">	
+	
+    <meta property="og:title" content="Directory of Open Access Books"/>
+    <meta property="og:image" content="//doabooks.org/static-assets/images/layout/doablogo-banner.png"/>
+	
+</head>
+
+<body th:classappend="${bodyClass}">
+
+	<!--
+		HEADER
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<header id="Doab-header">
+
+		<div class="container">
+
+			<!-- logo, search/deposit/join -->
+			<nav class="doab-topnav" role="navigation">
+
+				<div class="level topnav">
+
+					<div class="level-left">
+
+						<a th:href="@{'/'+${language}}">
+							<img th:src="@{/static-assets/images/layout/doab.png}" width="250" alt="Logo Doab" class="doab-logo">
+							<div class="is-hidden">
+								<span>directory of</span><span>open access</span><span>books</span>
+							</div>
+						</a>
+
+					</div>
+
+					<div class="level-right">
+
+						<ul class="buttons">
+
+							<li>
+								<a th:href="${settings.dspace_site+'?locale-attribute='+language}"
+								   th:text="#{mnu_search}" 
+								   class="button doab-btn-search">
+									Search
+								</a>
+							</li>
+
+							<li>
+								<a th:href="${settings.dspace_site+'login?locale-attribute='+language}"
+								   th:text="#{mnu_login}"
+								   class="button doab-btn-join">
+									Login
+								</a>
+							</li>
+							
+							<li th:each="mnusection: ${headerSections}">
+								<a th:text="${@translator.translate(mnusection,language).name}"
+								   th:href="@{'/'+${language}+'/'+${mnusection.slug}}"
+								   class="button" th:classappend="doab-btn-+${mnusection.slug}">
+									Button right
+								</a>
+							</li>
+							
+							<li>
+								<div class="control has-icons-left">
+									<div class="select doab-langswitch">
+										<select name="setlanguage"
+										    onchange="window.location.href=this.options[this.selectedIndex].value">
+											<option th:value="@{'/setlanguage?lang=en'}" th:text="#{choose_language}">[Choose language]</option>
+											<option th:value="@{'/setlanguage?lang=en'}">English</option>
+											<option th:value="@{'/setlanguage?lang=fr'}">Français</option>
+										</select>
+									</div>
+									<span class="icon is-left">
+										<i class="doab-lang-icon fas fa-globe"></i>
+									</span>
+								</div>	
+							</li>						
+
+						</ul>
+
+					</div>
+
+				</div>
+
+			</nav>
+
+		</div><!-- /container -->
+
+		<nav class="navbar doab-mainnav" role="navigation">
+
+			<div class="container">
+
+				<div class="navbar-brand">
+
+					<!-- hamburger -->
+					<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
+						<span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span>
+					</a>
+
+				</div>
+
+				<div id="navbarMain" class="navbar-menu">
+
+					<ul class="navbar-start">
+
+						<li th:each="mnusection: ${menuLeftSections}" class="doab-nav-dropdown">
+							<th:block th:insert="layout/submenu :: section_navigation">
+								sub menu
+							</th:block>
+						</li>
+
+					</ul>
+					
+					<ul class="navbar-end doab-nav-right">
+
+						<li th:each="mnusection: ${menuRightSections}" class="doab-nav-dropdown">
+							<th:block th:insert="layout/submenu :: section_navigation">
+								sub menu
+							</th:block>
+						</li>
+
+					</ul>
+
+				</div>
+
+			</div>
+
+		</nav>
+
+	</header>
+	
+	<div layout:fragment="hero" th:remove="tag"> 
+	</div>
+
+	<!--
+		MAIN
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<div class="doab-page-wrapper" id="Doab-main">
+	
+		<main layout:fragment="content">
+	
+			<hr class="is-sr-only"/>
+	
+			<div class="container content">
+	
+				<!-- content -->
+				<!-- ============================================================================ -->
+				<!-- This content is only used for static prototyping purposes (natural templates)-->
+				<!-- and is therefore entirely optional, as this markup fragment will be included -->
+				<!-- from "fragments/header.html" at runtime.                                     -->
+				<!-- ============================================================================ -->
+	
+				<h1>Static content for prototyping purposes only</h1>
+	
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					Praesent scelerisque neque neque, ac elementum quam dignissim interdum.
+					Phasellus et placerat elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					Praesent scelerisque neque neque, ac elementum quam dignissim interdum.
+					Phasellus et placerat elit.
+				</p>
+				<!-- /content -->
+	
+			</div>
+			
+		</main>	
+
+	</div>
+
+
+	<!--
+		FOOTER
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<footer class="footer" id="Doab-footer">
+
+		<div class="container">
+
+			<div class="doab-ftr-header">
+				<div class="is-sr-only">Doabooks</div>
+				<hr class="is-hidden"/>
+			</div>
+
+			<div class="columns doab-footer-columns">
+
+		  		<div class="column doab-footer-nav">
+
+		  			<ul class="menu-list">
+
+						<li th:each="mnusection: ${footerSections}">
+							<a th:href="@{'/'+${language}+'/'+${mnusection.slug}}"
+							   th:text="${@translator.translate(mnusection,language).name}">
+							   Footer Menu Item
+							</a>
+						</li>
+
+					</ul>
+
+				</div><!-- /footer-nav -->
+
+				<div class="column">
+
+					<div class="doab-footer-licence">
+						
+						<div class="title is-6" th:text="#{licence}">Licence</div>
+						
+						<hr class="is-hidden"/>
+						
+						<p>
+							<th:block th:utext="#{licence_text_1}">
+								If not noted otherwise all contents are available under Attribution 4.0
+								International
+							</th:block> 
+							<a th:href="#{licence_url}">(CC BY 4.0)</a>
+						</p> 
+						
+						<p>
+							<a th:href="#{licence_url}">
+								<img th:src="@{/static-assets/images/CC-BY-300x105.png}" width="100" alt="CC-BY"/>
+							</a>
+						</p>
+					
+					</div>
+
+					<div class="doab-newsletter">
+
+						<div class="title" th:text="#{newsletter}">Newsletter</div>
+						
+						<hr class="is-hidden"/>
+
+						<i class="fal fa-envelope-open-text"></i>
+
+						<ul>
+							<li>
+								<a href="https://oapen.us4.list-manage.com/subscribe?u=314fa411ba5eaaee7244c95e1&id=a362459f54"
+								   th:text="#{subscribe_newsletter}">
+									Subscribe to our newsletter
+								</a>
+							</li>
+							<li>
+								<a href="https://us4.campaign-archive.com/home/?u=314fa411ba5eaaee7244c95e1&id=a362459f54"
+								   th:text="#{archive_newsletter}">
+									view our news archive
+								</a>
+							</li>
+						</ul>
+
+					</div>
+
+					<div class="doab-social-links" style="margin-bottom:2rem">
+
+						<div class="title" th:text="#{follow_us_on}">Follow us on</div>
+						
+						<hr class="is-hidden"/>
+
+						<ul>
+							<li style="height:32px;width:32px;">
+								<a href="https://twitter.com/doabooks">
+									<svg height="100%" width="100%" viewBox="0 0 24 24" style="fill:#FBFEFF">
+										<g>
+											<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+										</g>
+									</svg>
+									<span class="is-sr-only">Twitter</span>
+								</a>
+							</li>
+						</ul>
+
+					</div>
+					
+					<div>
+					
+						<div class="title is-6" th:text="#{donate}">Donate</div>
+						
+						<hr class="is-hidden"/>
+	
+						<ul style="text-align:center">
+							<li>
+								<img th:src="@{/static-assets/images/donation-qr-code.png}" alt="Donate"
+									style="width:128px;height:128px;max-height:none;max-width:none;"/>
+									<br/>
+								<small class="is-size-7" th:utext="#{footer_text_3}">
+									Support DOAB and the OAPEN Library
+								</small>
+							</li>
+							<li>
+								<form action="https://www.paypal.com/donate" method="post" target="_top" style="margin-top:1em;">
+									<input type="hidden" name="hosted_button_id" value="VPW4DRBLBM9J8" />
+									<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" style="border:none" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+									<img alt="" border="0" src="https://www.paypal.com/en_NL/i/scr/pixel.gif" width="1" height="1" />
+								</form>
+							</li>
+						</ul>
+						
+					</div>						
+
+				</div>
+
+				<div class="column doab-credits">
+
+					<div class="title" th:text="#{credits}">Credits</div>
+					
+					<hr class="is-hidden"/>
+
+					<ul>
+						<li>
+							<a href="https://www.enseignementsup-recherche.gouv.fr/pid24578/investissements-d-avenir.html/">
+								<img th:src="@{/static-assets/images/investirlavenir.png}" width="100" alt="logo Investir l'avenir"/>
+								<span class="is-sr-only">Investir l'avenir</span>
+							</a>
+						</li>
+						<li>
+							<a href="https://www.enseignementsup-recherche.gouv.fr/fr">
+								<img th:src="@{/static-assets/images/logo_MESRI_2021.jpg}" width="100" alt="logo MESRI"/>
+								<span class="is-sr-only">MESRI</span>
+							</a>
+						</li>
+						<li>
+							<a href="https://europa.eu/european-union/index_en">
+								<img th:src="@{/static-assets/images/eu-flag.png}" width="100" alt="logo EU"/>
+								<span class="is-sr-only">European Union</span>
+								<br/>
+								<small class="is-size-7" th:utext="#{footer_text_2}">
+									Footer_text_2								
+								</small>
+							</a>
+						</li>
+					</ul>
+					
+				</div>
+
+				<div class="column doab-addresses">
+
+					<hr class="is-sr-only"/>
+					
+					<p th:utext="#{footer_text_1}">
+						Footer_text_1
+					</p>
+					
+					<p><b>Address:</b></p>
+					<address>
+						Directory of Open Access Books<br/>
+						Prins Willem-Alexanderhof 5<br/>
+						2595 BE The Hague
+					</address>
+					
+					<p><b>Websites:</b></p>
+					<p>
+						DOAB<br>
+						<a href="https://www.doabooks.org">www.doabooks.org</a>
+					</p>
+					<p>	
+						OAPEN Home<br>
+						<a href="https://www.oapen.org">www.oapen.org</a><br>
+					</p>
+					<p>
+						OA Books Toolkit<br>
+						<a href="https://www.oabooks-toolkit.org">www.oabooks-toolkit.org</a>
+					</p>					
+
+				</div>
+
+			</div><!-- /footer columns -->
+
+
+			<div class="doab-footermsg has-text-centered">
+
+				<div class="is-size-7">
+					<a href="https://www.trilobiet.nl">website by Trilobiet</a>
+				</div>
+
+			</div>
+
+		</div>
+
+	</footer>
+
+	<!-- / Local version of the cdn scripts are available in static-assets/js/ in case the CDN disappears / -->
+
+	<script th:src="@{/static-assets/js/jquery-3.4.1.min.js}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
+	<script th:src="@{/static-assets/js/scripts.js?v=1.02}"></script>
+	<script th:src="@{/static-assets/js/menu.js}"></script>
+	<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+	<!-- /* Loaded locally <script src="https://kit.fontawesome.com/33a853ba11.js" crossorigin="anonymous"></script> */ -->
+	
+	<th:block th:insert="include/googleanalyticsscript :: script">
+		Google Analytics
+	</th:block>
+	
+	<th:block th:insert="include/cookiespopupscript :: thescript">
+		Cookies Consent Popup
+	</th:block>
+	
+	<!----------------------------------- 
+	Website by	 
+    _____     _ _       _     _      _   
+   |_   _| __(_) | ___ | |__ (_) ___| |_ 
+     | || '__| | |/ _ \| '_ \| |/ _ \ __|
+     | || |  | | | (_) | |_) | |  __/ |_ 
+     |_||_|  |_|_|\___/|_.__/|_|\___|\__|
+                                       	
+	2020 www.trilobiet.nl
+	------------------------------------>
+
+</body>
+</html>

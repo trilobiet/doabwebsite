@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Boot Thymeleaf Application - Fragments</title>
+</head>
+<body>
+
+<div th:fragment="header">
+    <h1>News Archive</h1>
+</div>
+
+<!--
+	News Archive
+~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<th:block th:fragment="newsarchive">
+
+	<div class="title is-6 doab-section-caption" th:text="#{news}">
+		News Archive
+	</div>
+	
+	<!-- blogposts -->
+	<ul>
+		<li th:each="newsPost: ${rssMailchimpItems}">
+			<span class="doab-news-date" th:text="${newsPost.publicationDate}">2020-05-27</span>
+			<a th:href="${newsPost.link}" th:text="${newsPost.title}">Mailchimp News Item</a>
+		</li>	
+	</ul>
+
+</th:block>
+
+<footer th:fragment="footer">
+	<p>2020 trilobiet.nl</p>
+</footer>
+
+</body>
+</html>
+
+

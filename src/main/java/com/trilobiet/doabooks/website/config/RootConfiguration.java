@@ -3,11 +3,8 @@ package com.trilobiet.doabooks.website.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
 import org.springframework.core.env.Environment;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.trilobiet.doabooks.website.helpers.Translator;
 import com.trilobiet.doabooks.website.repositoryclient.DSpaceRepositoryProxy;
@@ -40,10 +37,10 @@ import com.trilobiet.graphqlweb.markdown2html.StringFunction;
 
 @Configuration
 @ComponentScan (
-	basePackages = {"com.trilobiet.doabooks.website"},
-	excludeFilters = {
-			@Filter( type=FilterType.ANNOTATION, value=EnableWebMvc.class ) 
-	}
+	basePackages = {"com.trilobiet.doabooks.website"}
+	//, excludeFilters = {
+	//		@Filter( type=FilterType.ANNOTATION, value=EnableWebMvc.class ) 
+	//}
 )
 public class RootConfiguration {
 	

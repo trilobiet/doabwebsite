@@ -9,9 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import com.trilobiet.doabooks.website.helpers.SnippetMessageSource;
@@ -20,7 +17,8 @@ import com.trilobiet.graphqlweb.implementations.aexpgraphql2.snippet.SnippetImp;
 
 @Configuration
 @ComponentScan("com.trilobiet.doabooks.website")
-public class I18nConfiguration extends WebMvcConfigurerAdapter {
+public class I18nConfiguration //extends WebMvcConfigurerAdapter 
+{
 
 	@Autowired
 	protected Environment env;	
@@ -35,12 +33,14 @@ public class I18nConfiguration extends WebMvcConfigurerAdapter {
         return localeResolver;
     }
 	
+    /*
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
         LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
         localeChangeInterceptor.setParamName("lang");
         return localeChangeInterceptor;
     }
+    */
     
     /*@Bean
     public MessageSource messageSource() {
@@ -56,10 +56,11 @@ public class I18nConfiguration extends WebMvcConfigurerAdapter {
         return new SnippetMessageSource(snippetService, env.getProperty("supportedLanguages"));
     }
 
+    /*
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());
-    }	
+    }*/	
 	
 	
 }

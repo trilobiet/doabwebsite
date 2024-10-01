@@ -1,0 +1,47 @@
+<!doctype html>
+<html layout:decorate="~{layout/main}"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.thymeleaf.org">
+<head>
+<title>Doabooks - Cookie Popup</title>
+</head>
+
+<body>
+
+	<th:block th:fragment="thescript">
+
+		<link rel="stylesheet" type="text/css" href="//wpcc.io/lib/1.0.2/cookieconsent.min.css" />
+		<script src="//wpcc.io/lib/1.0.2/cookieconsent.min.js"></script>
+		<script>
+			window.addEventListener("load", function() {
+				window.wpcc.init({
+					"border" : "thin",
+					"colors" : {
+						"popup" : {
+							"background" : "#336688",
+							"text" : "#ffffff",
+							"border" : "#999"
+						},
+						"button" : {
+							"background" : "#ccc",
+							"text" : "#000000"
+						}
+					},
+					"position" : "bottom",
+					"corners" : "small",
+					"transparency" : "5",
+					"content" : {
+						"href" : "[[@{'/'+${language}+'/article/'+${language}+'-privacy-policy'}]]",
+						"link" : "[[#{cookie_link_text}]]",
+						"message" : "[[#{cookie_message}]]",
+						"button" : "[[#{cookie_button_text}]]"
+					}
+				})
+			});
+		</script>
+
+	</th:block>
+
+</body>
+
+</html>

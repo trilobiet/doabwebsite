@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="svg2"
+   width="331.59039"
+   height="83.477829"
+   viewBox="0 0 331.59039 83.477826"
+   sodipodi:docname="doab-peerreview.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:export-filename="/home/acdhirr/JavaProjects2017/doabwebsite/src/main/webapp/static-assets/images/layout/doab-peerreview.svg.2020_10_26_14_41_32.0-2.svg.png"
+   inkscape:export-xdpi="27.503813"
+   inkscape:export-ydpi="27.503813">
+  <metadata
+     id="metadata8">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1141"
+     id="namedview4"
+     showgrid="false"
+     inkscape:zoom="3.4592275"
+     inkscape:cx="157.37593"
+     inkscape:cy="-0.053591031"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g1519"
+     fit-margin-top="2.5"
+     fit-margin-left="2.5"
+     fit-margin-right="2.5"
+     fit-margin-bottom="2.5" />
+  <g
+     inkscape:groupmode="layer"
+     id="g1519"
+     inkscape:label="directory of open access books copy copy"
+     style="display:inline"
+     transform="translate(-97.379885,-3.3521634)">
+    <g
+       id="g1529"
+       transform="matrix(0.39699673,0,0,0.39417522,-58.452444,37.938045)">
+      <text
+         id="text1509"
+         y="-3.0055628"
+         x="390.57886"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:107.09629059px;line-height:150%;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, ';text-align:start;letter-spacing:-5.02013874px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.25503469px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           id="tspan1507"
+           y="-3.0055628"
+           x="390.57886"
+           sodipodi:role="line"
+           style="letter-spacing:-5.05582333px;stroke-width:1.25503469px">peer  review</tspan></text>
+      <text
+         id="text1513"
+         y="97.559624"
+         x="596.89075"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:107.09629059px;line-height:150%;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, ';text-align:center;letter-spacing:-5.02013874px;word-spacing:0px;text-anchor:middle;fill:#777777;fill-opacity:1;stroke:none;stroke-width:1.25503469px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="letter-spacing:-5.05582333px;fill:#777777;fill-opacity:1;stroke-width:1.25503469px"
+           y="97.559624"
+           x="594.36285"
+           id="tspan1511"
+           sodipodi:role="line">certified  by</tspan></text>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="doab"
+     style="display:inline"
+     transform="translate(-97.379885,-3.3521634)">
+    <g
+       id="g1611"
+       transform="matrix(0.53622332,0,0,0.53622332,203.04826,8.4908468)">
+      <path
+         sodipodi:nodetypes="sssssssss"
+         inkscape:connector-curvature="0"
+         id="rect916"
+         d="M 168.83268,0.44253325 412.47865,17.934864 c 3.6423,0.261495 5.21531,5.185086 3.46146,7.669029 L 341.19943,131.45766 c -2.03407,2.88081 -7.55158,5.49899 -14.7021,4.38317 L 148.8844,108.12479 c -7.22147,-1.12689 -11.13166,-6.47434 -9.55474,-13.7192 L 158.22433,7.5976532 c 1.05892,-4.8650027 5.35299,-7.5324235 10.60835,-7.15511995 z"
+         style="display:inline;opacity:1;fill:#f68212;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         transform="scale(1.0050575,0.99496795)"
+         id="text855"
+         y="113.32408"
+         x="255.04849"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:135.33102417px;line-height:150%;font-family:'Roboto Slab';-inkscape-font-specification:'Roboto Slab';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.58591044px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           dx="0 -4 -3.5 -4"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, ';word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke-width:1.58591044px"
+           y="113.32408"
+           x="255.04849"
+           id="tspan853"
+           sodipodi:role="line">doab</tspan></text>
+    </g>
+  </g>
+</svg>
