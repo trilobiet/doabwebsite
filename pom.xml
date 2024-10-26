@@ -12,7 +12,7 @@
 	</parent>
   	
 	<groupId>com.trilobiet.doabooks</groupId>
-	<artifactId>website</artifactId>
+	<artifactId>doabooks</artifactId>
 	<version>3.0.0</version>
 	<name>doabooks</name>
 	<description>Directory of Open Access Books website</description>
@@ -89,8 +89,9 @@
 		<dependency>
 			<groupId>com.trilobiet</groupId>
 			<artifactId>graphqlweb</artifactId>
-			<version>0.0.43</version>
+			<!--<version>0.0.43</version>-->
 			<!-- TODO set to version 0.0.46 after updates of field names (created_at vs createdAt etc.) -->
+			<version>0.0.46</version>
 		</dependency>
 
 		<!--

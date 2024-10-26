@@ -25,7 +25,7 @@
 					<h1 class="title is-1">Directory of <br/>Open Access Books</h1>
 					<div class="doab-hero-sub" 
 						 th:text="#{books_from_publishers(
-						 	${#numbers.formatInteger((count_titles/500)*500,1,'DEFAULT')},
+						 	${#numbers.formatInteger(count_titles,1,'DEFAULT')},
 						 	${#numbers.formatInteger(count_publishers,1,'DEFAULT')}
 						 )}">
 						<!-- /* 33385 Livres académiques validés par les pairs provenant de 406 éditeurs */ --> 

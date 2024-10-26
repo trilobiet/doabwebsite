@@ -38,23 +38,17 @@ public class HomeController extends BaseController {
 			log.error("home-intro: " + e.getMessage());
 		}
 		
-		// Totals books & publishers
+		// Book totals 
+		int countTitles = 0, countPublishers = 0;
 		try {
-			/* TODO: uncomment this code
-			Integer countTitles = repositoryService.getCommunitiesCount(
+			countTitles = repositoryService.getCommunitiesCount(
 				Arrays.asList(environment.getProperty("communities_with_titles").split(","))	
 			);
-			mv.addObject("count_titles",countTitles);
-			*/
-			mv.addObject("count_titles",0);
-			/*Integer countPublishers = repositoryService.getCommunitiesCount(
-				Arrays.asList(environment.getProperty("communities_with_publishers").split(","))	
-			);
-			mv.addObject("count_publishers",countPublishers);*/
-			mv.addObject("count_publishers",1); // not used
 		} catch (Exception e) {	
 			log.error("communities: " + e.getMessage());
 		}
+		mv.addObject("count_titles",(countTitles/500)*500); // round at 500
+		mv.addObject("count_publishers",countPublishers);
 		
 		try {
 			// Filter only for current language

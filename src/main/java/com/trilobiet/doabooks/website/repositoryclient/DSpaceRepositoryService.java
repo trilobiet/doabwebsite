@@ -58,7 +58,9 @@ public class DSpaceRepositoryService implements RepositoryService {
 		DSpaceCommunity[] communities;
 		
 		try {
-			communities = mapper.readValue(new URL(communitiesUrl()), DSpaceCommunity[].class);
+			String url = communitiesUrl();
+			log.info("Getting count from " + url);
+			communities = mapper.readValue(new URL(url), DSpaceCommunity[].class);
 		} catch (IOException e) {
 			throw new RepositoryException(e);
 		}
