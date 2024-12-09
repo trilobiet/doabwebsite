@@ -62,7 +62,7 @@
 
 	<cache alias="translationsCache">
 		<expiry>
-			<ttl unit="seconds">600</ttl>
+			<ttl unit="seconds">1</ttl>
 		</expiry>
 		<resources>
 			<heap unit="entries">50</heap>
