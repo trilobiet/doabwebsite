@@ -1,0 +1,24 @@
+# In /etc/systemd/system create a file named doabooks-website.service with the following content:
+# https://www.baeldung.com/linux/run-java-application-as-service
+#
+# Enable Automatic Startup at boot: systemctl enable doabooks-website.service
+
+[Unit]
+Description=Doabooks Website
+After=syslog.target network.target
+
+[Service]
+SuccessExitStatus=143
+User=oapen
+Group=oapen
+
+Type=simple
+
+ExecStart=java -Xmx512m -jar /home/oapen/websites/doabooks/doabooks.jar
+ExecStop=/bin/kill -15 $MAINPID
+
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
