@@ -1,11 +1,7 @@
 
-@import "compass";
-@import "compass/css3";
-
 @import "include/mixins";
 @import "include/settings";
 @import "include/settings-font";
-
 // choose one on production:
 @import "include/hero3";
 
@@ -152,7 +148,7 @@
 	.columns {
 		background: #333;
 		color: white;
-		@include border-radius(6px,6px);
+		border-radius: 6px 6px;
 		
 		.column {
 			padding: 2rem;
@@ -266,7 +262,7 @@
 
 	h3.expanded {
 		
-		@include h3style;
+		@include h3style; 
 		
 		& + blockquote {
 			display: block;

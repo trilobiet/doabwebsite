@@ -13,7 +13,7 @@
   	
 	<groupId>com.trilobiet.doabooks</groupId>
 	<artifactId>doabooks</artifactId>
-	<version>3.0.0</version>
+	<version>3.0.1</version>
 	<name>doabooks</name>
 	<description>Directory of Open Access Books website</description>
 	
