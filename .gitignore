@@ -2,3 +2,14 @@
 # ignore all hidden
 .*
 !/.gitignore
+
+# ignore application profiles - containing sensitive data ...
+application*.properties
+# ... except the anonymized template
+!application-xyz.properties
+
+# Node.js dependencies
+node/
+node_modules/
+.sass-cache/
+
