@@ -80,10 +80,11 @@
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 		</dependency>
 
+		<!-- GraphQLWeb helper library -->
 		<dependency>
 			<groupId>com.trilobiet</groupId>
 			<artifactId>graphqlweb</artifactId>
-			<version>0.0.46</version>
+			<version>0.0.47</version>
 		</dependency>
 
 		<!-- Rome Java RSS feeds -->
@@ -97,7 +98,7 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-text</artifactId>
-			<version>1.8</version>
+			<version>1.10.0</version>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
@@ -191,7 +192,42 @@
 					<workingDirectory>frontend</workingDirectory>
 				</configuration>
 
-			</plugin>						
+			</plugin>			
+			
+			<!-- To prevent sensitive data from ending up in the jar, exclude all application-*.properties files. 
+			We will use an external application.properties instead. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>**/application-*.properties</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		
+			<!-- install home brewn artifacts locally -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<configuration>
+					<groupId>com.trilobiet</groupId>
+					<artifactId>graphqlweb</artifactId>
+					<version>0.0.47</version>
+					<packaging>jar</packaging>
+					<file>${basedir}/dependencies/graphqlweb-0.0.47-jar-with-dependencies.jar</file>
+					<generatePom>true</generatePom>
+				</configuration>
+				<executions>
+					<execution>
+						<id>install-jar-lib</id>
+						<goals>
+							<goal>install-file</goal>
+						</goals>
+						<phase>validate</phase>
+					</execution>
+				</executions>
+			</plugin>
 
 		</plugins>
 
