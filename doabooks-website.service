@@ -14,7 +14,10 @@ Group=oapen
 
 Type=simple
 
-ExecStart=java -Xmx512m -jar /home/oapen/websites/doabooks/doabooks.jar
+# ExecStart=java -Xmx512m -jar /home/oapen/websites/doabooks/doabooks.jar
+# Call the runnable jar directly so Spring will find any external application.properties
+# Optionally you can put a file doabooks.conf next to doabooks.jar with jvm args JAVA_OPTS="-Xms512m"
+ExecStart=/home/oapen/websites/doabooks/doabooks.jar
 ExecStop=/bin/kill -15 $MAINPID
 
 Restart=always
