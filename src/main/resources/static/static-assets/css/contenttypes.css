@@ -111,7 +111,7 @@
     display: inline; }
   .doab-home-showcases a.doab-more::before {
     content: "";
-    font-family: "Font Awesome 5 Pro";
+    font-family: "Font Awesome 6 Pro";
     font-size: 1em;
     font-style: normal;
     margin-right: 0.15em;

@@ -22,7 +22,7 @@
 
 			<ul>
 
-				<li th:each="topic:${section.topics}">
+				<li th:each="topic:${section?.topics}">
 					<a th:href="@{'/'+${language}+'/'+${section.slug}+'/'+${topic.slug}}" 
 					th:text="${@translator.translate(topic,language).name}">
 						Topic name
