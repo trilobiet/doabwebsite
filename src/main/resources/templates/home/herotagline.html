@@ -9,7 +9,10 @@
         DOAB: The Directory of Open Access Books
       </p>
       <h1 class="bulma-title bulma-is-1 bulma-has-text-weight-bold bulma-mb-6 bulma-mx-auto">
-        Lorem ipsum dolor sit amet. Some tagline here?
+        <div class="doab-hero-sub"
+             th:text="#{books_from_publishers(${#numbers.formatInteger(count_titles,1,'DEFAULT')},${#numbers.formatInteger(count_publishers,1,'DEFAULT')})}">
+          <!-- Content from messages.properties -->
+        </div>
       </h1>
       <p class="bulma-is-size-4 bulma-mb-4 bulma-has-text-weight-light oa-readable" th:utext="${home_intro}">
         Blurb
