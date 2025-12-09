@@ -1,0 +1,37 @@
+// oa/_branding.scss
+// DOAB logotype variants and quick-switch helpers
+
+// Set to 1 or 2 to pick which logo renders by default after rebuilds
+$doab-logo-variant: 1 !default;
+
+.oa-logo-stack {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+
+  .oa-logo-option {
+    display: none;
+    max-height: 100%;
+    max-width: 100%;
+    overflow: visible;
+  }
+
+  .oa-logo-option-1 {
+    display: if($doab-logo-variant == 1, block, none);
+  }
+
+  .oa-logo-option-2 {
+    display: if($doab-logo-variant == 2, block, none);
+  }
+}
+
+// Add `oa-logo-variant-2` (or -1) to <body>
+body.oa-logo-variant-1 .oa-logo-option-1,
+body.oa-logo-variant-2 .oa-logo-option-2 {
+  display: block !important;
+}
+
+body.oa-logo-variant-1 .oa-logo-option-2,
+body.oa-logo-variant-2 .oa-logo-option-1 {
+  display: none !important;
+}
