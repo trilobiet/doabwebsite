@@ -370,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function mount(scope = document) {
       const opts = {
         type: 'loop',
-        perPage: 6,
+        perPage: 8,
         gap: '1.5rem',
         arrows: true,
         pagination: false,
