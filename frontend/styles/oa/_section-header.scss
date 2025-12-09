@@ -1,0 +1,91 @@
+// oa/_section-header.scss
+// Section headers with star-decorated divider
+// Used on: homepage section intros, secondary page headers
+// Can contain link or button to its right (e.g. News feed, Funder collection carousels)
+// Always use with <h1...h6> inside
+// Note: controlled via inlined CSS, up to 2 stars can be added on the divider
+
+.oa-section-header {
+  position: relative;
+  background-origin: content-box;
+  padding-bottom: 1rem;
+
+  /* defaults (can be overridden via th:style) */
+  --star-url: none;
+  --star-size: 28px;
+  --star-x: 50%;
+  --star-y-offset: 0px;
+  --star-rotate: 0deg;
+  --star-opacity: 1;
+
+  --star2-url: none;
+  --star2-size: 0px;
+  --star2-x: 85%;
+  --star2-y-offset: 0px;
+  --star2-rotate: 0deg;
+  --star2-opacity: 1;
+
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-size: 100% 2px;
+  background-position: 0 calc(100% - 1px);
+
+  // STAR #1
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    pointer-events: none; 
+  }
+
+  &::before {
+    bottom: calc(1px - var(--star-y-offset));
+    left: var(--star-x);
+    width: var(--star-size);
+    height: var(--star-size);
+    background-color: currentColor;
+    opacity: var(--star-opacity);
+    transform: translate(-50%, 50%) rotate(var(--star-rotate));
+
+    /* mask shorthands */
+    -webkit-mask-image: var(--star-url);
+    mask-image: var(--star-url);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-position: center;
+    mask-position: center;
+  }
+
+  // STAR #2
+  &::after {
+    bottom: calc(1px - var(--star2-y-offset));
+    left: var(--star2-x);
+    width: var(--star2-size);
+    height: var(--star2-size);
+    background-color: currentColor;
+    opacity: var(--star2-opacity);
+    transform: translate(-50%, 50%) rotate(var(--star2-rotate));
+
+    -webkit-mask-image: var(--star2-url);
+    mask-image: var(--star2-url);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-position: center;
+    mask-position: center;
+  }
+
+  // placement helpers 
+  &.oa-has-star-left   { --star-x: 0%; }
+  &.oa-has-star-center { --star-x: 50%; }
+  &.oa-has-star-right  { --star-x: 100%; }
+
+  &.oa-star-offset-1 { --star-y-offset: 3px; }
+  &.oa-star-offset-2 { --star-y-offset: 5px; }
+  &.oa-star-offset-3 { --star-y-offset: 7px; }
+}
+
+

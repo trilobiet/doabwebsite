@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Boot Thymeleaf Application - Fragments</title>
+</head>
+<body>
+
+<div th:fragment="header">
+    <h1>Thymeleaf Fragments</h1>
+</div>
+
+<!--
+	Search Form
+~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<th:block th:fragment="searchform">
+
+	<div class="bulma-columns">
+
+		<form th:action="${settings.dspace_site+'discover'}" class="bulma-column">
+
+			<h3 class="bulma-title bulma-is-3">
+				Search OAPEN
+			</h3>
+
+			<div class="bulma-field bulma-has-addons">
+				<div class="bulma-control">
+					<input class="bulma-input" type="text" name="query" placeholder="Search OAPEN">
+				</div>
+				<div class="bulma-control">
+					<button type="submit" class="bulma-button bulma-is-dark">
+						Search
+					</button>
+				</div>
+			</div>
+
+		</form>
+
+		<div class="bulma-column">
+
+			<h3 class="bulma-title bulma-is-3">
+				Browse OAPEN
+			</h3>
+
+			<ul>
+				<li><a th:href="${settings.dspace_site+'browse?type=classification_text'}">Subject</a></li>
+				<li><a th:href="${settings.dspace_site+'browse?type=publisher'}">Publisher</a></li>
+				<li><a th:href="${settings.dspace_site+'browse?type=language'}">Language</a></li>
+				<li><a th:href="${settings.dspace_site+'browse?type=collection'}">Collections</a></li>
+			</ul>
+
+		</div>
+
+	</div>
+
+
+</th:block>
+
+<footer th:fragment="footer">
+	<p>2020 trilobiet.nl</p>
+</footer>
+
+</body>
+</html>
+

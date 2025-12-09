@@ -1,0 +1,7 @@
+<img xmlns:th="http://www.thymeleaf.org"
+     th:fragment="logo(w, h, cls)"
+     th:with="classes=${#strings.isEmpty(cls) ? 'oa-logo-img' : 'oa-logo-img ' + cls}"
+     th:attr="width=${w} ?: 180, height=${h} ?: null"
+     th:class="${classes}"
+     th:src="@{/static-assets/images/layout/doab-logo-reengineered.svg}"
+     alt="Directory of Open Access Books logo">

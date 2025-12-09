@@ -1,0 +1,19 @@
+<!--
+  Hero tagline + intro + doodle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<th:block th:fragment="tagline">
+  <div class="bulma-columns bulma-is-multiline bulma-is-vcentered bulma-is-variable bulma-is-0-mobile bulma-is-8-tablet">
+    <!-- Tagline + intro -->
+    <div class="bulma-column bulma-is-full">
+      <p class="bulma-title bulma-has-text-weight-semibold bulma-is-5 bulma-mb-2">
+        DOAB: The Directory of Open Access Books
+      </p>
+      <h1 class="bulma-title bulma-is-1 bulma-has-text-weight-bold bulma-mb-6 bulma-mx-auto">
+        Lorem ipsum dolor sit amet. Some tagline here?
+      </h1>
+      <p class="bulma-is-size-4 bulma-mb-4 bulma-has-text-weight-light oa-readable" th:utext="${home_intro}">
+        Blurb
+      </p>
+    </div>
+  </div>
+</th:block>

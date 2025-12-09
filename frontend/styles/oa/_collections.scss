@@ -1,0 +1,54 @@
+// oa/_collections.scss
+// Funder logo grid which links to funder collection pages
+// Used on: homepage "Funder collections" hero section
+
+.oa-collections {
+  .bulma-columns {
+    --columnGap: 2rem;
+    row-gap: var(--columnGap);
+  }
+
+  .bulma-column {
+    display: flex;
+    justify-content: center;
+  }
+
+  .oa-logo-link {
+    display: block;
+  }
+
+  .oa-logo-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .75rem;
+    transition: transform .16s ease;
+    will-change: transform;
+  }
+
+  .oa-logo-link:hover .oa-logo-box,
+  .oa-logo-link:focus .oa-logo-box,
+  .oa-logo-link:focus-visible .oa-logo-box {
+    transform: scale(1.05);
+  }
+
+  .oa-logo-box img {
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
+
+  @media (min-width: 1024px) {
+    .oa-logo-box {
+      padding: 1rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .oa-logo-box {
+      transition: none;
+    }
+  }
+}

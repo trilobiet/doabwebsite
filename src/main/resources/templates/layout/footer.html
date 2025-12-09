@@ -1,0 +1,114 @@
+<!--
+  FOOTER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<th:block th:fragment="footer">
+  <footer class="oa-footer bulma-section bulma-py-6 bulma-has-background-brand bulma-has-text-paper" role="contentinfo">
+    <div class="bulma-container oa-footer-content">
+      <h2 class="bulma-is-sr-only">Directory of Open Access Books</h2>
+
+      <!-- Top row: Logo / Websites / Explore links -->
+      <div class="bulma-columns bulma-is-multiline bulma-is-variable bulma-is-6 bulma-is-desktop bulma-mb-6">
+        <section class="bulma-column bulma-is-6-desktop bulma-is-6-tablet">
+          <th:block th:replace="~{include/logotype :: logo(375, 0, 'bulma-mb-6 oa-logo-svg')}"></th:block>
+        </section>
+        
+        <section class="bulma-column bulma-is-3-desktop bulma-is-6-tablet bulma-is-size-7">
+          <h3 class="bulma-title bulma-is-7 bulma-is-uppercase bulma-has-text-weight-medium">Websites</h3>
+          <ul class="oa-footer__list bulma-is-size-5 bulma-mb-6">
+            <li><a class="bulma-has-text-white" href="https://www.doabooks.org" target="_blank" rel="noopener">doabooks.org</a></li>
+            <li><a class="bulma-has-text-white" href="https://www.oapen.org" target="_blank" rel="noopener">oapen.org</a></li>
+            <li><a class="bulma-has-text-white" href="https://oabooks-toolkit.org" target="_blank" rel="noopener">oabooks-toolkit.org</a></li>
+          </ul>
+          <h3 class="bulma-title bulma-is-7 bulma-is-uppercase bulma-has-text-weight-medium">Policies</h3>
+          <ul class="oa-footer__list bulma-is-size-5">
+            <li><a class="bulma-has-text-white" th:href="@{'/'+${language}+'/article/privacy-statement'}">Privacy</a></li>
+            <li><a class="bulma-has-text-white" th:href="@{'/'+${language}+'/article/accessibility'}">Accessibility</a></li>
+          </ul>
+        </section>
+
+        <section class="bulma-column bulma-is-3-desktop bulma-is-6-tablet bulma-is-size-7">
+          <h3 class="bulma-title bulma-is-7 bulma-is-uppercase bulma-has-text-weight-medium">Explore</h3>
+          <ul class="oa-footer__list bulma-is-size-5">
+            <li th:each="mnusection: ${footerSections}">
+              <a class="bulma-has-text-white"
+                 th:href="@{'/'+${language}+'/'+${mnusection.slug}}"
+                 th:text="${@translator.translate(mnusection,language).name}">
+                Section
+              </a>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- Bottom row: Donate / Funding / Licence / Address -->
+      <div class="bulma-columns bulma-is-variable bulma-is-6 bulma-is-multiline">
+        <section class="bulma-column bulma-is-3-desktop bulma-is-6-tablet bulma-is-size-7">
+          <h3 class="bulma-title bulma-is-7 bulma-is-uppercase bulma-has-text-weight-semibold bulma-mb-2" th:text="#{donate}">Donate</h3>
+          <p class="oa-footer-small bulma-mb-3" th:utext="#{footer_text_3}">
+            Support DOAB and the OAPEN Library
+          </p>
+          <img th:src="@{/static-assets/images/donation-qr-code.png}" alt="Donate to DOAB" width="128" height="128" class="bulma-mb-3">
+          <form action="https://www.paypal.com/donate" method="post" target="_blank" rel="noopener" class="oa-footer-paypal">
+            <input type="hidden" name="hosted_button_id" value="VPW4DRBLBM9J8">
+            <button type="submit"
+                    class="bulma-button bulma-is-small bulma-is-outlined bulma-is-shadowless"
+                    aria-label="Donate with PayPal">
+              Donate
+            </button>
+            <img alt="" src="https://www.paypal.com/en_NL/i/scr/pixel.gif" width="1" height="1" aria-hidden="true">
+          </form>
+        </section>
+
+        <section class="bulma-column bulma-is-3-desktop bulma-is-6-tablet bulma-is-size-7">
+          <h3 class="bulma-title bulma-is-7 bulma-is-uppercase bulma-has-text-weight-semibold bulma-mb-2" th:text="#{credits}">Credits</h3>
+          <p class="bulma-mb-2">
+            <a href="https://europa.eu/european-union/index_en">
+              <img th:src="@{/static-assets/images/eu-flag.png}" alt="European Union" width="100">
+              <span class="bulma-is-sr-only">European Union</span>
+            </a>
+          </p>
+          <p class="oa-footer-small" th:utext="#{footer_text_2}">
+            Footer_text_2
+          </p>
+        </section>
+
+        <section class="bulma-column bulma-is-3-desktop bulma-is-6-tablet bulma-is-size-7">
+          <h3 class="bulma-title bulma-is-7 bulma-is-uppercase bulma-has-text-weight-semibold bulma-mb-2" th:text="#{licence}">Licence</h3>
+          <p class="oa-footer-small bulma-mb-2" th:utext="#{licence_text_1}">
+            Unless noted otherwise, all content is available under CC BY 4.0.
+          </p>
+          <a th:href="#{licence_url}">
+            <img th:src="@{/static-assets/images/CC-BY-300x105.png}" width="100" alt="CC-BY">
+          </a>
+        </section>
+
+        <section class="bulma-column bulma-is-3-desktop bulma-is-6-tablet bulma-is-size-7">
+          <h3 class="bulma-title bulma-is-7 bulma-is-uppercase bulma-has-text-weight-semibold bulma-mb-2" th:text="#{footer_title_address}">Address</h3>
+          <p class="oa-footer-small bulma-mb-2" th:utext="#{footer_text_1}">
+            Footer_text_1
+          </p>
+          <address class="oa-footer-small bulma-mb-2">
+            Directory of Open Access Books<br>
+            Prins Willem-Alexanderhof 5<br>
+            2595 BE The Hague
+          </address>
+          <p class="oa-footer-small"><span class="bulma-has-text-weight-semibold" th:text="#{footer_websites}">Websites:</span></p>
+          <ul class="oa-footer__list bulma-is-size-6">
+            <li><a class="bulma-has-text-white" href="https://www.doabooks.org">www.doabooks.org</a></li>
+            <li><a class="bulma-has-text-white" href="https://www.oapen.org">www.oapen.org</a></li>
+            <li><a class="bulma-has-text-white" href="https://www.oabooks-toolkit.org">www.oabooks-toolkit.org</a></li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="bulma-content bulma-has-text-centered bulma-mt-6">
+        <div class="bulma-is-size-7">
+          Website by <a href="https://www.trilobiet.nl" target="_blank" rel="noopener">Trilobiet</a> &amp; <a href="https://github.com/sssoz" target="_blank" rel="noopener">@sssoz</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <th:block th:insert="include/newsletter_modal :: newsletter">Newsletter Modal</th:block>
+</th:block>

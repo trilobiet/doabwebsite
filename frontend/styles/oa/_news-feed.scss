@@ -1,0 +1,41 @@
+// oa/_news-feed.scss
+// List of news feed items 
+// Used on: homepage news (incl. news, spotlight, and Bluesky feed item)
+
+.oa-news-feed {
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    height: 100%;
+  }
+
+  // Align all titles to the same visual height
+  &__title {
+    --oa-title-lines: 2;
+    line-height: 1.2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--oa-title-lines);
+    overflow: hidden;
+    min-height: calc(1em * 1.2 * var(--oa-title-lines));
+    margin-bottom: .25rem;
+
+    @media (max-width: 1023.98px) {
+      --oa-title-lines: 3;
+    }
+  }
+
+  // Clamp the excerpt so cards stay even
+  &__excerpt {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+
+     @media (max-width: 1023.98px) {
+      --oa-excerpt-lines: 5;
+    }
+  }
+}

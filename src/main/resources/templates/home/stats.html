@@ -1,0 +1,66 @@
+<!--
+  "By the numbers" stats section
+~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<th:block th:fragment="stats">
+  <section class="bulma-hero">
+    <div class="bulma-hero-body">
+      <div class="bulma-container">
+
+        <div class="bulma-columns bulma-is-vcentered">
+          <div class="bulma-column bulma-is-6-desktop">
+            <header>
+              <h2 class="bulma-title bulma-is-4 bulma-mb-0 bulma-has-text-weight-normal bulma-mb-4">Our collection, in numbers</h2>
+              <p class="bulma-mb-4 bulma-is-size-5">
+                Trusted open access books from publishers around the world.
+              </p>
+            </header>
+          </div>
+        </div>
+
+        <div class="bulma-columns">
+
+          <article class="bulma-column bulma-is-one-third">
+            <a th:href="${settings.dspace_site+'discover?locale-attribute='+language}"
+              class="bulma-is-block">
+              <dl class="bulma-m-0 bulma-is-flex bulma-is-flex-direction-column-reverse">
+                <dt class="bulma-is-size-6 bulma-is-block">Open access books</dt>
+                <dd class="bulma-title bulma-is-1 bulma-mb-3 bulma-is-block bulma-has-text-weight-bold"
+				 th:text="${stats_books != null ? stats_books : (count_titles != null ? #numbers.formatInteger(count_titles,1,'DEFAULT') : '40,000+') }">
+                  40,000+
+                </dd>
+              </dl>
+            </a>
+          </article>
+
+          <article class="bulma-column bulma-is-one-third">
+            <a th:href="${settings.dspace_site+'browse?type=publisher&locale-attribute='+language}"
+              class="bulma-is-block">
+              <dl class="bulma-m-0 bulma-is-flex bulma-is-flex-direction-column-reverse">
+                <dt class="bulma-is-size-6 bulma-is-block">Participating publishers</dt>
+                <dd class="bulma-title bulma-is-1 bulma-mb-3 bulma-is-block bulma-has-text-weight-bold"
+				 th:text="${stats_publishers != null ? stats_publishers : (count_publishers != null ? #numbers.formatInteger(count_publishers,1,'DEFAULT') : '450+') }">
+                  450+
+                </dd>
+              </dl>
+            </a>
+          </article>
+
+          <article class="bulma-column bulma-is-one-third">
+            <a th:href="${settings.dspace_site+'browse?type=language&locale-attribute='+language}"
+              class="bulma-is-block">
+              <dl class="bulma-m-0 bulma-is-flex bulma-is-flex-direction-column-reverse">
+                <dt class="bulma-is-size-6 bulma-is-block">Languages represented</dt>
+                <dd class="bulma-title bulma-is-1 bulma-mb-3 bulma-is-block bulma-has-text-weight-bold"
+				 th:text="${stats_languages != null ? stats_languages : '80+'}">
+                  80+
+                </dd>
+              </dl>
+            </a>
+          </article>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+</th:block>

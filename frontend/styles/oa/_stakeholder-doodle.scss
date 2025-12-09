@@ -1,0 +1,26 @@
+// oa/_stakeholder-doodle.scss
+// Doodles specific to pages for libraries, publishers, researchers, and funders
+// Used on: stakeholder top-level section pages
+
+.oa-stakeholder-doodle {
+  .bulma-image {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 50%;
+    margin-left: auto;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 1023.98px) {
+  .oa-section-illustration .bulma-image {
+    max-width: min(70vw, 320px);
+    margin: 1rem auto 0;
+  }
+}

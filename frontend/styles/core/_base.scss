@@ -1,0 +1,51 @@
+// core/_base.scss
+// Base resets & global tokens (vars, root CSS vars)
+// Used on: entire site
+// Depends on: oa-colours, sass:color
+// Note: keep minimal and global-only, no custom or component styles
+
+// For colour functions
+@use "sass:color";
+
+// To access $brand-primary-* and $oa-colour-*
+@use "../oa-colours" as *;
+
+:root {
+  // Link states via CSS vars instead of Sass
+  --bulma-link-hover: #000000;
+  --bulma-link-visited: #000000;
+
+  // Align borders/backgrounds
+  --bulma-border: #{$oa-colour-stone-300};
+  --bulma-background: #{$oa-colour-paper};
+
+  // Form control borders
+  --bulma-input-border-color: #{$oa-colour-stone-300};
+  --bulma-input-hover-border-color: #{$oa-colour-stone-600};
+
+  // Focus outline
+  --oa-focus: #000000;
+}
+
+// Smoothing for web fonts and kerning
+html, body { 
+  -webkit-font-smoothing: antialiased; 
+  -moz-osx-font-smoothing: grayscale; 
+  letter-spacing: 0.015em;
+  font-weight: 400;
+}
+
+table {
+  display: block;
+  width: 100%;
+  font-size: smaller;
+  overflow-x: scroll;
+}
+
+address {
+  font-style: normal;
+}
+
+strong {
+  color: currentColor;
+}
