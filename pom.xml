@@ -91,7 +91,7 @@
 		<dependency>
 			<groupId>com.rometools</groupId>
 			<artifactId>rome</artifactId>
-			<version>1.12.2</version>
+			<version>1.19.0</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
@@ -144,6 +144,7 @@
 				</configuration>		
 			</plugin>
 			
+			<!-- uncomment for new frontend setup
 			<plugin>
 				<groupId>com.github.eirslett</groupId>
 				<artifactId>frontend-maven-plugin</artifactId>
@@ -192,7 +193,8 @@
 					<workingDirectory>frontend</workingDirectory>
 				</configuration>
 
-			</plugin>			
+			</plugin>		
+			-->	
 			
 			<!-- To prevent sensitive data from ending up in the jar, exclude all application-*.properties files. 
 			We will use an external application.properties instead. -->

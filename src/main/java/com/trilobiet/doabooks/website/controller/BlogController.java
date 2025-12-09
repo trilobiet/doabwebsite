@@ -21,24 +21,29 @@ public class BlogController extends BaseController {
 
 		ModelAndView mv = new ModelAndView("blog");
 		
-		String cats = environment.getProperty("blog_categories");
-		// NB: cats.split would produce a single empty list item on an empty string, hence the test!
-		List<String> categories = cats.equals("") ? Collections.emptyList() : Arrays.asList(cats.split(","));
-		List<RssItem> blogPosts = rssBlogService.getItems(10,categories);
-		
-		/* display post by link or first post */
-		RssItem featuredPost = null;
-		if (link != null) {
-			featuredPost = rssBlogService.getItemByLink(blogPosts, link).orElse(featuredPost);
-		}	
-		else if ( !blogPosts.isEmpty() ){
-			featuredPost = blogPosts.get(0);
+		try {
+			String cats = environment.getProperty("blog_categories");
+			// NB: cats.split would produce a single empty list item on an empty string, hence the test!
+			List<String> categories = cats.equals("") ? Collections.emptyList() : Arrays.asList(cats.split(","));
+			List<RssItem> blogPosts = rssBlogService.getItems(10,categories);
+			
+			/* display post by link or first post */
+			RssItem featuredPost = null;
+			if (link != null) {
+				featuredPost = rssBlogService.getItemByLink(blogPosts, link).orElse(featuredPost);
+			}	
+			else if ( !blogPosts.isEmpty() ){
+				featuredPost = blogPosts.get(0);
+			}
+	
+			blogPosts.remove(featuredPost);
+			
+			mv.addObject("blogPosts", blogPosts);
+			mv.addObject("featuredPost", featuredPost);	
 		}
-
-		blogPosts.remove(featuredPost);
-		
-		mv.addObject("blogPosts", blogPosts);
-		mv.addObject("featuredPost", featuredPost);	
+		catch (Exception e) {
+			log.error(e);
+		}	
 		
 		return mv;
 	}

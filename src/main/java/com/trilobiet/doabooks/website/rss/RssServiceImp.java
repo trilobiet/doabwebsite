@@ -2,6 +2,7 @@ package com.trilobiet.doabooks.website.rss;
 
 import java.io.IOException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
@@ -104,11 +105,11 @@ public class RssServiceImp implements RssService {
 		SyndFeed feed = null;
 		
 		try {
-			URL url = new URL(feedUrl); 
+			URLConnection uc = new URL(feedUrl).openConnection();
+			uc.setConnectTimeout(2000);
+			uc.setReadTimeout(2000);
 			SyndFeedInput input = new SyndFeedInput();
-			// input.setAllowDoctypes(true);
-			// input.setXmlHealerOn(true);
-			feed = input.build(new XmlReader(url));
+			feed = input.build(new XmlReader(uc));
 			
 		} catch (IllegalArgumentException | FeedException | IOException e) {
 			
