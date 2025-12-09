@@ -3,11 +3,19 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <th:block th:fragment="hero">
   <section class="bulma-hero bulma-is-fullheight" role="region" aria-label="Homepage hero">
-    <div class="bulma-hero-body bulma-pt-6 bulma-mt-4">
-      <div class="bulma-container bulma-is-max-widescreen">
+    <div class="bulma-hero-body bulma-pt-6 bulma-pb-6 bulma-mt-4">
+      <div class="bulma-container bulma-is-max-fullhd">
 
-        <!-- Tagline + intro + doodle -->
-        <th:block th:insert="home/herotagline :: tagline">Tagline</th:block>
+        <div class="bulma-columns bulma-is-variable bulma-is-6 bulma-is-vcentered">
+          <!-- Tagline + intro -->
+          <div class="bulma-column bulma-is-half-desktop bulma-is-full-tablet">
+            <th:block th:insert="home/herotagline :: tagline">Tagline</th:block>
+          </div>
+          <!-- Search + browse tags -->
+          <div class="bulma-column bulma-is-half-desktop bulma-is-full-tablet">
+            <th:block th:insert="home/herosearch :: search">Search</th:block>
+          </div>
+        </div>
 
         <!-- Featured titles -->
         <div class="bulma-mt-6" role="region" aria-label="New additions" aria-live="polite">
@@ -16,9 +24,6 @@
           </header>
           <div class="carouselloader" th:data-src="|@{'/' + ${language} + '/featuredtitles'} #FeaturedTitles|"></div>
         </div>
-
-        <!-- Search + browse tags -->
-        <th:block th:insert="home/herosearch :: search">Tagline</th:block>
 
       </div>
     </div>

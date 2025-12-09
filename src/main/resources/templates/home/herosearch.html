@@ -3,13 +3,13 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <th:block th:fragment="search">
   <section aria-labelledby="home-search-title"
-           class="bulma-mt-6 bulma-hero bulma-is-halfheight bulma-has-background-white">
-    <div class="bulma-hero-body">
-      <div class="bulma-container bulma-has-text-centered">
-        
-        <h2 class="bulma-title bulma-is-2 bulma-mb-5 bulma-has-text-weight-bold"
+           class="bulma-hero bulma-has-background-white">
+    <div class="bulma-hero-body bulma-py-4">
+      <div class="bulma-container">
+
+        <h2 class="bulma-title bulma-is-3 bulma-mb-4 bulma-has-text-weight-semibold"
             id="home-search-title">
-          Searching for something specific?
+          Find open access books:
         </h2>
 
         <form
@@ -21,11 +21,11 @@
             Find open access books by keyword
           </label>
 
-          <div class="bulma-field bulma-has-addons oa-input-group">
+          <div class="bulma-field bulma-has-addons oa-input-group" style="max-width: 560px;">
             <p class="bulma-control bulma-is-expanded">
               <input
                 id="ipt_search"
-                class="bulma-input bulma-is-shadowless bulma-is-outlined bulma-has-text-centered"
+                class="bulma-input bulma-is-shadowless bulma-is-outlined"
                 type="search"
                 name="query"
                 placeholder="Search DOAB"
@@ -48,16 +48,16 @@
           </div>
         </form>
 
-        <div class="bulma-mt-5" role="group" aria-label="Browse by">
-          <h3 class="bulma-is-size-5 bulma-mb-3 bulma-has-text-weight-normal">Browse</h3>
-          <ul class="bulma-tags bulma-is-justify-content-center">
-            <li><a class="bulma-tag bulma-is-medium bulma-has-background-brand-hero bulma-has-text-paper bulma-has-text-weight-medium"
+        <div class="bulma-mt-4" role="group" aria-label="Browse by">
+          <h3 class="bulma-is-size-6 bulma-mb-2 bulma-has-text-weight-normal">Browse</h3>
+          <ul class="bulma-tags">
+            <li><a class="bulma-tag bulma-has-background-brand bulma-has-text-paper bulma-has-text-weight-medium"
                    th:href="${settings.dspace_site+'/browse?type=classification_text&locale-attribute='+language}">Subject</a></li>
-            <li><a class="bulma-tag bulma-is-medium bulma-has-background-brand-hero bulma-has-text-paper bulma-has-text-weight-medium"
+            <li><a class="bulma-tag bulma-has-background-brand bulma-has-text-paper bulma-has-text-weight-medium"
                    th:href="${settings.dspace_site+'/browse?type=publisher&locale-attribute='+language}">Publisher</a></li>
-            <li><a class="bulma-tag bulma-is-medium bulma-has-background-brand-hero bulma-has-text-paper bulma-has-text-weight-medium"
+            <li><a class="bulma-tag bulma-has-background-brand bulma-has-text-paper bulma-has-text-weight-medium"
                    th:href="${settings.dspace_site+'/browse?type=collection&locale-attribute='+language}">Collections</a></li>
-            <li><a class="bulma-tag bulma-is-medium bulma-has-background-brand-hero bulma-has-text-paper bulma-has-text-weight-medium"
+            <li><a class="bulma-tag bulma-has-background-brand bulma-has-text-paper bulma-has-text-weight-medium"
                    th:href="${settings.dspace_site+'/browse?type=language&locale-attribute='+language}">Language</a></li>
           </ul>
         </div>
