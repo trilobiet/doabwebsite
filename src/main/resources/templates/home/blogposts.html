@@ -13,9 +13,9 @@
 <!--
 	Blogposts (Hypotheses)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<th:block th:fragment="blogposts">
+<th:block th:fragment="blogposts" th:with="items=${rssHypothesesItems}">
   <li class="bulma-column bulma-is-full-mobile bulma-is-half-tablet bulma-is-one-third-desktop bulma-is-flex"
-       th:each="blogPost : ${rssHypothesesItems}">
+       th:each="blogPost : ${items}">
     <th:block th:insert="~{home/feed_card :: card(
       title=${blogPost.title},
       url=@{'/'+${language}+'/blog/?link=' + ${@viewhelpers.urlEncode(blogPost.link)}},

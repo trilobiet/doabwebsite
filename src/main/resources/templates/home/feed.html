@@ -15,10 +15,8 @@
         </div>
       </header>
       <ul class="bulma-columns bulma-is-multiline bulma-is-variable bulma-is-6 bulma-is-align-items-stretch oa-news-feed" role="list">
-        <th:block th:if="${spotlights != null and !#lists.isEmpty(spotlights)}"
-                  th:insert="home/spotlights :: spotlights">Spotlights</th:block>
-        <th:block th:if="${rssHypothesesItems != null and !#lists.isEmpty(rssHypothesesItems)}"
-                  th:insert="home/blogposts :: blogposts">Blog posts</th:block>
+        <th:block th:insert="home/spotlights :: spotlights">Spotlights</th:block>
+        <th:block th:insert="home/blogposts :: blogposts">Blog posts</th:block>
       </ul>
     </div>
   </section>
