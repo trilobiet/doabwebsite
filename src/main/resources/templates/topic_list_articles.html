@@ -10,40 +10,38 @@
 	<!--
 		BODY
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-	<main layout:fragment="content" class="section doab-topic doab-main" th:classappend="${topic.cssClass}">
+	<main layout:fragment="content" class="bulma-section" th:classappend="${topic.cssClass}">
 	
-		<div class="container">
+		<div class="bulma-container">
 		
 			<th:block th:insert="include/breadcrumbs :: breadcrumbs"/>
 		
-			<div class="columns">
+			<div class="bulma-columns">
 			
-				<!-- main content left -->
-				<div class="column is-three-quarters">
+				<!-- Left: main content -->
+				<div class="bulma-column bulma-is-three-quarters">
 				
 					<p th:if="${#lists.isEmpty(articles)}" th:text="#{no_articles}">Nothing here yet...</p>
 
 					<th:block th:each="article: ${articles}"> 
 
 						<article 
-							class="is-clearfix doab-article doab-primary" th:classappend="${article.cssClass}">
+							class="bulma-block" th:classappend="${article.cssClass}">
 							
-							<div class="columns">
+							<div class="bulma-columns">
 							
-								<div class="column">
+								<div class="bulma-column bulma-is-12-mobile bulma-is-9-tablet">
 		
-									<div th:utext="${article.content}" class="content">
+									<div th:utext="${article.content}" class="bulma-content bulma-is-size-5 bulma-mb-6">
 										Article content
 									</div>
 									
 								</div>
 			
-								<div class="column is-one-quarter" th:if="${not #lists.isEmpty(article.media)}">
+								<div class="bulma-column bulma-is-12-mobile bulma-is-3-tablet" th:if="${not #lists.isEmpty(article.media)}">
 	
-									<figure class="doab-image" th:each="media: ${@viewhelpers.images(article.media)}">
-										<a data-fancybox="gallery" th:href="${media.url}">
-											<img th:src="${media.url}" alt="">
-										</a>
+									<figure class="bulma-image" th:each="media: ${@viewhelpers.images(article.media)}">
+										<img th:src="${media.url}" alt="" class="bulma-is-rounded">
 									</figure>
 	
 								</div>
@@ -60,16 +58,28 @@
 					
 				</div>
 			
-				<!-- sidebar right -->
-				<div class="column">
+				<!-- Right: sidebar -->
+				<aside class="bulma-column" aria-labelledby="sidenav-title">
 				
-					<th:block th:insert="include/currentsection :: topics"/>
+					<nav class="bulma-panel bulma-is-shadowless" th:if="${section}">
+						<header class="bulma-level bulma-is-mobile bulma-pb-2 oa-section-header">
+							<div class="bulma-level-left">
+								<h2 class="bulma-title bulma-is-6 bulma-pb-4 bulma-has-text-weight-semibold" th:text="${@translator.translate(section,language).name}">
+									Section name
+								</h2>
+							</div>
+						</header>
+						<a th:each="t : ${section.topics}" class="bulma-panel-block"
+							th:href="@{'/'+${language}+'/'+${section.slug}+'/'+${t.slug}}">
+							<span th:text="${@translator.translate(t,language).name}">Topic name</span>
+						</a>
+					</nav>
 
 					<th:block th:insert="include/relatedarticles :: linked"/>
 
 					<th:block th:insert="include/relatedarticles :: related"/>
 				
-				</div>
+				</aside>
 			
 			</div>
 
@@ -79,7 +89,6 @@
 
 </body>
 </html>
-
 
 
 

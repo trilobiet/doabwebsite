@@ -10,30 +10,29 @@
 	<!--
 		BODY
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-	<main layout:fragment="content" class="section doab-topic doab-main" th:classappend="${topic.cssClass}">
+	<main layout:fragment="content" class="bulma-section" th:classappend="${topic.cssClass}">
 
-		<div class="container">
+		<div class="bulma-container">
 		
 			<th:block th:insert="include/breadcrumbs :: breadcrumbs"/>
 		
-			<div class="columns">
+			<div class="bulma-columns">
 			
-				<!-- main content -->
-				<div class="column is-three-quarters"> 
+				<!-- Left: main content -->
+				<div class="bulma-column bulma-is-three-quarters"> 
 				
-					<div class="content doab-primary">
+					<!-- Topic heading + intro -->
+					<div class="bulma-content">
 
 						<h1 th:text="${@translator.translate(topic,language).name}" >
 							Topic title
 						</h1>
 		
 						<div th:utext="${topic.description}"
-						     class="topic" th:classappend="${topic.cssClass}">
+						     class="topic bulma-is-size-5" th:classappend="${topic.cssClass}">
 		
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Praesent scelerisque neque neque, ac elementum quam dignissim interdum.
-								Phasellus et placerat elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 								Praesent scelerisque neque neque, ac elementum quam dignissim interdum.
 								Phasellus et placerat elit.
 							</p>
@@ -42,41 +41,60 @@
 						
 					</div>	
 					
-					<div class="doab-summaries">
+					<!-- Summaries list -->
+					<article th:each="article: ${articles}" class="bulma-mb-6">
+			
+							<div class="bulma-columns">
+								<div class="bulma-column bulma-is-12-mobile bulma-is-9-tablet">
+									<div class="bulma-content bulma-is-size-5">
+										<h2 th:text="${article.title}">
+											Article title
+										</h2>
 					
-						<article th:each="article: ${articles}" class="content doab-summary">
-			
-							<h2 th:text="${article.title}">
-								Article title
-							</h2>
-			
-							<div th:utext="${article.summary}">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Praesent scelerisque neque neque, ac elementum quam dignissim interdum.
-								Phasellus et placerat elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Praesent scelerisque neque neque, ac elementum quam dignissim interdum.
-								Phasellus et placerat elit.
+										<div th:utext="${article.summary}">
+											Summary
+										</div>
+					
+										<p class="bulma-mt-2">
+											<a class="bulma-button bulma-is-medium bulma-is-outlined bulma-is-dark bulma-is-shadowless"
+												th:href="@{'/'+${language}+'/'+${section.slug}+'/article/'+${article.slug}}"
+												th:text="#{read_more}">
+												Read more
+											</a>
+										</p>
+									</div>
+								</div>
 							</div>
 			
-							<p>
-								<a th:href="@{'/'+${language}+'/'+${section.slug}+'/article/'+${article.slug}}"
-								   th:text="#{read_more}">
-									Read more
-								</a>
-							</p>
-			
 						</article>
-						
-					</div>	
 					
 				</div>	
 					
-				<!-- sidebar -->
-				<div class="column">
+				<!-- Right: sidebar -->
+				<aside class="bulma-column" aria-labelledby="sidenav-title">
 				
-					<th:block th:insert="include/currentsection :: topics"/>
+					<nav class="bulma-panel bulma-is-shadowless" th:if="${section}">
+						<header class="bulma-level bulma-is-mobile bulma-pb-2 oa-section-header">
+							<div class="bulma-level-left">
+								<h2 id="sidenav-title"
+										class="bulma-title bulma-is-6 bulma-pb-4 bulma-has-text-weight-semibold"
+										th:text="${@translator.translate(section,language).name}">
+									Section name
+								</h2>
+							</div>
+						</header>
+
+						<a th:each="t : ${section?.topics}"
+							th:href="@{'/'+${language}+'/'+${section?.slug}+'/'+${t.slug}}"
+							class="bulma-panel-block">
+							<span th:text="${@translator.translate(t,language).name}">Topic name</span>
+						</a>
+					</nav>
 				
-				</div>
+					<th:block th:insert="include/relatedarticles :: linked"/>
+					<th:block th:insert="include/relatedarticles :: related"/>
+				
+				</aside>
 
 			</div>
 			
@@ -86,7 +104,6 @@
 
 </body>
 </html>
-
 
 
 

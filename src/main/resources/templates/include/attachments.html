@@ -10,19 +10,17 @@
 	<!--
 		BODY
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-	<main class="section doab-main" layout:fragment="content">
+	<main class="bulma-section doab-main" layout:fragment="content">
 
 		<th:block th:fragment="attachments" th:with="attachments=${@viewhelpers.attachments(article.media)}">
 
-			<div class="doab-attachments content" th:if="${not #lists.isEmpty(attachments)}">
+			<div class="doab-attachments bulma-content" th:if="${not #lists.isEmpty(attachments)}">
 			
-				<div class="doab-attachments-header">Files</div>
-				
-				<hr class="is-hidden"/>
+				<div class="doab-attachments-header bulma-title bulma-is-6 bulma-has-text-weight-semibold">Files</div>
 			
-				<ul>
-					<li th:each="attachment:${attachments}">
-						<a data-fancybox="gallery" th:href="${attachment.url}" th:text="${attachment.name}">
+				<ul class="bulma-mt-3">
+					<li th:each="attachment:${attachments}" class="bulma-mb-2">
+						<a class="bulma-button bulma-is-light bulma-is-shadowless" data-fancybox="gallery" th:href="${attachment.url}" th:text="${attachment.name}">
 							Attachment name
 						</a>
 					</li>
@@ -37,7 +35,6 @@
 </body>
 
 </html>
-
 
 
 
