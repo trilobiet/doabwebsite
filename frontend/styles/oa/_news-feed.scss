@@ -54,10 +54,9 @@
     $len: list.length($palette);
     @for $i from 1 through $len {
       .oa-news-feed > .bulma-column:nth-child(#{$len}n + #{$i}) .bulma-card {
-        background: linear-gradient(135deg,
-          list.nth($palette, $i),
-          list.nth($palette, (($i) % $len) + 1)
-        );
+        // step through the palette skipping every other colour to reduce repeats
+        $index: ((($i - 1) * 2) % $len) + 1;
+        background: list.nth($palette, $index);
       }
     }
   }
