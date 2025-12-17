@@ -15,24 +15,19 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <th:block th:fragment="section_navigation">
   <a class="bulma-navbar-link bulma-has-text-weight-medium bulma-is-block bulma-is-flex bulma-is-align-items-center bulma-is-align-self-stretch bulma-pr-5"
-     data-no-caret
      th:href="@{'/'+${language}+'/'+${mnusection.slug}}"
      th:text="${@translator.translate(mnusection,language).name}"
      th:classappend="${#httpServletRequest.requestURI.startsWith('/' + language + '/' + mnusection.slug)} ? ' bulma-is-active' : ''">
   </a>
 
-  <div class="bulma-navbar-dropdown bulma-is-shadowless oa-megamenu"
+  <div class="bulma-navbar-dropdown bulma-is-shadowless oa-nav-dropdown"
        th:if="${mnusection.topics != null and !#lists.isEmpty(mnusection.topics)}">
-    <ul class="bulma-columns bulma-is-multiline bulma-is-gapless">
-      <li class="bulma-column bulma-is-one-quarter-desktop bulma-is-one-third-tablet bulma-is-full-mobile"
-          th:each="mnutopic : ${mnusection.topics}">
-        <a class="bulma-navbar-item bulma-is-shadowless bulma-has-text-weight-medium"
-           th:href="@{'/'+${language}+'/'+${mnusection.slug}+'/'+${mnutopic.slug}}"
-           th:text="${@translator.translate(mnutopic,language).name}"
-           th:classappend="${#httpServletRequest.requestURI.startsWith('/' + language + '/' + mnusection.slug + '/' + mnutopic.slug)} ? ' bulma-is-active' : ''">
-        </a>
-      </li>
-    </ul>
+    <a class="bulma-navbar-item bulma-is-shadowless bulma-has-text-weight-medium"
+       th:each="mnutopic : ${mnusection.topics}"
+       th:href="@{'/'+${language}+'/'+${mnusection.slug}+'/'+${mnutopic.slug}}"
+       th:text="${@translator.translate(mnutopic,language).name}"
+       th:classappend="${#httpServletRequest.requestURI.startsWith('/' + language + '/' + mnusection.slug + '/' + mnutopic.slug)} ? ' bulma-is-active' : ''">
+    </a>
   </div>
 </th:block>
 

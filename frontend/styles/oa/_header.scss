@@ -3,6 +3,7 @@
 // Used globally
 // Depends on: Bulma navbar and columns, oa-colours
 
+@use "sass:list";
 @use "../oa-colours" as *;
 
 .oa-header {
@@ -110,7 +111,7 @@
   }
 }
 
-// Megamenu (desktop)
+// Desktop dropdowns (simple list)
 @media screen and (min-width: 1024px) {
 
   .oa-header {
@@ -120,60 +121,44 @@
     }
 
     .bulma-navbar-item.bulma-has-dropdown { 
-      position: static; 
+      position: relative; 
     }
     
-    // show megamenu on hover/focus of parent link
-    .bulma-navbar-item.bulma-has-dropdown.bulma-is-hoverable:hover > .oa-megamenu,
-    .bulma-navbar-item.bulma-has-dropdown:focus-within > .oa-megamenu { 
+    // show dropdown on hover/focus of parent link
+    .bulma-navbar-item.bulma-has-dropdown.bulma-is-hoverable:hover > .oa-nav-dropdown,
+    .bulma-navbar-item.bulma-has-dropdown:focus-within > .oa-nav-dropdown { 
       display: block; 
     }
 
-    .oa-megamenu {
+    .oa-nav-dropdown {
+      $oa-nav-dropdown-bg: color-mix(in srgb, $oa-colour-ink 82%, list.nth($oa-brand-colour-list, 1) 18%);
       position: absolute;
+      top: calc(100% + 1px);
       left: 0;
-      right: 0;
-      top: 100%;
-      width: 100vw;
-      margin-left: calc(50% - 50vw);
+      min-width: 240px;
       display: none;
-      background: $oa-colour-ink; // expanded
+      background: $oa-nav-dropdown-bg;
       color: $oa-colour-paper;
-      border: 0;
-      padding: 0;
-      overflow: visible;
+      border: 1px solid $oa-nav-dropdown-bg;
+      padding: .35rem 0;
 
       a.bulma-navbar-item { 
         color: inherit; 
-      }
-
-      .bulma-columns {
-        display: flex;
-        flex-wrap: wrap;
-        margin-left: 0;
-        margin-right: 0;
-      }
-
-      .bulma-column {
-        padding-left: 0;
-        padding-right: 0;
+        white-space: normal;
+        padding-inline: 1rem;
       }
 
       .bulma-navbar-item {
         display: block;
-        padding: .875rem 1rem;
         text-align: left;
-        white-space: normal;
-        word-break: normal;
-        overflow-wrap: normal;
+        padding-block: .6rem;
         transition: background-color .15s ease, color .15s ease;
-        color: currentColor;
 
         &:hover,
         &:focus,
         &:focus-visible,
         &.bulma-is-active {
-          background: color-mix(in srgb, currentColor 10%, transparent);
+          background: color-mix(in srgb, currentColor 18%, transparent);
           outline: 0;
         }
       }
@@ -188,12 +173,14 @@
     }
 
     // condensed state (on scroll)
-    &.js-is-condensed .oa-megamenu {
-      background: $brand-primary-500;
-      color: var(--bulma-paper);
+    &.js-is-condensed .oa-nav-dropdown {
+      $oa-nav-dropdown-bg: color-mix(in srgb, $oa-colour-ink 82%, list.nth($oa-brand-colour-list, 1) 18%);
+      background: $oa-nav-dropdown-bg;
+      border-color: $oa-nav-dropdown-bg;
+      color: $oa-colour-paper;
 
       a.bulma-navbar-item { 
-        color: var(--bulma-paper); 
+        color: $oa-colour-paper; 
       }
     }
   }
@@ -210,12 +197,12 @@
     display: block; 
   }
 
-  .oa-nav-mobile {
-    padding: 0;
-    background: var(--bulma-stone-light); // expanded
-    color: var(--bulma-ink);
-    max-height: calc(100vh - 72px);
-    max-height: calc(100dvh - 72px);
+    .oa-nav-mobile {
+      padding: 0;
+      background: var(--bulma-stone-light); // expanded
+      color: var(--bulma-ink);
+      max-height: calc(100vh - 72px);
+      max-height: calc(100dvh - 72px);
     -webkit-overflow-scrolling: touch;
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -236,12 +223,12 @@
       }
     }
 
-    .oa-megamenu {
+    .oa-nav-dropdown {
       margin: 0;
-      padding: 0;
+      padding: .25rem 0;
 
       .bulma-navbar-item {
-        padding: .4375rem 1rem;
+        padding: .6rem 1rem;
         background: var(--bulma-stone-light);
         color: var(--bulma-ink);
         white-space: normal;
