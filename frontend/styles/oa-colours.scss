@@ -23,14 +23,15 @@ $oa-sunset-colours: (
   "magenta-1":    #F85B6A,
   "magenta-2":    #F0559E,
   "magenta-3":    #E06AB9,
-  "fuchsia":      #C07BD7,
-  "violet":       #AF82E0,
-  "lilac":        #9A87E4,
+  "lilac-1":      #C07BD7,
+  "lilac-2":      #AF82E0,
+  "lilac-3":      #9A87E4,
   "periwinkle":   #4F8FDB,
   "blue-1":       #2397AD,
-  "teal":         #1496C4,
-  "accent":       #2F7DFF
+  "teal":         #1496C4
 ) !default;
+
+$oa-sunset-accent: #2F7DFF !default;
 
 // Alternate brand colours (honeydew)
 $oa-honeydew-colours: (
@@ -43,8 +44,15 @@ $oa-honeydew-colours: (
   "melon-2":      #E6D39B,
   "peach-1":      #F3C48E,
   "peach-2":      #FFBE6F,
-  "orange-soft":  #F6A85F,
-  "accent":       #FC5102
+  "orange-soft":  #F6A85F
+) !default;
+
+$oa-honeydew-accent: #FC5102 !default;
+
+// Accent map for semantic use (CTA, focus, alerts)
+$oa-accents: (
+  "sunset": $oa-sunset-accent,
+  "honeydew": $oa-honeydew-accent
 ) !default;
 
 // Helper to derive ordered lists (skip accent)
@@ -59,14 +67,12 @@ $oa-honeydew-colours: (
 }
 
 $oa-sunset-list: oa-colour-list($oa-sunset-colours) !default;
-$oa-sunset-accent: map.get($oa-sunset-colours, "accent") !default;
-
 $oa-honeydew-list: oa-colour-list($oa-honeydew-colours) !default;
-$oa-honeydew-accent: map.get($oa-honeydew-colours, "accent") !default;
 
 // Ordered lists for cycling in UI elements (covers, pills, etc.)
-$oa-brand-colour-list: $oa-sunset-list;
-$oa-brand-colour-list-alt: $oa-honeydew-list;
+// Default to honeydew; sunset as alternate
+$oa-brand-colour-list: $oa-honeydew-list;
+$oa-brand-colour-list-alt: $oa-sunset-list;
 
 // ————————————————————————————————————————
 // Primary colour families (to be selected with the team)
