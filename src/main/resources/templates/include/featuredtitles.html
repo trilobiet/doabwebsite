@@ -18,7 +18,10 @@
          data-splide='{"perPage":8,"gap":"1rem","breakpoints":{"1400":{"perPage":7},"1200":{"perPage":6},"1024":{"perPage":5},"820":{"perPage":4},"640":{"perPage":3},"480":{"perPage":2}}}'>
       <div class="splide__track">
         <ul class="splide__list">
-          <li class="splide__slide" th:each="item, iter : ${featuredItems}">
+          <li class="splide__slide"
+              th:each="item, iter : ${featuredItems}"
+              th:if="${not #strings.isEmpty(item.title)}"
+              th:with="subject=${(topSubjects != null and topSubjects.size() > iter.index) ? topSubjects[iter.index] : ''}">
             <a th:href="${item.url+'?locale-attribute='+language}"
               class="bulma-card bulma-is-shadowless oa-carousel__item"
               th:attr="aria-label=${item.title}">
@@ -32,12 +35,12 @@
                         th:alt="|${item.title} – cover|"
                         onerror="this.closest('.oa-carousel__box').classList.add('is-fallback'); this.remove();">
                     <div class="oa-cover-fallback"
-                         th:text="|${topSubjects[iter.index]} ${item.title}|">
+                         th:text="|${#strings.defaultString(subject)} ${#strings.defaultString(item.title)}|">
                       Featured title
                     </div>
                   </div>
                   <figcaption class="bulma-is-size-7 oa-carousel__title bulma-mt-2">
-                    <strong th:text="${topSubjects[iter.index]}">Subject</strong>
+                    <strong th:text="${subject}">Subject</strong>
                     <div class="bulma-has-text-weight-normal" th:text="${item.title}">Item title</div>
                   </figcaption>
                 </figure>
