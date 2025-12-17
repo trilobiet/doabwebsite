@@ -16,6 +16,24 @@ $oa-colour-paper:      #ffffff !default; // main background / inverted (dark the
 $oa-colour-stone-600:  #555555 !default; // secondary text / inverted (dark theme) borders
 $oa-colour-stone-300:  #bfbfbf !default; // subtle borders / inverted (dark theme) text
 
+// Brand colours
+$oa-brand-colours: (
+  "scarlet":    #fe4e3e,
+  "magenta-1":  #ff406f,
+  "magenta-2":  #fb489c,
+  "magenta-3":  #f74ca6,
+  "fuchsia":    #e55cc2,
+  "violet":     #c272de,
+  "lilac":      #ae7ce7,
+  "periwinkle": #9884ed,
+  "blue-1":     #4699e7,
+  "teal":       #1ca3ba,
+  "cyan":       #0da0d1
+) !default;
+
+// Ordered list for cycling in UI elements (covers, pills, etc.)
+$oa-brand-colour-list: map.values($oa-brand-colours);
+
 // ————————————————————————————————————————
 // Primary colour families (to be selected with the team)
 // Tones: 700=hero/dark sections, 600=primary UI, 500=links/focus

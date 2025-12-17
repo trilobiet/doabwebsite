@@ -18,17 +18,20 @@
          data-splide='{"perPage":8,"gap":"1rem","breakpoints":{"1400":{"perPage":7},"1200":{"perPage":6},"1024":{"perPage":5},"820":{"perPage":4},"640":{"perPage":3},"480":{"perPage":2}}}'>
       <div class="splide__track">
         <ul class="splide__list">
-          <li class="splide__slide" th:each="item : ${featuredItems}">
+          <li class="splide__slide" th:each="item, iter : ${featuredItems}">
             <a th:href="${item.url+'?locale-attribute='+language}"
               class="bulma-card bulma-is-shadowless oa-carousel__item"
               th:attr="aria-label=${item.title}">
               <div class="bulma-card-image">
                 <figure class="bulma-image">
-                  <div class="oa-carousel__box">
+                  <div class="oa-carousel__box"
+                       th:classappend="${#strings.isEmpty(item.thumbnailPath)} ? ' is-fallback' : ''">
                     <img class="oa-carousel__img bulma-is-radiusless"
                         loading="lazy" decoding="async" draggable="false"
                         th:src="${#strings.isEmpty(item.thumbnailPath)} ? @{/static-assets/images/missing.png} : @{|${settings.dspace_api}${item.thumbnailPath}|}"
-                        th:alt="|${item.title} – cover|">
+                        th:alt="|${item.title} – cover|"
+                        onerror="this.closest('.oa-carousel__box').classList.add('is-fallback'); this.remove();">
+                    <div class="oa-cover-fallback" th:text="${item.title}">Featured title</div>
                   </div>
                   <figcaption class="bulma-is-size-7 oa-carousel__title bulma-mt-2" th:text="${item.title}">Item title</figcaption>
                 </figure>
