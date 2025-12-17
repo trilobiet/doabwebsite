@@ -3,8 +3,9 @@
 // Our custom colour and type variables
 // ————————————————————————————————————————
 
-// For map functions
+// For map/list functions
 @use "sass:map";
+@use "sass:list";
 
 // ————————————————————————————————————————
 // Monochrome palette
@@ -16,23 +17,56 @@ $oa-colour-paper:      #ffffff !default; // main background / inverted (dark the
 $oa-colour-stone-600:  #555555 !default; // secondary text / inverted (dark theme) borders
 $oa-colour-stone-300:  #bfbfbf !default; // subtle borders / inverted (dark theme) text
 
-// Brand colours
-$oa-brand-colours: (
-  "scarlet":    #fe4e3e,
-  "magenta-1":  #ff406f,
-  "magenta-2":  #fb489c,
-  "magenta-3":  #f74ca6,
-  "fuchsia":    #e55cc2,
-  "violet":     #c272de,
-  "lilac":      #ae7ce7,
-  "periwinkle": #9884ed,
-  "blue-1":     #4699e7,
-  "teal":       #1ca3ba,
-  "cyan":       #0da0d1
+// Brand colours (sunset)
+$oa-sunset-colours: (
+  "scarlet":      #F25545,
+  "magenta-1":    #F85B6A,
+  "magenta-2":    #F0559E,
+  "magenta-3":    #E06AB9,
+  "fuchsia":      #C07BD7,
+  "violet":       #AF82E0,
+  "lilac":        #9A87E4,
+  "periwinkle":   #4F8FDB,
+  "blue-1":       #2397AD,
+  "teal":         #1496C4,
+  "accent":       #2F7DFF
 ) !default;
 
-// Ordered list for cycling in UI elements (covers, pills, etc.)
-$oa-brand-colour-list: map.values($oa-brand-colours);
+// Alternate brand colours (honeydew)
+$oa-honeydew-colours: (
+  "sage-1":       #CDE3DD,
+  "sage-2":       #B8D6CC,
+  "sage-3":       #9FC6B8,
+  "green-1":      #8FBFA6,
+  "green-2":      #A9CFA0,
+  "melon-1":      #C9D79A,
+  "melon-2":      #E6D39B,
+  "peach-1":      #F3C48E,
+  "peach-2":      #FFBE6F,
+  "orange-soft":  #F6A85F,
+  "accent":       #FC5102
+) !default;
+
+// Helper to derive ordered lists (skip accent)
+@function oa-colour-list($map) {
+  $vals: ();
+  @each $key, $value in $map {
+    @if $key != "accent" {
+      $vals: list.append($vals, $value);
+    }
+  }
+  @return $vals;
+}
+
+$oa-sunset-list: oa-colour-list($oa-sunset-colours) !default;
+$oa-sunset-accent: map.get($oa-sunset-colours, "accent") !default;
+
+$oa-honeydew-list: oa-colour-list($oa-honeydew-colours) !default;
+$oa-honeydew-accent: map.get($oa-honeydew-colours, "accent") !default;
+
+// Ordered lists for cycling in UI elements (covers, pills, etc.)
+$oa-brand-colour-list: $oa-sunset-list;
+$oa-brand-colour-list-alt: $oa-honeydew-list;
 
 // ————————————————————————————————————————
 // Primary colour families (to be selected with the team)

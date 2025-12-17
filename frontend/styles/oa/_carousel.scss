@@ -4,6 +4,7 @@
 // Note: works with Splide (https://splidejs.com/)
 
 @use "sass:list";
+@use "branding" as branding;
 @use "../oa-colours" as *;
 
 .oa-carousel {
@@ -105,12 +106,28 @@
 }
 
 // Cycle brand colours from the logo for fallback blocks
-$oa-cover-fallback-colours: $oa-brand-colour-list;
+// 1/2 = sunset, 3/4 = honeydew
+$oa-cover-fallback-colours: if(
+  branding.$doab-logo-variant == 3 or branding.$doab-logo-variant == 4,
+  $oa-brand-colour-list-alt,
+  $oa-brand-colour-list
+);
 
-@if $oa-cover-fallback-colours != null {
-  @for $i from 1 through list.length($oa-cover-fallback-colours) {
-    .splide__slide:nth-child(#{list.length($oa-cover-fallback-colours)}n + #{$i}) .oa-cover-fallback {
-      background: list.nth($oa-cover-fallback-colours, $i);
+@mixin oa-cover-palette($palette) {
+  @if $palette != null {
+    @for $i from 1 through list.length($palette) {
+      .splide__slide:nth-child(#{list.length($palette)}n + #{$i}) .oa-cover-fallback {
+        background: list.nth($palette, $i);
+      }
     }
   }
+}
+
+@include oa-cover-palette($oa-cover-fallback-colours);
+
+// Alt palette when body signals honeydew logo variants
+body.oa-logo-variant-3,
+body.oa-logo-variant-4,
+body.oa-cover-alt-active {
+  @include oa-cover-palette($oa-brand-colour-list-alt);
 }

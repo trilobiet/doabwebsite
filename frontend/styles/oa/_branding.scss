@@ -1,8 +1,11 @@
 // oa/_branding.scss
 // DOAB logotype variants and quick-switch helpers
 
-// Set to 1 or 2 to pick which logo renders by default after rebuilds
-$doab-logo-variant: 1 !default;
+@use "../oa-colours" as oa;
+
+// Set to 1, 2, 3, or 4 to pick which logo renders by default after rebuilds
+// 1 = sunset (10-bar), 2 = sunset (5-bar), 3 = honeydew (10-bar), 4 = honeydew (5-bar)
+$doab-logo-variant: 4 !default;
 
 .oa-logo-stack {
   display: inline-flex;
@@ -23,15 +26,27 @@ $doab-logo-variant: 1 !default;
   .oa-logo-option-2 {
     display: if($doab-logo-variant == 2, block, none);
   }
+
+  .oa-logo-option-3 {
+    display: if($doab-logo-variant == 3, block, none);
+  }
+
+  .oa-logo-option-4 {
+    display: if($doab-logo-variant == 4, block, none);
+  }
 }
 
-// Add `oa-logo-variant-2` (or -1) to <body>
+// Add `oa-logo-variant-X` to <body>
 body.oa-logo-variant-1 .oa-logo-option-1,
-body.oa-logo-variant-2 .oa-logo-option-2 {
+body.oa-logo-variant-2 .oa-logo-option-2,
+body.oa-logo-variant-3 .oa-logo-option-3,
+body.oa-logo-variant-4 .oa-logo-option-4 {
   display: block !important;
 }
 
-body.oa-logo-variant-1 .oa-logo-option-2,
-body.oa-logo-variant-2 .oa-logo-option-1 {
+body.oa-logo-variant-1 .oa-logo-option:not(.oa-logo-option-1),
+body.oa-logo-variant-2 .oa-logo-option:not(.oa-logo-option-2),
+body.oa-logo-variant-3 .oa-logo-option:not(.oa-logo-option-3),
+body.oa-logo-variant-4 .oa-logo-option:not(.oa-logo-option-4) {
   display: none !important;
 }
