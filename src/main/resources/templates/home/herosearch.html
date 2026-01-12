@@ -1,0 +1,68 @@
+<!--
+	Hero search + browse tags
+~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<th:block th:fragment="search">
+  <section aria-labelledby="home-search-title"
+           class="bulma-hero bulma-has-background-white">
+    <div class="bulma-hero-body bulma-py-4">
+      <div class="bulma-container">
+
+        <h2 class="bulma-title bulma-is-3 bulma-mb-4 bulma-has-text-weight-semibold"
+            id="home-search-title">
+          Find open access books:
+        </h2>
+
+        <form
+          th:action="${settings.dspace_site+'discover'}"
+          role="search"
+          aria-labelledby="home-search-title">
+
+          <label for="ipt_search" class="bulma-is-sr-only" id="search-label">
+            Find open access books by keyword
+          </label>
+
+          <div class="bulma-field bulma-has-addons oa-input-group" style="max-width: 560px;">
+            <p class="bulma-control bulma-is-expanded">
+              <input
+                id="ipt_search"
+                class="bulma-input bulma-is-shadowless bulma-is-outlined"
+                type="search"
+                name="query"
+                placeholder="Search DOAB"
+                autocomplete="off"
+                required>
+              <input type="hidden" name="locale-attribute" th:value="${language}">
+            </p>
+
+            <p class="bulma-control">
+              <button type="submit" class="bulma-button bulma-is-shadowless">
+                <span class="bulma-is-sr-only">Search</span>
+                <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false"
+                     xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
+                  <line x1="16.65" y1="16.65" x2="21" y2="21"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </p>
+          </div>
+        </form>
+
+        <div class="bulma-mt-4" role="group" aria-label="Browse by">
+          <h3 class="bulma-is-size-6 bulma-mb-2 bulma-has-text-weight-normal">Browse</h3>
+          <ul class="bulma-tags">
+            <li><a class="bulma-tag bulma-has-background-brand bulma-has-text-paper bulma-has-text-weight-medium"
+                   th:href="${settings.dspace_site+'/browse?type=classification_text&locale-attribute='+language}">Subject</a></li>
+            <li><a class="bulma-tag bulma-has-background-brand bulma-has-text-paper bulma-has-text-weight-medium"
+                   th:href="${settings.dspace_site+'/browse?type=publisher&locale-attribute='+language}">Publisher</a></li>
+            <li><a class="bulma-tag bulma-has-background-brand bulma-has-text-paper bulma-has-text-weight-medium"
+                   th:href="${settings.dspace_site+'/browse?type=collection&locale-attribute='+language}">Collections</a></li>
+            <li><a class="bulma-tag bulma-has-background-brand bulma-has-text-paper bulma-has-text-weight-medium"
+                   th:href="${settings.dspace_site+'/browse?type=language&locale-attribute='+language}">Language</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</th:block>

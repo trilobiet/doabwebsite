@@ -1,0 +1,85 @@
+<!--
+  NEWSLETTER MODAL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<th:block th:fragment="newsletter">
+  <div id="newsletter-modal"
+      class="bulma-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="newsletter-modal-title"
+      aria-describedby="newsletter-modal-desc"
+      tabindex="-1">
+    <div class="bulma-modal-background js-close-modal" aria-hidden="true"></div>
+
+    <div class="bulma-modal-card">
+      <header class="bulma-modal-card-head bulma-p-4 bulma-has-background-paper bulma-is-shadowless">
+        <h2 id="newsletter-modal-title" 
+          class="bulma-modal-card-title bulma-is-size-6 bulma-has-text-weight-semibold">
+          Sign up to the OAPEN newsletter
+        </h2>
+        <button class="bulma-delete bulma-has-background-brand js-close-modal" aria-label="Close dialog"></button>
+      </header>
+
+      <section class="bulma-modal-card-body bulma-p-4">
+        <p id="newsletter-modal-desc" class="bulma-is-sr-only">
+          Subscribe to receive news and updates by email.
+        </p>
+
+        <!-- Mailchimp form -->
+        <form
+          action="https://oapen.us4.list-manage.com/subscribe/post?u=314fa411ba5eaaee7244c95e1&amp;id=e31e6f80e1&amp;f_id=008661eaf0"
+          method="post"
+          target="_blank"
+          novalidate>
+          <div class="bulma-field">
+            <label class="bulma-is-block bulma-pb-2" for="mce-EMAIL">Email Address <span aria-hidden="true">*</span></label>
+            <input class="bulma-input bulma-is-shadowless" type="email" name="EMAIL" id="mce-EMAIL" required autocomplete="email">
+          </div>
+
+          <div class="bulma-field">
+            <label class="bulma-is-block bulma-pb-2" for="mce-FNAME">First Name</label>
+            <input class="bulma-input bulma-is-shadowless" type="text" name="FNAME" id="mce-FNAME" autocomplete="given-name">
+          </div>
+
+          <div class="bulma-field">
+            <label class="bulma-is-block bulma-pb-2" for="mce-LNAME">Last Name</label>
+            <input class="bulma-input bulma-is-shadowless" type="text" name="LNAME" id="mce-LNAME" autocomplete="family-name">
+          </div>
+
+          <div class="bulma-field">
+            <label class="bulma-is-block bulma-pb-2" for="mce-AFFILIATIO">Affiliation</label>
+            <input class="bulma-input bulma-is-shadowless" type="text" name="AFFILIATIO" id="mce-AFFILIATIO">
+          </div>
+
+          <fieldset class="bulma-field">
+            <legend class="bulma-is-block bulma-pb-2">Role</legend>
+            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][1]"  id="mce-group[71160]-71160-0"> Researcher</label><br>
+            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][2]"  id="mce-group[71160]-71160-1"> Librarian</label><br>
+            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][4]"  id="mce-group[71160]-71160-2"> Research Support</label><br>
+            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][8]"  id="mce-group[71160]-71160-3"> Publisher</label><br>
+            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][16]" id="mce-group[71160]-71160-4"> Funder</label><br>
+            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][32]" id="mce-group[71160]-71160-5"> Service Provider</label><br>
+            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][64]" id="mce-group[71160]-71160-6"> Other</label>
+          </fieldset>
+
+          <div id="mce-responses" class="bulma-mt-3" aria-live="polite" role="status">
+            <div class="response" id="mce-error-response"  style="display:none"></div>
+            <div class="response" id="mce-success-response" style="display:none"></div>
+          </div>
+
+          <!-- Honeypot -->
+          <div aria-hidden="true" style="position:absolute; left:-5000px;">
+            <input type="text" name="b_314fa411ba5eaaee7244c95e1_e31e6f80e1" tabindex="-1" value="">
+          </div>
+
+          <div class="bulma-field bulma-mt-4">
+            <button type="submit" name="subscribe" id="mc-embedded-subscribe"
+                    class="bulma-button bulma-is-primary bulma-is-shadowless">
+              Subscribe
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+</th:block>

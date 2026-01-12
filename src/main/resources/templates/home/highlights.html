@@ -1,0 +1,44 @@
+<!--
+  Highlights
+~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<th:block th:fragment="highlights">
+<section class="bulma-hero bulma-is-small bulma-container bulma-has-background-brand-hero bulma-has-text-paper">
+	<div class="bulma-hero-body bulma-is-align-items-center">
+		<div class="bulma-columns bulma-is-variable bulma-is-5"
+				th:each="article : ${highlights}"
+				th:classappend="${article.cssClass}">
+
+			<!-- Text -->
+			<div class="bulma-column bulma-is-three-quarters-desktop bulma-is-two-thirds-tablet">
+				<h2 class="bulma-title bulma-is-3 bulma-mb-2">
+					<a class="bulma-has-text-current bulma-has-text-weight-normal"
+						th:href="@{'/article/'+${article.slug}}"
+						th:text="${article.title}">
+						Highlight title
+					</a>
+				</h2>
+
+				<div class="bulma-is-size-5 oa-readable">
+					<th:block th:utext="${article.summary}">
+						Highlight dummy text
+					</th:block>
+				</div>
+			</div>
+
+			<!-- Media (optional) -->
+			<div class="bulma-column bulma-is-one-quarter-desktop bulma-is-one-third-tablet"
+					th:if="${not #lists.isEmpty(article.media)}">
+
+				<figure class="bulma-image"
+								th:each="media : ${@viewhelpers.images(article.media)}">
+					<img th:src="${media.url}"
+								th:alt="${article.title}"
+								loading="lazy"
+								decoding="async" />
+				</figure>
+			</div>
+
+		</div>
+	</div>
+</section>
+</th:block>

@@ -1,0 +1,56 @@
+// ————————————————————————————————————————
+// oa-fonts.scss
+// Our typefaces (serif + sans-serif)
+// ————————————————————————————————————————
+
+// ————————————————————————————————————————
+// Vremena Grotesk (sans-serif)
+// Weights:
+// 400 (Book)
+// 500 (Medium)
+// 700 (Bold)
+// With italics for each weight
+// ————————————————————————————————————————
+
+@font-face {
+  font-family: "Vremena Grotesk";
+  src:
+    url("/static-assets/fonts/vremena-grotesk/vremenagroteskbook-webfont.woff2") format("woff2"),
+    url("/static-assets/fonts/vremena-grotesk/vremenagroteskbook-webfont.woff") format("woff");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Vremena Grotesk";
+  src:
+    url("/static-assets/fonts/vremena-grotesk/vremenagroteskbookitalic-webfont.woff2") format("woff2"),
+    url("/static-assets/fonts/vremena-grotesk/vremenagroteskbookitalic-webfont.woff") format("woff");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Vremena Grotesk";
+  src:
+    url("/static-assets/fonts/vremena-grotesk/vremenagroteskmedium-webfont.woff2") format("woff2"),
+    url("/static-assets/fonts/vremena-grotesk/vremenagroteskmedium-webfont.woff") format("woff");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Vremena Grotesk";
+  src:
+    url("/static-assets/fonts/vremena-grotesk/vremenagroteskmediumitalic-webfont.woff2") format("woff2"),
+    url("/static-assets/fonts/vremena-grotesk/vremenagroteskmediumitalic-webfont.woff") format("woff");
+  font-weight: 500; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Vremena Grotesk";
+  src:
+    url("/static-assets/fonts/vremena-grotesk/vremenagroteskbold-webfont.woff2") format("woff2"),
+    url("/static-assets/fonts/vremena-grotesk/vremenagroteskbold-webfont.woff") format("woff");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Vremena Grotesk";
+  src:
+    url("/static-assets/fonts/vremena-grotesk/vremenagroteskbolditalic-webfont.woff2") format("woff2"),
+    url("/static-assets/fonts/vremena-grotesk/vremenagroteskbolditalic-webfont.woff") format("woff");
+  font-weight: 700; font-style: italic; font-display: swap;
+}

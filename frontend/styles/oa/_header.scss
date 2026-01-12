@@ -1,0 +1,265 @@
+// oa/_header.scss
+// Site header + navigation, incl. desktop megamenu & mobile menu
+// Used globally
+// Depends on: Bulma navbar and columns, oa-colours
+
+@use "sass:list";
+@use "../oa-colours" as *;
+
+.oa-header {
+  position: sticky;
+  top: 0;
+  z-index: 25;
+
+  // homepage-only white header before scroll
+  &.oa-is-home {
+    .bulma-navbar {
+      background-color: $oa-colour-ink;
+      color: $oa-colour-paper;
+      border-bottom: 1px solid $oa-colour-ink;
+    }
+  }
+
+  // expanded state (default)
+  .bulma-navbar {
+    transition: min-height .25s ease, background-color .25s ease, color .25s ease, border-color .25s ease;
+    will-change: min-height;
+    min-height: 100px;
+    padding-block: 0;
+    background-color: $oa-colour-ink;
+    color: $oa-colour-paper;
+    border-bottom: $oa-colour-ink;
+
+    .bulma-navbar-link,
+    .bulma-navbar-item {
+      color: currentColor;
+      text-decoration: none;
+    }
+
+    .oa-logo-svg { 
+      max-height: 100%; 
+    }
+  }
+
+  // condensed state (on scroll)
+  &.js-is-condensed {
+    .bulma-navbar {
+      min-height: 50px;
+      background-color: $oa-colour-ink;
+      color: $oa-colour-paper;
+      border-bottom-color: $oa-colour-ink;
+    }
+
+    .bulma-navbar-link,
+    .bulma-navbar-item { 
+      color: currentColor; 
+    }
+
+    svg .star { fill: currentColor; }
+  }
+
+  // let the dropdown overflow the bar so hover doesn't break
+  .bulma-navbar,
+  .bulma-navbar-menu { 
+    overflow: visible; 
+  }
+
+  .bulma-navbar-link,
+  .bulma-navbar-item {
+    font-size: .9rem;
+
+    // remove Bulma’s default carets from navbar links
+    &[data-no-caret]::after { 
+      display: none; 
+    }
+
+    // a11y
+    &:focus-visible {
+      outline: 2px solid var(--bulma-link);
+      outline-offset: 2px;
+      box-shadow: none;
+    }
+
+    // stop Bulma hover bg tint
+    &:hover,
+    &:focus,
+    &:focus-within,
+    &.bulma-is-active {
+      background: transparent;
+      --bulma-navbar-item-background-a: 0;
+    }
+
+    // display & keep underline while hovering the dropdown panel
+    &.bulma-has-dropdown:hover > .bulma-navbar-link,
+    &.bulma-has-dropdown:focus > .bulma-navbar-link,
+    &.bulma-has-dropdown:focus-within > .bulma-navbar-link {
+      text-decoration-line: underline;
+      text-decoration-color: currentColor;
+      text-decoration-thickness: 2.5px;
+      text-underline-offset: 10px;
+    }
+  }
+
+  .bulma-navbar-dropdown .bulma-navbar-item { 
+    font-weight: 600; 
+  }
+
+  // force inherit colours for Newsletter button
+  .js-open-modal {
+    color: inherit;
+    border-color: inherit;
+  }
+}
+
+// Desktop dropdowns (simple list)
+@media screen and (min-width: 1024px) {
+
+  .oa-header {
+
+    .bulma-navbar { 
+      position: relative; 
+    }
+
+    .bulma-navbar-item.bulma-has-dropdown { 
+      position: relative; 
+    }
+    
+    // show dropdown on hover/focus of parent link
+    .bulma-navbar-item.bulma-has-dropdown.bulma-is-hoverable:hover > .oa-nav-dropdown,
+    .bulma-navbar-item.bulma-has-dropdown:focus-within > .oa-nav-dropdown { 
+      display: block; 
+    }
+
+    .oa-nav-dropdown {
+      $oa-nav-dropdown-bg: color-mix(in srgb, $oa-colour-ink 82%, list.nth($oa-brand-colour-list, 1) 18%);
+      position: absolute;
+      top: calc(100% + 1px);
+      left: 0;
+      min-width: 240px;
+      display: none;
+      background: $oa-nav-dropdown-bg;
+      color: $oa-colour-paper;
+      border: 1px solid $oa-nav-dropdown-bg;
+      padding: .35rem 0;
+
+      a.bulma-navbar-item { 
+        color: inherit; 
+        white-space: normal;
+        padding-inline: 1rem;
+      }
+
+      .bulma-navbar-item {
+        display: block;
+        text-align: left;
+        padding-block: .6rem;
+        transition: background-color .15s ease, color .15s ease;
+
+        &:hover,
+        &:focus,
+        &:focus-visible,
+        &.bulma-is-active {
+          background: color-mix(in srgb, currentColor 18%, transparent);
+          outline: 0;
+        }
+      }
+    }
+
+    // remove Bulma’s white tile background in dropdown
+    .bulma-navbar-dropdown {
+      a.bulma-navbar-item,
+      .bulma-navbar-item { 
+        background: transparent; 
+      }
+    }
+
+    // condensed state (on scroll)
+    &.js-is-condensed .oa-nav-dropdown {
+      $oa-nav-dropdown-bg: color-mix(in srgb, $oa-colour-ink 82%, list.nth($oa-brand-colour-list, 1) 18%);
+      background: $oa-nav-dropdown-bg;
+      border-color: $oa-nav-dropdown-bg;
+      color: $oa-colour-paper;
+
+      a.bulma-navbar-item { 
+        color: $oa-colour-paper; 
+      }
+    }
+  }
+}
+
+// Megamenu (mobile)
+@media (max-width: 1023.98px) { // .98 to avoid conflict with Bulma 1024px breakpoint
+  
+  .bulma-navbar-menu { 
+    display: none; 
+  }
+
+  .bulma-navbar-menu.bulma-is-active { 
+    display: block; 
+  }
+
+    .oa-nav-mobile {
+      padding: 0;
+      background: var(--bulma-stone-light); // expanded
+      color: var(--bulma-ink);
+      max-height: calc(100vh - 72px);
+      max-height: calc(100dvh - 72px);
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+
+    .bulma-navbar-item {
+      > .bulma-navbar-link {
+        background: var(--bulma-brand);
+        color: var(--bulma-paper);
+        padding: .5rem 1rem;
+        min-height: 44px;
+        border-top: 1px solid var(--bulma-border, currentColor);
+        text-transform: uppercase;
+      }
+
+      &:first-child > .bulma-navbar-link { 
+        border-top: 0; 
+      }
+    }
+
+    .oa-nav-dropdown {
+      margin: 0;
+      padding: .25rem 0;
+
+      .bulma-navbar-item {
+        padding: .6rem 1rem;
+        background: var(--bulma-stone-light);
+        color: var(--bulma-ink);
+        white-space: normal;
+        text-align: left;
+        font-weight: 400;
+
+        &:hover,
+        &:focus { 
+          font-weight: 600; 
+        }
+      }
+    }
+  }
+
+  .oa-header {
+    // align logo and burger vertically
+    .bulma-container,
+    .bulma-navbar-brand,
+    .bulma-navbar-brand .bulma-navbar-item,
+    .bulma-navbar-burger { 
+      min-height: inherit;
+      color: inherit;
+    }
+
+    &.js-is-condensed .oa-nav-mobile {
+      background: $brand-primary-500; // condensed
+      color: var(--bulma-paper);
+      // allow scrolling when condensed
+      max-height: calc(100vh - 52px);
+      max-height: calc(100dvh - 52px);
+      overflow-y: auto;
+    }
+  }
+}

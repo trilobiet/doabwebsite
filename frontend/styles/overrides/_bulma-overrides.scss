@@ -1,0 +1,77 @@
+// overrides/_bulma-overrides.scss
+// Bulma variable overrides & tiny behavior tweaks
+// Used on: entire site
+// Depends on: Bulma classes
+// Note: override via @use ... with(...), avoid ad-hoc selectors
+
+.bulma-breadcrumb {
+  overflow: hidden;
+}
+
+// Include a11y focus without shadows, since we are disabling/overriding them
+.bulma-input:focus,
+.bulma-textarea:focus,
+.bulma-select select:focus {
+  outline: 2px solid var(--bulma-link);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+// Context-aware link colours on dark brand-colour surfaces (700, 600)
+.bulma-has-background-brand-hero,
+.bulma-has-background-brand,
+.bulma-has-background-ink {
+  // Force high-contrast link colours
+  --bulma-link-text:         #fff;
+  --bulma-link-text-visited: #fff;
+  --bulma-link-text-hover:   #fff;
+
+  // Set a visible focus token for white controls inside dark sections
+  --oa-focus: #fff; 
+
+  .bulma-input,
+  .bulma-textarea,
+  .bulma-select select {
+    background-color: transparent;
+    color: #fff;
+    border-color: #fff;
+  }
+
+  .bulma-input::placeholder,
+  .bulma-textarea::placeholder {
+    color: #ccc;
+    opacity: 1;
+  }
+
+  .bulma-button:not([class*="bulma-is-"]) {
+    background-color: #fff;
+    color: #000;
+    border-color: #fff;
+  }
+}
+
+.bulma-content {
+  // Enforce a11y link appearance ONLY for text links
+  // Exclude navbar items, buttons, tags
+  a {
+    &:not(.bulma-navbar-item),
+    &:not(.bulma-button),
+    &:not(.bulma-tag) {
+      text-decoration-line: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: .18em;
+    }
+  }
+
+  // Tables: remove left padding so cell content is flush with edge
+  table {
+    td, th {
+      padding: 1.25em 1em 1.25em 0;
+      border-color: var(--bulma-stone-light);
+      border-width: 1px solid;
+    }
+  }
+}
+
+// Force secondary font kerning to default (no serif usage)
+.bulma-is-family-secondary { letter-spacing: 0; }

@@ -10,13 +10,13 @@
 	<!--
 		BODY
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-	<main class="section doab-main" layout:fragment="content">
+	<main class="bulma-section" layout:fragment="content">
 
-		<div class="container">
+		<div class="bulma-container">
 		
 			<th:block th:insert="include/breadcrumbs :: breadcrumbs"/>
 			
-			<div class="content">
+			<div class="bulma-content">
 
 				<h1 th:text="${@translator.translate(topic,language).name}">
 					Topic title
@@ -34,11 +34,11 @@
 			
 			</div>
 
-			<div class="doab-toc content">
+			<div class="doab-toc bulma-content">
 	
 				<div class="doab-toc-header" th:text="#{this_topic}">Contents for this topic</div>
 				
-				<hr class="is-hidden"/>
+				<hr class="bulma-is-hidden"/>
 	
 				<ul th:classappend="${#lists.size(articles) gt 7} ? 'doab-two-col'">
 					<li th:each="article : ${articles}">
@@ -59,7 +59,6 @@
 
 </body>
 </html>
-
 
 
 

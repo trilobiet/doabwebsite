@@ -11,31 +11,24 @@
 </div>
 
 <!--
-	Drop down submenu
+  Drop down submenu
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <th:block th:fragment="section_navigation">
+  <a class="bulma-navbar-link bulma-has-text-weight-medium bulma-is-block bulma-is-flex bulma-is-align-items-center bulma-is-align-self-stretch bulma-pr-5"
+     th:href="@{'/'+${language}+'/'+${mnusection.slug}}"
+     th:text="${@translator.translate(mnusection,language).name}"
+     th:classappend="${#httpServletRequest.requestURI.startsWith('/' + language + '/' + mnusection.slug)} ? ' bulma-is-active' : ''">
+  </a>
 
-	<a th:text="${@translator.translate(mnusection,language).name}"
-	   th:href="@{'/'+${language}+'/'+${mnusection.slug}}"
-	   class="navbar-item navbar-link"
-	   th:classappend="${section!=null and mnusection.id==section.id}?'is-active'">
-		Navbar Item
-	</a>
-	
-	<div class="navbar-dropdown">
-		<div class="container is-fluid">
-			<ul>
-				<li th:each="mnutopic: ${mnusection.topics}">
-					<a th:href="@{'/'+${language}+'/'+${mnusection.slug}+'/'+${mnutopic.slug}}"
-					   th:text="${@translator.translate(mnutopic,language).name}"
-					   class="navbar-item">
-						topic name
-					</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-
+  <div class="bulma-navbar-dropdown bulma-is-shadowless oa-nav-dropdown"
+       th:if="${mnusection.topics != null and !#lists.isEmpty(mnusection.topics)}">
+    <a class="bulma-navbar-item bulma-is-shadowless bulma-has-text-weight-medium"
+       th:each="mnutopic : ${mnusection.topics}"
+       th:href="@{'/'+${language}+'/'+${mnusection.slug}+'/'+${mnutopic.slug}}"
+       th:text="${@translator.translate(mnutopic,language).name}"
+       th:classappend="${#httpServletRequest.requestURI.startsWith('/' + language + '/' + mnusection.slug + '/' + mnutopic.slug)} ? ' bulma-is-active' : ''">
+    </a>
+  </div>
 </th:block>
 
 <footer th:fragment="footer">
@@ -44,4 +37,3 @@
 
 </body>
 </html>
-

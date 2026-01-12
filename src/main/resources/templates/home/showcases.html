@@ -15,23 +15,26 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <th:block th:fragment="showcases">
 
-	<div class="title is-6 doab-section-caption is-hidden">Showcase</div>
+	<div class="bulma-title bulma-is-6 oapen-section-caption bulma-is-hidden">Showcase</div>
 	
-	<hr class="is-hidden"/>
+	<hr class="bulma-is-hidden"/>
 
-	<div th:each="article: ${showcases}" class="doab-home-showcase content" th:classappend="${article.cssClass}">
+	<div class="bulma-columns bulma-is-multiline bulma-is-desktop">
 
-		<h2 class="title is-4">
-			<a th:href="@{'/'+${language}+'/article/'+${article.slug}}" th:text="${article.title}">
-				Showcase title
-			</a>
-		</h2>
-		<th:block th:utext="${article.summary}">
-			Showcase dummy text
-		</th:block>
-		<a th:href="@{'/'+${language}+'/article/'+${article.slug}}" th:text="#{read_more}" class="doab-more">
-			Read more
-		</a>
+		<div class="bulma-column bulma-is-half-desktop oapen-home-showcase" th:each="article: ${showcases}" th:classappend="${article.cssClass}">
+
+			<div>
+				<h2 class="bulma-title bulma-is-5">
+					<a th:href="@{'/'+${language}+'/article/'+${article.slug}}" th:text="${article.title}">
+						Showcase title
+					</a>
+				</h2>
+				<th:block th:utext="${article.summary}">
+					Showcase dummy text
+				</th:block>
+			</div>
+
+		</div>
 
 	</div>
 
@@ -43,9 +46,3 @@
 
 </body>
 </html>
-
-
-			
-
-
-

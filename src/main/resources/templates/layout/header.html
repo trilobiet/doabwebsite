@@ -1,0 +1,72 @@
+<!--
+  HEADER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<th:block th:fragment="header">
+  <header id="oa-header"
+          class="oa-header"
+          role="banner"
+          th:classappend="${#httpServletRequest.requestURI == '/' || #httpServletRequest.requestURI == '/' + language} ? ' oa-is-home' : ''">
+    <nav class="bulma-navbar bulma-is-shadowless"
+        role="navigation" aria-label="Main navigation">
+      <h2 class="bulma-is-sr-only">Main navigation</h2>
+      <div class="bulma-container">
+
+        <!-- brand + burger -->
+        <div class="bulma-navbar-brand">
+          <a class="bulma-navbar-item oa-logo"
+             th:href="@{'/'+${language}}"
+             aria-label="Directory of Open Access Books homepage">
+            <th:block th:replace="~{include/logotype :: logo(160, 50, 'oa-logo-svg')}"></th:block>
+          </a>
+          <a role="button"
+            class="bulma-navbar-burger bulma-burger"
+            aria-label="menu" aria-expanded="false"
+            data-target="oa-nav">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <!-- Full menu -->
+        <div id="oa-nav" class="bulma-navbar-menu oa-nav-mobile">
+          <ul class="bulma-navbar-end oa-navbar-list" role="menubar">
+            <!-- Originally left section -->
+            <li th:each="mnusection : ${menuLeftSections}"
+                class="bulma-navbar-item"
+                th:classappend="${#lists.isEmpty(mnusection.topics)} ? '' : ' bulma-has-dropdown bulma-is-hoverable'">
+              <th:block th:insert="layout/submenu :: section_navigation">submenu</th:block>
+            </li>
+
+            <!-- Originally right section -->
+            <li th:each="mnusection : ${menuRightSections}"
+                class="bulma-navbar-item"
+                th:classappend="${#lists.isEmpty(mnusection.topics)} ? '' : ' bulma-has-dropdown bulma-is-hoverable'">
+              <th:block th:insert="layout/submenu :: section_navigation">submenu</th:block>
+            </li>
+
+            <!-- Language switch -->
+            <li class="bulma-navbar-item">
+              <div class="bulma-select bulma-is-small">
+                <select name="setlanguage" onchange="window.location.href=this.value">
+                  <option th:value="@{'/setlanguage?lang=en'}" th:selected="${language == 'en'}">English</option>
+                  <option th:value="@{'/setlanguage?lang=fr'}" th:selected="${language == 'fr'}">Français</option>
+                </select>
+              </div>
+            </li>
+            
+            <!-- Newsletter -->
+             <li class="bulma-navbar-item">
+              <a class="bulma-button bulma-is-small bulma-is-outlined bulma-is-shadowless js-open-modal"
+                data-modal="newsletter-modal" aria-haspopup="dialog" aria-controls="newsletter-modal">
+                Newsletter
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+</th:block>

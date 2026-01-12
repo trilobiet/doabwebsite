@@ -1,0 +1,105 @@
+// ————————————————————————————————————————
+// main.scss
+// Import Bulma and OAPEN’s custom styles
+// Set colour palette, typography
+// and other customisations of Bulma
+// ————————————————————————————————————————
+
+// ————————————————————————————————————————
+// Import Bulma and OAPEN’s styles
+// ————————————————————————————————————————
+
+// Bring in OAPEN’s colour palette and typography variables
+@use "./oa-colours" as *;
+@use "./oa-fonts"; 
+
+// Import Bulma’s entry-point with overrides
+@use "bulma/sass/utilities/initial-variables" with (
+  // Prefix everything with “bulma-”
+  $class-prefix: "bulma-",
+
+  // Disable all of Bulma’s default rounded border radius
+  $radius: 0,
+  $radius-small: 0,
+  $radius-medium: 0, 
+  $radius-large: 0,
+
+  // Keep .is-rounded available in case we do need it
+  $radius-rounded: 9999px,
+
+  // Set our default sans-serif font stack
+  $family-sans-serif: ("Vremena Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial),
+
+  // Map weights Bulma uses to our files
+  $weight-light:     300,
+  $weight-normal:    400,
+  $weight-medium:    500,
+  $weight-semibold:  500,
+  $weight-bold:      700,
+  $weight-extrabold: 700,
+);
+
+// Map Bulma’s semantic colours to our custom variables
+@use "bulma/sass/utilities/derived-variables" with (
+  $family-secondary: ("Vremena Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial), // Match primary sans
+
+  $primary:       $brand-primary-600,
+  $link:          $brand-primary-500,
+  $info:          $brand-primary-500,
+
+  $success:       $oa-colour-moss-600,
+  $warning:       $oa-colour-ochre-500,
+  $danger:        $oa-colour-rust-600,
+
+  $scheme-main:   $oa-colour-paper,
+  $scheme-invert: $oa-colour-ink,
+  $text:          $oa-colour-ink,
+
+  // Neutral surfaces & borders
+  $background:    $oa-colour-paper,
+  $border:        $oa-colour-stone-300,
+
+  $custom-colors: (
+    "brand":      ($brand-primary-600,     $oa-colour-paper),
+    "brand-hero": ($brand-primary-700,     $oa-colour-paper),
+    "accent":     ($brand-accent,          $oa-colour-ink),
+    "ink":        ($oa-colour-ink,         $oa-colour-paper),
+    "paper":      ($oa-colour-paper,       $oa-colour-ink),
+    "stone-dark": ($oa-colour-stone-600,   $oa-colour-paper),
+    "stone-light":($oa-colour-stone-300,   $oa-colour-ink),
+    "moss":       ($oa-colour-moss-600,    $oa-colour-paper),
+    "ochre":      ($oa-colour-ochre-500,   $oa-colour-ink),
+    "rust":       ($oa-colour-rust-600,    $oa-colour-paper)
+  )
+);
+
+// Modify Bulma’s default title colours
+@use "bulma/sass/elements/title" with (
+  $title-color: inherit,
+  $subtitle-color: inherit,
+  $title-strong-color: inherit,
+  $subtitle-strong-color: inherit
+);
+
+// --- Pull in all of Bulma (base, components, layout, themes, helpers…)
+@use "bulma/bulma";
+
+// --- Bulma overrides 
+@use "overrides/bulma-overrides";
+
+// --- Site-wide base (resets, root vars, typography helpers)
+@use "core/base";
+
+// --- Our own custom oa-* classes
+@use "oa/utilities";
+@use "oa/bluesky-feed";
+@use "oa/carousel";
+@use "oa/collections";
+@use "oa/branding";
+@use "oa/footer";
+@use "oa/funder-hero";
+@use "oa/header";
+@use "oa/input-group";
+@use "oa/news-feed";
+@use "oa/section-header";
+@use "oa/stakeholder-doodle";

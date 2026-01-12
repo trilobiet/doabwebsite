@@ -1,0 +1,21 @@
+// oa/_bluesky-feed.scss
+// Bluesky embed container
+// Used on: homepage News feed section 
+// Note: works with <bsky-embed> web-component (https://github.com/Vincenius/bsky-embed), loaded locally in js/sky-embed.js
+
+.oa-bluesky-feed {
+  max-block-size: 16rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable both-edges;
+  -webkit-overflow-scrolling: touch;
+  min-height: 0;
+
+  bsky-embed {
+    display: block;
+    inline-size: 100%;
+    max-inline-size: 100%;
+    min-inline-size: 0;
+  }
+}

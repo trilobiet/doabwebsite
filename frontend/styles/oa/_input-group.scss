@@ -1,0 +1,35 @@
+// oa/_input-group.scss
+// Thick-border input + button group
+// Used on: search bars, newsletter sign-up form
+// Depends on: Bulma form controls
+
+.oa-input-group {
+  display: flex;
+  min-height: 3rem;
+  border: 2px solid currentColor;
+  border-radius: 0;
+  overflow: hidden;
+  max-width:48rem;
+  width: 100%;
+  margin-inline: auto;
+
+  // Cancel Bulma’s -1px addon joiner
+  .bulma-control:not(:first-child) { 
+    margin-left: 0; 
+  }
+
+  .bulma-input,
+  .bulma-button {
+    height: 100%;
+    background-clip: padding-box;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  // A11y focus styles
+  &:focus-within {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+}

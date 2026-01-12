@@ -14,24 +14,15 @@
 	Spotlights
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <th:block th:fragment="spotlights">
-
-	<!-- spotlights -->
-	<div class="column is-one-third-desktop doab-home-spotlight" th:each="article: ${spotlights}">
-	
-		<div class="title is-6 doab-section-caption" th:text="#{spotlight}">Spotlight</div>
-
-		<hr class="is-hidden">
-
-		<h2 class="title is-5">
-			<a th:href="@{'/'+${language}+'/article/'+${article.slug}}" th:text="${article.title}">Title</a>
-		</h2>
-
-		<th:block th:utext="${article.summary}">
-			Showcase dummy text
-		</th:block>
-
-	</div>
-								
+  <li class="bulma-column bulma-is-full-mobile bulma-is-half-tablet bulma-is-one-third-desktop bulma-is-flex"
+       th:each="article : ${spotlights}">
+    <th:block th:insert="~{home/feed_card :: card(
+      title=${article.title},
+      url=@{'/'+${language}+'/article/' + ${article.slug}},
+      summary=${@viewhelpers.abbreviate(article.summary, 220)},
+      category='Spotlight'
+    )}"></th:block>
+	</li>
 </th:block>
 
 <footer th:fragment="footer">
@@ -40,4 +31,3 @@
 
 </body>
 </html>
-

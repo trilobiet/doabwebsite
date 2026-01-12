@@ -1,0 +1,133 @@
+// oa/_carousel.scss
+// Carousel showcasing book covers & titles
+// Used on: homepage 'Featured Titles', Funder collection pages
+// Note: works with Splide (https://splidejs.com/)
+
+@use "sass:list";
+@use "branding" as branding;
+@use "../oa-colours" as *;
+
+.oa-carousel {
+
+  &__item {
+    text-decoration: none;
+    background: transparent;
+    border: 0;
+    transition: transform .16s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--oa-focus, var(--bulma-link-text));
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+
+  &__box {
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    position: relative;
+    background: #f8f8f8;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0;
+    border: .5px solid;
+  }
+  
+  &__title {
+    font-weight: 500;
+    line-height: 1.3;
+    font-size: clamp(1.05rem, 1rem + .28vw, 1.22rem);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+
+  &__arrows {
+    position: static;
+  }
+
+  &__arrow {
+    position: static;
+    transform: none;
+    border: 2px solid currentColor;
+    box-shadow: none;
+    line-height: 1;
+
+    &:focus-visible {
+      outline: 2px solid var(--oa-focus, var(--bulma-link-text));
+      outline-offset: 2px;
+    }
+  }
+
+  .oa-cover-fallback {
+    display: none;
+    height: 100%;
+    width: 100%;
+    padding: .85rem;
+    background: #000;
+    color: #fff;
+    font-weight: 600;
+    font-size: .5rem;
+    line-height: 1.25;
+    align-items: flex-end;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    overflow: hidden;
+  }
+
+  &__box.is-fallback {
+    .oa-carousel__img {
+      display: none;
+    }
+
+    .oa-cover-fallback {
+      display: flex;
+    }
+  }
+}
+
+// Cycle brand colours from the logo for fallback blocks
+// 1/2 = sunset, 3/4 = honeydew
+$oa-cover-fallback-colours: if(
+  branding.$doab-logo-variant == 3 or branding.$doab-logo-variant == 4,
+  $oa-brand-colour-list-alt,
+  $oa-brand-colour-list
+);
+
+@mixin oa-cover-palette($palette) {
+  @if $palette != null {
+    @for $i from 1 through list.length($palette) {
+      .splide__slide:nth-child(#{list.length($palette)}n + #{$i}) .oa-cover-fallback {
+        background: list.nth($palette, $i);
+      }
+    }
+  }
+}
+
+@include oa-cover-palette($oa-cover-fallback-colours);
+
+// Alt palette when body signals honeydew logo variants
+body.oa-logo-variant-3,
+body.oa-logo-variant-4,
+body.oa-cover-alt-active {
+  @include oa-cover-palette($oa-brand-colour-list-alt);
+}

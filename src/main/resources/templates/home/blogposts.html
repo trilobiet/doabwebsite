@@ -11,27 +11,18 @@
 </div>
 
 <!--
-	Blogposts
+	Blogposts (Hypotheses)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<th:block th:fragment="blogposts">
-
-	<!-- blogposts -->
-	<div class="column is-one-third-desktop doab-home-spotlight" th:each="blogPost: ${rssHypothesesItems}">
-
-		<div class="title is-6 doab-section-caption" th:text="#{blogpost}">Blogpost</div>
-
-		<hr class="is-hidden">
-	
-		<h2 class="title is-5">
-			<a th:href="@{'/blog/?link='+ ${@viewhelpers.urlEncode(blogPost.link)}}" th:text="${blogPost.title}">Title</a>
-		</h2>
-
-		<p th:utext="${@viewhelpers.abbreviate(blogPost.description, 300)}">
-			Showcase dummy text
-		</p>
-
-	</div>
-
+<th:block th:fragment="blogposts" th:with="items=${rssHypothesesItems}">
+  <li class="bulma-column bulma-is-full-mobile bulma-is-half-tablet bulma-is-one-third-desktop bulma-is-flex"
+       th:each="blogPost : ${items}">
+    <th:block th:insert="~{home/feed_card :: card(
+      title=${blogPost.title},
+      url=@{'/'+${language}+'/blog/?link=' + ${@viewhelpers.urlEncode(blogPost.link)}},
+      summary=${@viewhelpers.abbreviate(blogPost.description, 220)},
+      category='Blog post'
+    )}"></th:block>
+  </li>
 </th:block>
 
 <footer th:fragment="footer">
@@ -40,5 +31,3 @@
 
 </body>
 </html>
-
-
