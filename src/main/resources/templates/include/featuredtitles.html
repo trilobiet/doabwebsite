@@ -35,7 +35,7 @@
                         th:alt="|${item.title} – cover|"
                         onerror="this.closest('.oa-carousel__box').classList.add('is-fallback'); this.remove();">
                     <div class="oa-cover-fallback"
-                         th:text="|${#strings.defaultString(subject)} ${#strings.defaultString(item.title)}|">
+                         th:text="|${#strings.defaultString(subject,'')} ${#strings.defaultString(item.title,'')}|">
                       Featured title
                     </div>
                   </div>
