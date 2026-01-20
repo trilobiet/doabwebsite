@@ -151,8 +151,10 @@
       .bulma-navbar-item {
         display: block;
         text-align: left;
+        white-space: normal;
         padding-block: .6rem;
         transition: background-color .15s ease, color .15s ease;
+        color: currentColor;
 
         &:hover,
         &:focus,
@@ -186,7 +188,7 @@
   }
 }
 
-// Megamenu (mobile)
+// Mobile dropdown
 @media (max-width: 1023.98px) { // .98 to avoid conflict with Bulma 1024px breakpoint
   
   .bulma-navbar-menu { 

@@ -15,6 +15,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <th:block th:fragment="section_navigation">
   <a class="bulma-navbar-link bulma-has-text-weight-medium bulma-is-block bulma-is-flex bulma-is-align-items-center bulma-is-align-self-stretch bulma-pr-5"
+     data-no-caret
      th:href="@{'/'+${language}+'/'+${mnusection.slug}}"
      th:text="${@translator.translate(mnusection,language).name}"
      th:classappend="${#httpServletRequest.requestURI.startsWith('/' + language + '/' + mnusection.slug)} ? ' bulma-is-active' : ''">

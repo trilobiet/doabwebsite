@@ -17,6 +17,11 @@ $oa-colour-paper:      #ffffff !default; // main background / inverted (dark the
 $oa-colour-stone-600:  #555555 !default; // secondary text / inverted (dark theme) borders
 $oa-colour-stone-300:  #bfbfbf !default; // subtle borders / inverted (dark theme) text
 
+// Match the logo variant selection in branding
+// 1 = sunset (10-bar), 2 = sunset (5-bar), 3 = honeydew (10-bar),
+// 4 = honeydew (5-bar), 5 = electric (5-bar)
+$doab-logo-variant: 5 !default;
+
 // Brand colours (sunset)
 $oa-sunset-colours: (
   "scarlet":      #F25545,
@@ -49,10 +54,22 @@ $oa-honeydew-colours: (
 
 $oa-honeydew-accent: #FC5102 !default;
 
+// Alternate brand colours
+$oa-electric-colours: (
+  "teal":         #00B3A4,
+  "emerald":      #00C853,
+  "lime":         #AEEA00,
+  "amber":        #FFB300,
+  "orange":       #FF6D00
+) !default;
+
+$oa-electric-accent: #00B3A4 !default;
+
 // Accent map for semantic use (CTA, focus, alerts)
 $oa-accents: (
   "sunset": $oa-sunset-accent,
-  "honeydew": $oa-honeydew-accent
+  "honeydew": $oa-honeydew-accent,
+  "electric": $oa-electric-accent
 ) !default;
 
 // Helper to derive ordered lists (skip accent)
@@ -68,10 +85,15 @@ $oa-accents: (
 
 $oa-sunset-list: oa-colour-list($oa-sunset-colours) !default;
 $oa-honeydew-list: oa-colour-list($oa-honeydew-colours) !default;
+$oa-electric-list: oa-colour-list($oa-electric-colours) !default;
 
 // Ordered lists for cycling in UI elements (covers, pills, etc.)
-// Default to honeydew; sunset as alternate
-$oa-brand-colour-list: $oa-honeydew-list;
+// Default follows logo variant; sunset as alternate
+$oa-brand-colour-list: if(
+  $doab-logo-variant == 1 or $doab-logo-variant == 2,
+  $oa-sunset-list,
+  if($doab-logo-variant == 5, $oa-electric-list, $oa-honeydew-list)
+);
 $oa-brand-colour-list-alt: $oa-sunset-list;
 
 // ————————————————————————————————————————

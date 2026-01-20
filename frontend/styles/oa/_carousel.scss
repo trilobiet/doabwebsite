@@ -4,7 +4,6 @@
 // Note: works with Splide (https://splidejs.com/)
 
 @use "sass:list";
-@use "branding" as branding;
 @use "../oa-colours" as *;
 
 .oa-carousel {
@@ -106,9 +105,9 @@
 }
 
 // Cycle brand colours from the logo for fallback blocks
-// 1/2 = sunset, 3/4 = honeydew
+// 1/2 = sunset, 3/4 = honeydew, 5 = electric
 $oa-cover-fallback-colours: if(
-  branding.$doab-logo-variant == 3 or branding.$doab-logo-variant == 4,
+  $doab-logo-variant == 3 or $doab-logo-variant == 4,
   $oa-brand-colour-list-alt,
   $oa-brand-colour-list
 );
@@ -130,4 +129,8 @@ body.oa-logo-variant-3,
 body.oa-logo-variant-4,
 body.oa-cover-alt-active {
   @include oa-cover-palette($oa-brand-colour-list-alt);
+}
+
+body.oa-logo-variant-5 {
+  @include oa-cover-palette($oa-electric-list);
 }
