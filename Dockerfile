@@ -1,10 +1,15 @@
 FROM maven:3.9.9-eclipse-temurin-11 AS build
 WORKDIR /app
 
-# Cache dependencies first.
+# Install the local graphqlweb jar before resolving project dependencies.
 COPY pom.xml /app/pom.xml
 COPY dependencies /app/dependencies
-RUN mvn -q -DskipTests package -Pprod || true
+RUN mvn -q -DskipTests install:install-file \
+  -Dfile=dependencies/graphqlweb-0.0.47-jar-with-dependencies.jar \
+  -DgroupId=com.trilobiet \
+  -DartifactId=graphqlweb \
+  -Dversion=0.0.47 \
+  -Dpackaging=jar
 
 # Build the application.
 COPY src /app/src
