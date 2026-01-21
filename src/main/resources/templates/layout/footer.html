@@ -16,7 +16,6 @@
         <section class="bulma-column bulma-is-3-desktop bulma-is-6-tablet bulma-is-size-7">
           <h3 class="bulma-title bulma-is-7 bulma-is-uppercase bulma-has-text-weight-medium">Websites</h3>
           <ul class="oa-footer__list bulma-is-size-5 bulma-mb-6">
-            <li><a class="bulma-has-text-white" href="https://www.doabooks.org" target="_blank" rel="noopener">doabooks.org</a></li>
             <li><a class="bulma-has-text-white" href="https://www.oapen.org" target="_blank" rel="noopener">oapen.org</a></li>
             <li><a class="bulma-has-text-white" href="https://oabooks-toolkit.org" target="_blank" rel="noopener">oabooks-toolkit.org</a></li>
           </ul>
@@ -63,6 +62,18 @@
         <section class="bulma-column bulma-is-3-desktop bulma-is-6-tablet bulma-is-size-7">
           <h3 class="bulma-title bulma-is-7 bulma-is-uppercase bulma-has-text-weight-semibold bulma-mb-2" th:text="#{credits}">Credits</h3>
           <p class="bulma-mb-2">
+            <a href="https://www.enseignementsup-recherche.gouv.fr/pid24578/investissements-d-avenir.html" target="_blank" rel="noopener">
+              <img th:src="@{/static-assets/images/investirlavenir.png}" alt="Programme Investissements d'Avenir" width="120">
+              <span class="bulma-is-sr-only">Programme Investissements d'Avenir</span>
+            </a>
+          </p>
+          <p class="bulma-mb-2">
+            <a href="https://www.enseignementsup-recherche.gouv.fr/" target="_blank" rel="noopener">
+              <img th:src="@{/static-assets/images/logo_MESRI_2021.jpg}" alt="MESRI" width="120">
+              <span class="bulma-is-sr-only">MESRI</span>
+            </a>
+          </p>
+          <p class="bulma-mb-2">
             <a href="https://europa.eu/european-union/index_en">
               <img th:src="@{/static-assets/images/eu-flag.png}" alt="European Union" width="100">
               <span class="bulma-is-sr-only">European Union</span>
@@ -84,7 +95,7 @@
         </section>
 
         <section class="bulma-column bulma-is-3-desktop bulma-is-6-tablet bulma-is-size-7">
-          <h3 class="bulma-title bulma-is-7 bulma-is-uppercase bulma-has-text-weight-semibold bulma-mb-2" th:text="#{footer_title_address}">Address</h3>
+          <h3 class="bulma-title bulma-is-7 bulma-is-uppercase bulma-has-text-weight-semibold bulma-mb-2">Address</h3>
           <p class="oa-footer-small bulma-mb-2" th:utext="#{footer_text_1}">
             Footer_text_1
           </p>
@@ -93,12 +104,6 @@
             Prins Willem-Alexanderhof 5<br>
             2595 BE The Hague
           </address>
-          <p class="oa-footer-small"><span class="bulma-has-text-weight-semibold" th:text="#{footer_websites}">Websites:</span></p>
-          <ul class="oa-footer__list bulma-is-size-6">
-            <li><a class="bulma-has-text-white" href="https://www.doabooks.org">www.doabooks.org</a></li>
-            <li><a class="bulma-has-text-white" href="https://www.oapen.org">www.oapen.org</a></li>
-            <li><a class="bulma-has-text-white" href="https://www.oabooks-toolkit.org">www.oabooks-toolkit.org</a></li>
-          </ul>
         </section>
       </div>
 

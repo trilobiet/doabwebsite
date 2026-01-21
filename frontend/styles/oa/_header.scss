@@ -131,7 +131,7 @@
     }
 
     .oa-nav-dropdown {
-      $oa-nav-dropdown-bg: color-mix(in srgb, $oa-colour-ink 82%, list.nth($oa-brand-colour-list, 1) 18%);
+      $oa-nav-dropdown-bg: color-mix(in srgb, $oa-colour-ink 90%, $oa-colour-stone-600 10%);
       position: absolute;
       top: calc(100% + 1px);
       left: 0;
@@ -176,7 +176,7 @@
 
     // condensed state (on scroll)
     &.js-is-condensed .oa-nav-dropdown {
-      $oa-nav-dropdown-bg: color-mix(in srgb, $oa-colour-ink 82%, list.nth($oa-brand-colour-list, 1) 18%);
+      $oa-nav-dropdown-bg: color-mix(in srgb, $oa-colour-ink 90%, $oa-colour-stone-600 10%);
       background: $oa-nav-dropdown-bg;
       border-color: $oa-nav-dropdown-bg;
       color: $oa-colour-paper;
