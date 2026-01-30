@@ -105,12 +105,7 @@
 }
 
 // Cycle brand colours from the logo for fallback blocks
-// 1/2 = sunset, 3/4 = honeydew, 5 = electric
-$oa-cover-fallback-colours: if(
-  $doab-logo-variant == 3 or $doab-logo-variant == 4,
-  $oa-brand-colour-list-alt,
-  $oa-brand-colour-list
-);
+$oa-cover-fallback-colours: $oa-brand-colour-list;
 
 @mixin oa-cover-palette($palette) {
   @if $palette != null {
@@ -123,14 +118,3 @@ $oa-cover-fallback-colours: if(
 }
 
 @include oa-cover-palette($oa-cover-fallback-colours);
-
-// Alt palette when body signals honeydew logo variants
-body.oa-logo-variant-3,
-body.oa-logo-variant-4,
-body.oa-cover-alt-active {
-  @include oa-cover-palette($oa-brand-colour-list-alt);
-}
-
-body.oa-logo-variant-5 {
-  @include oa-cover-palette($oa-electric-list);
-}

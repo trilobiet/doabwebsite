@@ -17,44 +17,7 @@ $oa-colour-paper:      #ffffff !default; // main background / inverted (dark the
 $oa-colour-stone-600:  #555555 !default; // secondary text / inverted (dark theme) borders
 $oa-colour-stone-300:  #bfbfbf !default; // subtle borders / inverted (dark theme) text
 
-// Match the logo variant selection in branding
-// 1 = sunset (10-bar), 2 = sunset (5-bar), 3 = honeydew (10-bar),
-// 4 = honeydew (5-bar), 5 = electric (5-bar)
-$doab-logo-variant: 5 !default;
-
-// Brand colours (sunset)
-$oa-sunset-colours: (
-  "scarlet":      #F25545,
-  "magenta-1":    #F85B6A,
-  "magenta-2":    #F0559E,
-  "magenta-3":    #E06AB9,
-  "lilac-1":      #C07BD7,
-  "lilac-2":      #AF82E0,
-  "lilac-3":      #9A87E4,
-  "periwinkle":   #4F8FDB,
-  "blue-1":       #2397AD,
-  "teal":         #1496C4
-) !default;
-
-$oa-sunset-accent: #2F7DFF !default;
-
-// Alternate brand colours (honeydew)
-$oa-honeydew-colours: (
-  "sage-1":       #CDE3DD,
-  "sage-2":       #B8D6CC,
-  "sage-3":       #9FC6B8,
-  "green-1":      #8FBFA6,
-  "green-2":      #A9CFA0,
-  "melon-1":      #C9D79A,
-  "melon-2":      #E6D39B,
-  "peach-1":      #F3C48E,
-  "peach-2":      #FFBE6F,
-  "orange-soft":  #F6A85F
-) !default;
-
-$oa-honeydew-accent: #FC5102 !default;
-
-// Alternate brand colours
+// Brand colours (electric/tropical)
 $oa-electric-colours: (
   "teal":         #00B3A4,
   "emerald":      #00C853,
@@ -64,13 +27,6 @@ $oa-electric-colours: (
 ) !default;
 
 $oa-electric-accent: #00B3A4 !default;
-
-// Accent map for semantic use (CTA, focus, alerts)
-$oa-accents: (
-  "sunset": $oa-sunset-accent,
-  "honeydew": $oa-honeydew-accent,
-  "electric": $oa-electric-accent
-) !default;
 
 // Helper to derive ordered lists (skip accent)
 @function oa-colour-list($map) {
@@ -83,47 +39,20 @@ $oa-accents: (
   @return $vals;
 }
 
-$oa-sunset-list: oa-colour-list($oa-sunset-colours) !default;
-$oa-honeydew-list: oa-colour-list($oa-honeydew-colours) !default;
 $oa-electric-list: oa-colour-list($oa-electric-colours) !default;
 
 // Ordered lists for cycling in UI elements (covers, pills, etc.)
-// Default follows logo variant; sunset as alternate
-$oa-brand-colour-list: if(
-  $doab-logo-variant == 1 or $doab-logo-variant == 2,
-  $oa-sunset-list,
-  if($doab-logo-variant == 5, $oa-electric-list, $oa-honeydew-list)
-);
-$oa-brand-colour-list-alt: $oa-sunset-list;
+$oa-brand-colour-list: $oa-electric-list;
 
 // ————————————————————————————————————————
-// Primary colour families (to be selected with the team)
+// Primary colour family (tropical)
 // Tones: 700=hero/dark sections, 600=primary UI, 500=links/focus
-// All 500s pass AA against $colour-paper.
 // ————————————————————————————————————————
 
-$brand-sets: (
-  "mono": (
-    700: #000000, // hero/dark sections
-    600: #000000, // primary UI
-    500: #000000, // links & focus states
-    accent: #000000
-  )
-);
-
-$brand: "mono" !default;
-
-// Function to get brand colours by tone
-@function brand($tone) {
-  $family: map.get($brand-sets, $brand);
-  @return if($family != null, map.get($family, $tone), null);
-}
-
-// Exposed tokens
-$brand-primary-700: brand(700);
-$brand-primary-600: brand(600);
-$brand-primary-500: brand(500);
-$brand-accent:      brand(accent);
+$brand-primary-700: #00B3A4;
+$brand-primary-600: #00B3A4;
+$brand-primary-500: #00B3A4;
+$brand-accent:      #FF6D00;
 
 // Support accents
 // ***Use sparingly for semantics & emphasis***

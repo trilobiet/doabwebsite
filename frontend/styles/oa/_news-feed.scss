@@ -63,24 +63,5 @@
   }
 }
 
-// Default palette follows logo variant at build time
-@include oa-news-card-gradients(
-  if(oa.$doab-logo-variant == 1 or oa.$doab-logo-variant == 2,
-    oa.$oa-sunset-list,
-    if(oa.$doab-logo-variant == 5, oa.$oa-electric-list, oa.$oa-honeydew-list))
-);
-
-// Runtime overrides via body class
-body.oa-logo-variant-1,
-body.oa-logo-variant-2 {
-  @include oa-news-card-gradients(oa.$oa-sunset-list);
-}
-
-body.oa-logo-variant-3,
-body.oa-logo-variant-4 {
-  @include oa-news-card-gradients(oa.$oa-honeydew-list);
-}
-
-body.oa-logo-variant-5 {
-  @include oa-news-card-gradients(oa.$oa-electric-list);
-}
+// Electric palette (tropical)
+@include oa-news-card-gradients(oa.$oa-electric-list);

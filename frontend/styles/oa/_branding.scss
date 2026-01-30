@@ -1,58 +1,15 @@
 // oa/_branding.scss
-// DOAB logotype variants and quick-switch helpers
-
-@use "../oa-colours" as oa;
-
-// Set in oa-colours.scss:
-// 1 = sunset (10-bar), 2 = sunset (5-bar), 3 = honeydew (10-bar), 4 = honeydew (5-bar)
-// 5 = electric (5-bar)
+// DOAB logotype styling
 
 .oa-logo-stack {
   display: inline-flex;
   align-items: center;
   color: inherit;
 
-  .oa-logo-option {
-    display: none;
+  .oa-logo {
+    display: block;
     max-height: 100%;
     max-width: 100%;
     overflow: visible;
   }
-
-  .oa-logo-option-1 {
-    display: if(oa.$doab-logo-variant == 1, block, none);
-  }
-
-  .oa-logo-option-2 {
-    display: if(oa.$doab-logo-variant == 2, block, none);
-  }
-
-  .oa-logo-option-3 {
-    display: if(oa.$doab-logo-variant == 3, block, none);
-  }
-
-  .oa-logo-option-4 {
-    display: if(oa.$doab-logo-variant == 4, block, none);
-  }
-
-  .oa-logo-option-5 {
-    display: if(oa.$doab-logo-variant == 5, block, none);
-  }
-}
-
-// Add `oa-logo-variant-X` to <body>
-body.oa-logo-variant-1 .oa-logo-option-1,
-body.oa-logo-variant-2 .oa-logo-option-2,
-body.oa-logo-variant-3 .oa-logo-option-3,
-body.oa-logo-variant-4 .oa-logo-option-4,
-body.oa-logo-variant-5 .oa-logo-option-5 {
-  display: block !important;
-}
-
-body.oa-logo-variant-1 .oa-logo-option:not(.oa-logo-option-1),
-body.oa-logo-variant-2 .oa-logo-option:not(.oa-logo-option-2),
-body.oa-logo-variant-3 .oa-logo-option:not(.oa-logo-option-3),
-body.oa-logo-variant-4 .oa-logo-option:not(.oa-logo-option-4),
-body.oa-logo-variant-5 .oa-logo-option:not(.oa-logo-option-5) {
-  display: none !important;
 }
