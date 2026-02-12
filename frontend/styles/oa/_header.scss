@@ -109,6 +109,20 @@
     color: inherit;
     border-color: inherit;
   }
+
+  .oa-nav-section {
+    --oa-nav-colour: currentColor;
+
+    > .bulma-navbar-link {
+      color: currentColor;
+    }
+  }
+
+  @for $i from 1 through list.length($oa-tropical-neon-list) {
+    .oa-nav-section--#{$i} {
+      --oa-nav-colour: #{list.nth($oa-tropical-neon-list, $i)};
+    }
+  }
 }
 
 // Desktop dropdowns (simple list)
@@ -166,6 +180,12 @@
       }
     }
 
+    .oa-nav-section > .oa-nav-dropdown {
+      background: var(--oa-nav-colour);
+      border-color: var(--oa-nav-colour);
+      color: $oa-colour-ink;
+    }
+
     // remove Bulma’s white tile background in dropdown
     .bulma-navbar-dropdown {
       a.bulma-navbar-item,
@@ -185,6 +205,12 @@
         color: $oa-colour-paper; 
       }
     }
+
+    &.js-is-condensed .oa-nav-section > .oa-nav-dropdown {
+      background: var(--oa-nav-colour);
+      border-color: var(--oa-nav-colour);
+      color: $oa-colour-ink;
+    }
   }
 }
 
@@ -199,7 +225,7 @@
     display: block; 
   }
 
-    .oa-nav-mobile {
+  .oa-nav-mobile {
       padding: 0;
       background: var(--bulma-stone-light); // expanded
       color: var(--bulma-ink);

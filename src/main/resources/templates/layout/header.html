@@ -33,16 +33,16 @@
         <div id="oa-nav" class="bulma-navbar-menu oa-nav-mobile">
           <ul class="bulma-navbar-end oa-navbar-list" role="menubar">
             <!-- Originally left section -->
-            <li th:each="mnusection : ${menuLeftSections}"
-                class="bulma-navbar-item"
-                th:classappend="${#lists.isEmpty(mnusection.topics)} ? '' : ' bulma-has-dropdown bulma-is-hoverable'">
+            <li th:each="mnusection,stat : ${menuLeftSections}"
+                class="bulma-navbar-item oa-nav-section"
+                th:classappend="${' oa-nav-section--' + ((stat.index % 5) + 1) + (#lists.isEmpty(mnusection.topics) ? '' : ' bulma-has-dropdown bulma-is-hoverable')}">
               <th:block th:insert="layout/submenu :: section_navigation">submenu</th:block>
             </li>
 
             <!-- Originally right section -->
-            <li th:each="mnusection : ${menuRightSections}"
-                class="bulma-navbar-item"
-                th:classappend="${#lists.isEmpty(mnusection.topics)} ? '' : ' bulma-has-dropdown bulma-is-hoverable'">
+            <li th:each="mnusection,stat : ${menuRightSections}"
+                class="bulma-navbar-item oa-nav-section"
+                th:classappend="${' oa-nav-section--' + (((#lists.size(menuLeftSections) + stat.index) % 5) + 1) + (#lists.isEmpty(mnusection.topics) ? '' : ' bulma-has-dropdown bulma-is-hoverable')}">
               <th:block th:insert="layout/submenu :: section_navigation">submenu</th:block>
             </li>
 
