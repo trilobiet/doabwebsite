@@ -10,6 +10,7 @@
 // ————————————————————————————————————————
 
 // Bring in OAPEN’s colour palette and typography variables
+@use "sass:map";
 @use "./oa-colours" as *;
 @use "./oa-fonts"; 
 
@@ -63,6 +64,16 @@
     "brand":      ($brand-primary-600,     $oa-colour-paper),
     "brand-hero": ($brand-primary-700,     $oa-colour-paper),
     "accent":     ($brand-accent,          $oa-colour-ink),
+    "tropic-teal":    (map.get($oa-tropical-neon-colours, "teal"),    $oa-colour-paper),
+    "tropic-emerald": (map.get($oa-tropical-neon-colours, "emerald"), $oa-colour-paper),
+    "tropic-lime":    (map.get($oa-tropical-neon-colours, "lime"),    $oa-colour-ink),
+    "tropic-amber":   (map.get($oa-tropical-neon-colours, "amber"),   $oa-colour-ink),
+    "tropic-orange":  (map.get($oa-tropical-neon-colours, "orange"),  $oa-colour-ink),
+    "tropic-teal-pastel":    (map.get($oa-tropical-pastel-colours, "teal"),    $oa-colour-ink),
+    "tropic-emerald-pastel": (map.get($oa-tropical-pastel-colours, "emerald"), $oa-colour-ink),
+    "tropic-lime-pastel":    (map.get($oa-tropical-pastel-colours, "lime"),    $oa-colour-ink),
+    "tropic-amber-pastel":   (map.get($oa-tropical-pastel-colours, "amber"),   $oa-colour-ink),
+    "tropic-orange-pastel":  (map.get($oa-tropical-pastel-colours, "orange"),  $oa-colour-ink),
     "ink":        ($oa-colour-ink,         $oa-colour-paper),
     "paper":      ($oa-colour-paper,       $oa-colour-ink),
     "stone-dark": ($oa-colour-stone-600,   $oa-colour-paper),

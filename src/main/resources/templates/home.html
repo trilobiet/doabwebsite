@@ -11,7 +11,7 @@
 		BODY
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-	<main layout:fragment="content" class="bulma-has-background-paper bulma-pb-6">
+	<main layout:fragment="content" class="bulma-has-background-paper bulma-pb-0">
 
 		<!-- Hero (tagline + featured titles + search) -->
 		<th:block th:insert="home/hero :: hero">Hero</th:block>
@@ -21,6 +21,9 @@
 		
 		<!-- Newsletter sign-up -->
 		<th:block th:insert="home/newsletter :: newsletter">Newsletter</th:block>
+
+		<!-- Sponsors (temporarily hidden) -->
+		<!-- <th:block th:insert="home/sponsors :: sponsors">Sponsors</th:block> -->
 
 		<span th:text="${ip}" style="display:none">your ip</span>
 

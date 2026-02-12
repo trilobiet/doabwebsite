@@ -13,3 +13,51 @@
     overflow: visible;
   }
 }
+
+.oa-sponsors {
+  .bulma-columns {
+    row-gap: .75rem;
+  }
+
+  .oa-sponsors__tier-label {
+    padding-bottom: .35rem;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .oa-logo-link {
+    display: block;
+    width: min(100%, 240px);
+  }
+
+  .oa-logo-box {
+    height: 4.75rem;
+    width: 100%;
+    padding: .35rem .6rem;
+    transition: transform .16s ease;
+    will-change: transform;
+  }
+
+  .oa-logo-box img {
+    max-height: 100%;
+    width: auto;
+  }
+
+  .oa-logo-link:hover .oa-logo-box,
+  .oa-logo-link:focus .oa-logo-box,
+  .oa-logo-link:focus-visible .oa-logo-box {
+    transform: scale(1.05);
+  }
+
+  @media (min-width: 1024px) {
+    .oa-logo-box {
+      height: 5.25rem;
+      padding: .5rem .85rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .oa-logo-box {
+      transition: none;
+    }
+  }
+}
