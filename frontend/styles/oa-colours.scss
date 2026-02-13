@@ -62,9 +62,9 @@ $oa-brand-colour-list: $oa-tropical-neon-list;
 // Tones: 700=hero/dark sections, 600=primary UI, 500=links/focus
 // ————————————————————————————————————————
 
-$brand-primary-700: map.get($oa-tropical-neon-colours, "orange");
-$brand-primary-600: map.get($oa-tropical-neon-colours, "orange");
-$brand-primary-500: map.get($oa-tropical-neon-colours, "orange");
+$brand-primary-700: map.get($oa-tropical-neon-colours, "lime");
+$brand-primary-600: map.get($oa-tropical-neon-colours, "lime");
+$brand-primary-500: map.get($oa-tropical-neon-colours, "lime");
 $brand-accent:      map.get($oa-tropical-neon-colours, "teal");
 
 // Support accents

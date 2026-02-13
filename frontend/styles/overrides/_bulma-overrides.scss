@@ -17,9 +17,7 @@
   box-shadow: none;
 }
 
-// Context-aware link colours on dark brand-colour surfaces (700, 600)
-.bulma-has-background-brand-hero,
-.bulma-has-background-brand,
+// Context-aware link colours on dark surfaces
 .bulma-has-background-ink {
   // Force high-contrast link colours
   --bulma-link-text:         #fff;

@@ -112,6 +112,7 @@
 
   .oa-nav-section {
     --oa-nav-colour: currentColor;
+    --oa-nav-colour-pastel: currentColor;
 
     > .bulma-navbar-link {
       color: currentColor;
@@ -121,6 +122,7 @@
   @for $i from 1 through list.length($oa-tropical-neon-list) {
     .oa-nav-section--#{$i} {
       --oa-nav-colour: #{list.nth($oa-tropical-neon-list, $i)};
+      --oa-nav-colour-pastel: #{list.nth($oa-tropical-pastel-list, $i)};
     }
   }
 }
@@ -153,8 +155,8 @@
       display: none;
       background: $oa-nav-dropdown-bg;
       color: $oa-colour-paper;
-      border: 1px solid $oa-nav-dropdown-bg;
-      padding: .35rem 0;
+      border: 0;
+      padding: 0;
 
       a.bulma-navbar-item { 
         color: inherit; 
@@ -166,7 +168,7 @@
         display: block;
         text-align: left;
         white-space: normal;
-        padding-block: .6rem;
+        padding-block: .55rem;
         transition: background-color .15s ease, color .15s ease;
         color: currentColor;
 
@@ -186,6 +188,14 @@
       color: $oa-colour-ink;
     }
 
+    .oa-nav-section > .oa-nav-dropdown .bulma-navbar-item:hover,
+    .oa-nav-section > .oa-nav-dropdown .bulma-navbar-item:focus,
+    .oa-nav-section > .oa-nav-dropdown .bulma-navbar-item:focus-visible,
+    .oa-nav-section > .oa-nav-dropdown .bulma-navbar-item.bulma-is-active {
+      background: var(--oa-nav-colour-pastel);
+      color: $oa-colour-ink;
+    }
+
     // remove Bulma’s white tile background in dropdown
     .bulma-navbar-dropdown {
       a.bulma-navbar-item,
@@ -198,7 +208,7 @@
     &.js-is-condensed .oa-nav-dropdown {
       $oa-nav-dropdown-bg: color-mix(in srgb, $oa-colour-ink 90%, $oa-colour-stone-600 10%);
       background: $oa-nav-dropdown-bg;
-      border-color: $oa-nav-dropdown-bg;
+      border-color: transparent;
       color: $oa-colour-paper;
 
       a.bulma-navbar-item { 
@@ -208,7 +218,7 @@
 
     &.js-is-condensed .oa-nav-section > .oa-nav-dropdown {
       background: var(--oa-nav-colour);
-      border-color: var(--oa-nav-colour);
+      border-color: transparent;
       color: $oa-colour-ink;
     }
   }

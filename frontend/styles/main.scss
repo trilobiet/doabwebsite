@@ -61,8 +61,8 @@
   $border:        $oa-colour-stone-300,
 
   $custom-colors: (
-    "brand":      ($brand-primary-600,     $oa-colour-paper),
-    "brand-hero": ($brand-primary-700,     $oa-colour-paper),
+    "brand":      ($brand-primary-600,     $oa-colour-ink),
+    "brand-hero": ($brand-primary-700,     $oa-colour-ink),
     "accent":     ($brand-accent,          $oa-colour-ink),
     "tropic-teal":    (map.get($oa-tropical-neon-colours, "teal"),    $oa-colour-paper),
     "tropic-emerald": (map.get($oa-tropical-neon-colours, "emerald"), $oa-colour-paper),
