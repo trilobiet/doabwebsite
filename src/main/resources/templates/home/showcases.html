@@ -14,9 +14,9 @@
 	Showcases
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <th:block th:fragment="showcases">
-	<section class="bulma-section bulma-py-5" th:if="${showcases != null and !#lists.isEmpty(showcases)}">
+	<section class="bulma-section bulma-py-6" th:if="${showcases != null and !#lists.isEmpty(showcases)}">
 		<div class="bulma-container">
-			<article th:each="article, stat : ${showcases}" class="bulma-pb-5 bulma-mb-5">
+			<article th:each="article, stat : ${showcases}">
 				<div class="bulma-columns bulma-is-variable bulma-is-6">
 					<div class="bulma-column bulma-is-4-desktop bulma-is-5-tablet">
 						<h2 class="bulma-title bulma-is-3 bulma-mb-0 bulma-has-text-weight-normal">
