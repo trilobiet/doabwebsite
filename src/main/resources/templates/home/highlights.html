@@ -2,43 +2,49 @@
   Highlights
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <th:block th:fragment="highlights">
-<section class="bulma-hero bulma-is-small bulma-container bulma-has-background-brand-hero bulma-has-text-paper">
-	<div class="bulma-hero-body bulma-is-align-items-center">
-		<div class="bulma-columns bulma-is-variable bulma-is-5"
-				th:each="article : ${highlights}"
-				th:classappend="${article.cssClass}">
+  <section class="bulma-section bulma-py-5 bulma-has-background-tropic-amber-pastel bulma-has-text-ink"
+           th:if="${highlights != null and !#lists.isEmpty(highlights)}">
+    <div class="bulma-container">
+      <header class="bulma-has-text-centered bulma-mb-5">
+        <h2 class="bulma-title bulma-is-2 bulma-mb-5 bulma-has-text-weight-bold">
+          Highlights
+        </h2>
+        <p class="bulma-is-block bulma-is-size-5 bulma-mb-2 bulma-has-text-weight-normal">
+          Featured stories from DOAB.
+        </p>
+      </header>
 
-			<!-- Text -->
-			<div class="bulma-column bulma-is-three-quarters-desktop bulma-is-two-thirds-tablet">
-				<h2 class="bulma-title bulma-is-3 bulma-mb-2">
-					<a class="bulma-has-text-current bulma-has-text-weight-normal"
-						th:href="@{'/article/'+${article.slug}}"
-						th:text="${article.title}">
-						Highlight title
-					</a>
-				</h2>
+      <ul class="bulma-columns bulma-is-multiline bulma-is-variable bulma-is-5" role="list">
+        <li class="bulma-column bulma-is-half-desktop bulma-is-full-tablet"
+            th:each="article : ${highlights}"
+            role="listitem">
+          <article class="bulma-content">
+            <h3 class="bulma-title bulma-is-4 bulma-mb-3 bulma-has-text-weight-normal">
+              <a class="bulma-has-text-current"
+                 th:href="@{'/'+${language}+'/article/' + ${article.slug}}"
+                 th:text="${article.title}">
+                Highlight title
+              </a>
+            </h3>
 
-				<div class="bulma-is-size-5 oa-readable">
-					<th:block th:utext="${article.summary}">
-						Highlight dummy text
-					</th:block>
-				</div>
-			</div>
+            <div class="bulma-is-size-5">
+              <th:block th:utext="${article.summary}">
+                Highlight summary
+              </th:block>
+            </div>
 
-			<!-- Media (optional) -->
-			<div class="bulma-column bulma-is-one-quarter-desktop bulma-is-one-third-tablet"
-					th:if="${not #lists.isEmpty(article.media)}">
+            <figure class="bulma-image bulma-mt-4"
+                    th:if="${not #lists.isEmpty(article.media)}"
+                    th:each="media : ${@viewhelpers.images(article.media)}">
+              <img th:src="${media.url}"
+                   th:alt="${article.title}"
+                   loading="lazy"
+                   decoding="async" />
+            </figure>
+          </article>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-				<figure class="bulma-image"
-								th:each="media : ${@viewhelpers.images(article.media)}">
-					<img th:src="${media.url}"
-								th:alt="${article.title}"
-								loading="lazy"
-								decoding="async" />
-				</figure>
-			</div>
-
-		</div>
-	</div>
-</section>
 </th:block>
