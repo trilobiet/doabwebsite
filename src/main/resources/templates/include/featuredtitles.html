@@ -20,24 +20,19 @@
         <ul class="splide__list">
           <li class="splide__slide"
               th:each="item, iter : ${featuredItems}"
-              th:if="${not #strings.isEmpty(item.title)}"
+              th:if="${not #strings.isEmpty(item.title) and not #strings.isEmpty(item.thumbnailPath)}"
               th:with="subject=${(topSubjects != null and topSubjects.size() > iter.index) ? topSubjects[iter.index] : ''}">
             <a th:href="${item.url+'?locale-attribute='+language}"
               class="bulma-card bulma-is-shadowless oa-carousel__item"
               th:attr="aria-label=${item.title}">
               <div class="bulma-card-image">
                 <figure class="bulma-image">
-                  <div class="oa-carousel__box"
-                       th:classappend="${#strings.isEmpty(item.thumbnailPath)} ? ' is-fallback' : ''">
+                  <div class="oa-carousel__box">
                     <img class="oa-carousel__img bulma-is-radiusless"
                         loading="lazy" decoding="async" draggable="false"
-                        th:src="${#strings.isEmpty(item.thumbnailPath)} ? @{/static-assets/images/missing.png} : @{|${settings.dspace_api}${item.thumbnailPath}|}"
+                        th:src="@{|${settings.dspace_api}${item.thumbnailPath}|}"
                         th:alt="|${item.title} – cover|"
-                        onerror="this.closest('.oa-carousel__box').classList.add('is-fallback'); this.remove();">
-                    <div class="oa-cover-fallback"
-                         th:text="|${#strings.defaultString(subject,'')} ${#strings.defaultString(item.title,'')}|">
-                      Featured title
-                    </div>
+                        onerror="const slide=this.closest('.splide__slide'); if (slide) slide.remove(); const root=this.closest('.splide'); if (root && root.__splide) root.__splide.refresh();">
                   </div>
                   <figcaption class="bulma-is-size-7 oa-carousel__title bulma-mt-2">
                     <strong th:text="${subject}">Subject</strong>
