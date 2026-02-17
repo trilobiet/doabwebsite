@@ -40,7 +40,8 @@
 					In this section
 				</h2>
 
-				<ul class="bulma-columns bulma-is-multiline bulma-mt-4">
+				<ul class="bulma-columns bulma-is-multiline bulma-mt-4"
+					th:classappend="${' oa-section-topics--' + section.slug}">
 					<li th:each="topic : ${section.topics}"
 							class="bulma-column
 										bulma-is-full-mobile
@@ -50,7 +51,7 @@
 						<div class="bulma-panel bulma-is-shadowless oa-h-100">
 							<a th:href="@{'/'+${language}+'/'+${section.slug}+'/'+${topic.slug}}"
 								class="bulma-panel-block
-												bulma-has-background-paper
+												oa-section-topic-card
 												bulma-is-flex
 												bulma-is-justify-content-space-between
 												bulma-is-align-items-flex-start
@@ -74,6 +75,3 @@
 
 </body>
 </html>
-
-
-

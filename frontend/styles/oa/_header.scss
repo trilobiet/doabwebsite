@@ -188,6 +188,11 @@
       color: $oa-colour-ink;
     }
 
+    .oa-nav-section > .oa-nav-dropdown a.bulma-navbar-item,
+    .oa-nav-section > .oa-nav-dropdown .bulma-navbar-item {
+      color: $oa-colour-ink;
+    }
+
     .oa-nav-section > .oa-nav-dropdown .bulma-navbar-item:hover,
     .oa-nav-section > .oa-nav-dropdown .bulma-navbar-item:focus,
     .oa-nav-section > .oa-nav-dropdown .bulma-navbar-item:focus-visible,
@@ -219,6 +224,11 @@
     &.js-is-condensed .oa-nav-section > .oa-nav-dropdown {
       background: var(--oa-nav-colour);
       border-color: transparent;
+      color: $oa-colour-ink;
+    }
+
+    &.js-is-condensed .oa-nav-section > .oa-nav-dropdown a.bulma-navbar-item,
+    &.js-is-condensed .oa-nav-section > .oa-nav-dropdown .bulma-navbar-item {
       color: $oa-colour-ink;
     }
   }

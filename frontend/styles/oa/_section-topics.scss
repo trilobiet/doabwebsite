@@ -1,0 +1,82 @@
+// oa/_section-topics.scss
+// Topic cards on section landing pages
+// One colour per section (pastel default, matching neon on hover/focus)
+
+@use "sass:map";
+@use "../oa-colours" as *;
+
+.oa-section-topic-card {
+  --oa-topic-bg: var(--bulma-paper);
+  --oa-topic-bg-hover: var(--bulma-paper);
+  --oa-topic-fg: var(--bulma-ink);
+
+  background: var(--oa-topic-bg);
+  color: var(--oa-topic-fg);
+  transition: background-color .18s ease, color .18s ease;
+
+  .bulma-tag {
+    background: color-mix(in srgb, var(--oa-topic-fg) 8%, transparent);
+    color: currentColor;
+    transition: background-color .18s ease;
+  }
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    background: var(--oa-topic-bg-hover);
+    background-color: var(--oa-topic-bg-hover);
+    color: var(--oa-topic-fg);
+  }
+
+  // Override Bulma panel-block hover background (white) on section topic cards
+  &.bulma-panel-block:hover,
+  &.bulma-panel-block:focus,
+  &.bulma-panel-block:focus-visible,
+  &.bulma-panel-block:not(.bulma-is-active):hover {
+    background: var(--oa-topic-bg-hover);
+    background-color: var(--oa-topic-bg-hover);
+    color: var(--oa-topic-fg);
+  }
+
+  &:hover .bulma-tag,
+  &:focus .bulma-tag,
+  &:focus-visible .bulma-tag {
+    background: color-mix(in srgb, var(--oa-topic-fg) 14%, transparent);
+  }
+}
+
+@mixin oa-topic-swatch($name) {
+  --oa-topic-bg: #{map.get($oa-tropical-pastel-colours, $name)};
+  --oa-topic-bg-hover: #{map.get($oa-tropical-neon-colours, $name)};
+  --oa-topic-fg: #{$oa-colour-ink};
+}
+
+.oa-section-topics--librarians .oa-section-topic-card,
+.oa-section-topics--librarian .oa-section-topic-card,
+.oa-section-topics--libraries .oa-section-topic-card {
+  @include oa-topic-swatch("teal");
+}
+
+.oa-section-topics--researchers .oa-section-topic-card,
+.oa-section-topics--researcher .oa-section-topic-card,
+.oa-section-topics--authors .oa-section-topic-card {
+  @include oa-topic-swatch("emerald");
+}
+
+.oa-section-topics--publishers .oa-section-topic-card,
+.oa-section-topics--publisher .oa-section-topic-card {
+  @include oa-topic-swatch("lime");
+}
+
+.oa-section-topics--funders .oa-section-topic-card,
+.oa-section-topics--funder .oa-section-topic-card {
+  @include oa-topic-swatch("amber");
+}
+
+.oa-section-topics--service-providers .oa-section-topic-card,
+.oa-section-topics--service-provider .oa-section-topic-card,
+.oa-section-topics--serviceproviders .oa-section-topic-card,
+.oa-section-topics--providers .oa-section-topic-card,
+.oa-section-topics--partners .oa-section-topic-card {
+  @include oa-topic-swatch("orange");
+}
