@@ -32,7 +32,7 @@
             </p>
           </div>
         </div>
-        <hr class="bulma-my-6" th:if="${!stat.last}">
+        <hr class="bulma-my-6" th:if="${!stat.last and #lists.size(highlights) > 1}">
       </article>
     </div>
   </section>
@@ -63,7 +63,6 @@
             </p>
           </div>
         </div>
-        <hr class="bulma-my-6">
       </article>
     </div>
   </section>
