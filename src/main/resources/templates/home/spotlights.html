@@ -24,7 +24,7 @@
       title=${article.title},
       url=@{'/'+${language}+'/article/' + ${article.slug}},
       summary=${@viewhelpers.abbreviate(article.summary, 220)},
-      category='Spotlight'
+      category=#{spotlight}
     )}"></th:block>
   </li>
 </th:block>

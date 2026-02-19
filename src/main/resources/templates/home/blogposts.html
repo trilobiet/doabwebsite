@@ -25,7 +25,7 @@
       title=${blogPost.title},
       url=@{'/'+${language}+'/blog/?link=' + ${@viewhelpers.urlEncode(blogPost.link)}},
       summary=${@viewhelpers.abbreviate(blogPost.description, 220)},
-      category='Blog post'
+      category=#{blogpost}
     )}"></th:block>
   </li>
 </th:block>

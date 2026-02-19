@@ -7,10 +7,10 @@
       <header class="bulma-mb-4 oa-section-header">
         <div class="bulma-columns bulma-is-vcentered bulma-pb-4">
           <div class="bulma-column bulma-is-half-tablet">
-            <h2 class="bulma-title bulma-is-4 bulma-has-text-weight-normal">The latest from DOAB</h2>
+            <h2 class="bulma-title bulma-is-4 bulma-has-text-weight-normal" th:text="#{latest_from_doab}">The latest from DOAB</h2>
           </div>
           <div class="bulma-column bulma-is-half-tablet bulma-has-text-right-tablet">
-            <a th:href="@{'/'+${language}+'/resources'}" class="bulma-button bulma-is-brand bulma-is-shadowless">See all news →</a>
+            <a th:href="@{'/'+${language}+'/resources'}" class="bulma-button bulma-is-brand bulma-is-shadowless"><span th:text="#{see_all_news}">See all news</span> →</a>
           </div>
         </div>
       </header>

@@ -7,12 +7,12 @@
       <div class="bulma-columns bulma-is-centered bulma-is-flex-grow-1">
         <div class="bulma-column bulma-is-8-tablet bulma-is-6-desktop">
           <h2 class="bulma-title bulma-is-2 bulma-mb-5 bulma-has-text-weight-bold">
-            Stay up to date
+            <span th:text="#{stay_up_to_date}">Stay up to date</span>
           </h2>
 
           <form action="https://oapen.us4.list-manage.com/subscribe/post?u=314fa411ba5eaaee7244c95e1&id=e31e6f80e1&f_id=008761eaf0"
                 method="post" target="_blank" novalidate>
-            <label class="bulma-is-block bulma-is-size-5 bulma-mb-3 bulma-has-text-weight-normal" for="oa_newsletter">Sign up for our newsletter</label>
+            <label class="bulma-is-block bulma-is-size-5 bulma-mb-3 bulma-has-text-weight-normal" for="oa_newsletter" th:text="#{sign_up_for_newsletter}">Sign up for our newsletter</label>
             <div class="bulma-field bulma-has-addons oa-input-group">
               <p class="bulma-control bulma-is-expanded">
                 <input id="oa_newsletter"
@@ -21,7 +21,7 @@
                       autocomplete="email" required>
               </p>
               <p class="bulma-control">
-                <button type="submit" class="bulma-button bulma-is-shadowless">Sign up</button>
+                <button type="submit" class="bulma-button bulma-is-shadowless" th:text="#{sign_up}">Sign up</button>
               </p>
             </div>
 
@@ -34,7 +34,7 @@
           <p class="bulma-mt-4">
             <a class="oa-link-arrow"
               href="https://us4.campaign-archive.com/home/?u=314fa411ba5eaaee7244c95e1&amp;id=e31e6f80e1"
-              target="_blank" rel="noopener">View newsletter archive</a>
+              target="_blank" rel="noopener" th:text="#{view_newsletter_archive}">View newsletter archive</a>
           </p>
         </div>
       </div>

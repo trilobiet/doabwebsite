@@ -20,7 +20,7 @@
         <!-- Featured titles -->
         <div class="bulma-mt-6" role="region" aria-label="New additions" aria-live="polite">
           <header class="bulma-mb-4 oa-section-header">
-            <h2 class="bulma-title bulma-is-5 bulma-pb-4 bulma-mb-0 bulma-has-text-weight-normal">New from DOAB</h2>
+            <h2 class="bulma-title bulma-is-5 bulma-pb-4 bulma-mb-0 bulma-has-text-weight-normal" th:text="#{new_from_doab}">New from DOAB</h2>
           </header>
           <div class="carouselloader" th:data-src="|@{'/' + ${language} + '/featuredtitles'} #FeaturedTitles|"></div>
         </div>

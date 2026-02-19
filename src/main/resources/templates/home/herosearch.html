@@ -9,7 +9,7 @@
 
         <h2 class="bulma-title bulma-is-3 bulma-mb-4 bulma-has-text-weight-semibold"
             id="home-search-title">
-          Find open access books:
+          <span th:text="#{find_open_access_books}">Find open access books:</span>
         </h2>
 
         <form
@@ -18,7 +18,7 @@
           aria-labelledby="home-search-title">
 
           <label for="ipt_search" class="bulma-is-sr-only" id="search-label">
-            Find open access books by keyword
+            <span th:text="#{find_open_access_books_by_keyword}">Find open access books by keyword</span>
           </label>
 
           <div class="bulma-field bulma-has-addons oa-input-group" style="max-width: 560px;">
@@ -28,6 +28,7 @@
                 class="bulma-input bulma-is-shadowless bulma-is-outlined"
                 type="search"
                 name="query"
+                th:placeholder="#{search_doab}"
                 placeholder="Search DOAB"
                 autocomplete="off"
                 required>
@@ -54,17 +55,21 @@
           </a>
         </p>
 
-        <div class="bulma-mt-4" role="group" aria-label="Browse by">
-          <h3 class="bulma-is-size-6 bulma-mb-2 bulma-has-text-weight-normal">Browse</h3>
+        <div class="bulma-mt-4" role="group" th:aria-label="#{browse_by}">
+          <h3 class="bulma-is-size-6 bulma-mb-2 bulma-has-text-weight-normal" th:text="#{browse}">Browse</h3>
           <ul class="bulma-tags">
             <li><a class="bulma-tag bulma-has-background-brand bulma-has-text-ink bulma-has-text-weight-medium"
-                   th:href="${settings.dspace_site+'/browse?type=classification_text&locale-attribute='+language}">Subject</a></li>
+                   th:href="${settings.dspace_site+'/browse?type=classification_text&locale-attribute='+language}"
+                   th:text="#{subject}">Subject</a></li>
             <li><a class="bulma-tag bulma-has-background-brand bulma-has-text-ink bulma-has-text-weight-medium"
-                   th:href="${settings.dspace_site+'/browse?type=publisher&locale-attribute='+language}">Publisher</a></li>
+                   th:href="${settings.dspace_site+'/browse?type=publisher&locale-attribute='+language}"
+                   th:text="#{publisher}">Publisher</a></li>
             <li><a class="bulma-tag bulma-has-background-brand bulma-has-text-ink bulma-has-text-weight-medium"
-                   th:href="${settings.dspace_site+'/browse?type=collection&locale-attribute='+language}">Collections</a></li>
+                   th:href="${settings.dspace_site+'/browse?type=collection&locale-attribute='+language}"
+                   th:text="#{collections}">Collections</a></li>
             <li><a class="bulma-tag bulma-has-background-brand bulma-has-text-ink bulma-has-text-weight-medium"
-                   th:href="${settings.dspace_site+'/browse?type=language&locale-attribute='+language}">Language</a></li>
+                   th:href="${settings.dspace_site+'/browse?type=language&locale-attribute='+language}"
+                   th:text="#{language}">Language</a></li>
           </ul>
         </div>
 

@@ -14,20 +14,20 @@
         </section>
         
         <section class="bulma-column bulma-is-3-desktop bulma-is-6-tablet bulma-is-size-7">
-          <h3 class="bulma-title bulma-is-7 bulma-is-uppercase bulma-has-text-weight-medium">Websites</h3>
+          <h3 class="bulma-title bulma-is-7 bulma-is-uppercase bulma-has-text-weight-medium" th:text="#{websites}">Websites</h3>
           <ul class="oa-footer__list bulma-is-size-5 bulma-mb-6">
             <li><a class="bulma-has-text-white" href="https://www.oapen.org" target="_blank" rel="noopener">oapen.org</a></li>
             <li><a class="bulma-has-text-white" href="https://oabooks-toolkit.org" target="_blank" rel="noopener">oabooks-toolkit.org</a></li>
           </ul>
-          <h3 class="bulma-title bulma-is-7 bulma-is-uppercase bulma-has-text-weight-medium">Policies</h3>
+          <h3 class="bulma-title bulma-is-7 bulma-is-uppercase bulma-has-text-weight-medium" th:text="#{policies}">Policies</h3>
           <ul class="oa-footer__list bulma-is-size-5">
-            <li><a class="bulma-has-text-white" th:href="@{'/'+${language}+'/article/privacy-statement'}">Privacy</a></li>
-            <li><a class="bulma-has-text-white" th:href="@{'/'+${language}+'/article/accessibility'}">Accessibility</a></li>
+            <li><a class="bulma-has-text-white" th:href="@{'/'+${language}+'/article/privacy-statement'}" th:text="#{privacy}">Privacy</a></li>
+            <li><a class="bulma-has-text-white" th:href="@{'/'+${language}+'/article/accessibility'}" th:text="#{accessibility}">Accessibility</a></li>
           </ul>
         </section>
 
         <section class="bulma-column bulma-is-3-desktop bulma-is-6-tablet bulma-is-size-7">
-          <h3 class="bulma-title bulma-is-7 bulma-is-uppercase bulma-has-text-weight-medium">Explore</h3>
+          <h3 class="bulma-title bulma-is-7 bulma-is-uppercase bulma-has-text-weight-medium" th:text="#{explore}">Explore</h3>
           <ul class="oa-footer__list bulma-is-size-5">
             <li th:each="mnusection: ${footerSections}">
               <a class="bulma-has-text-white"
@@ -95,7 +95,7 @@
         </section>
 
         <section class="bulma-column bulma-is-3-desktop bulma-is-6-tablet bulma-is-size-7">
-          <h3 class="bulma-title bulma-is-7 bulma-is-uppercase bulma-has-text-weight-semibold bulma-mb-2">Address</h3>
+          <h3 class="bulma-title bulma-is-7 bulma-is-uppercase bulma-has-text-weight-semibold bulma-mb-2" th:text="#{footer_title_address}">Address</h3>
           <p class="oa-footer-small bulma-mb-2" th:utext="#{footer_text_1}">
             Footer_text_1
           </p>

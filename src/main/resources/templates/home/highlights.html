@@ -27,7 +27,7 @@
               <a class="bulma-button bulma-is-outlined bulma-is-shadowless bulma-has-text-ink"
                  style="border-color: currentColor;"
                  th:href="@{'/'+${language}+'/article/' + ${article.slug}}">
-                See more
+                <span th:text="#{see_more}">See more</span>
               </a>
             </p>
           </div>
@@ -58,7 +58,7 @@
               <a class="bulma-button bulma-is-outlined bulma-is-shadowless bulma-has-text-ink"
                  style="border-color: currentColor;"
                  href="#">
-                See more
+                <span th:text="#{see_more}">See more</span>
               </a>
             </p>
           </div>
