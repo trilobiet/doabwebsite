@@ -13,9 +13,14 @@
 <!--
 	Blogposts (Hypotheses)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<th:block th:fragment="blogposts" th:with="items=${rssHypothesesItems}">
+<th:block th:fragment="blogposts"
+          th:with="
+            items=${rssHypothesesItems},
+            blogCount=${items != null ? T(java.lang.Math).min(items.size(), 2) : 0},
+            blogItems=${items != null ? items.subList(0, blogCount) : T(java.util.Collections).emptyList()}
+          ">
   <li class="bulma-column bulma-is-full-mobile bulma-is-half-tablet bulma-is-one-third-desktop bulma-is-flex"
-       th:each="blogPost : ${items}">
+       th:each="blogPost : ${blogItems}">
     <th:block th:insert="~{home/feed_card :: card(
       title=${blogPost.title},
       url=@{'/'+${language}+'/blog/?link=' + ${@viewhelpers.urlEncode(blogPost.link)}},

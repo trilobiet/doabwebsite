@@ -66,6 +66,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/css/splide-core.min.css">
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/js/splide.min.js"></script>
 
+  <!-- Bluesky embed script -->
+  <script type="module">
+    if (!customElements.get('bsky-embed')) {
+      import('/static-assets/js/bsky-embed.es.js');
+    }
+  </script>
+
   <!-- Our app scripts -->
   <script defer th:src="@{/static-assets/js/main.min.js(v=${T(java.lang.System).currentTimeMillis()})}"></script>
 

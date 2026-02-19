@@ -13,34 +13,20 @@
 <!--
 	Spotlights
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<th:block th:fragment="spotlights">
+<th:block th:fragment="spotlights"
+          th:with="
+            spotlightCount=${spotlights != null ? T(java.lang.Math).min(spotlights.size(), 3) : 0},
+            spotlightItems=${spotlights != null ? spotlights.subList(0, spotlightCount) : T(java.util.Collections).emptyList()}
+          ">
   <li class="bulma-column bulma-is-full-mobile bulma-is-half-tablet bulma-is-one-third-desktop bulma-is-flex"
-       th:each="article : ${spotlights}">
+       th:each="article : ${spotlightItems}">
     <th:block th:insert="~{home/feed_card :: card(
       title=${article.title},
       url=@{'/'+${language}+'/article/' + ${article.slug}},
       summary=${@viewhelpers.abbreviate(article.summary, 220)},
       category='Spotlight'
     )}"></th:block>
-	</li>
-    <li class="bulma-column bulma-is-full-mobile bulma-is-half-tablet bulma-is-one-third-desktop bulma-is-flex"
-       th:each="article : ${spotlights}">
-    <th:block th:insert="~{home/feed_card :: card(
-      title=${article.title},
-      url=@{'/'+${language}+'/article/' + ${article.slug}},
-      summary=${@viewhelpers.abbreviate(article.summary, 220)},
-      category='Spotlight'
-    )}"></th:block>
-	</li>
-    <li class="bulma-column bulma-is-full-mobile bulma-is-half-tablet bulma-is-one-third-desktop bulma-is-flex"
-       th:each="article : ${spotlights}">
-    <th:block th:insert="~{home/feed_card :: card(
-      title=${article.title},
-      url=@{'/'+${language}+'/article/' + ${article.slug}},
-      summary=${@viewhelpers.abbreviate(article.summary, 220)},
-      category='Spotlight'
-    )}"></th:block>
-	</li>
+  </li>
 </th:block>
 
 <footer th:fragment="footer">
