@@ -24,12 +24,6 @@
     border-bottom: 2px solid currentColor;
   }
 
-  // Safety guard: if an oa-section-header is ever used in this block, keep it star-free.
-  .oa-section-header::before,
-  .oa-section-header::after {
-    display: none;
-  }
-
   .oa-logo-link {
     display: block;
     width: min(100%, 240px);
