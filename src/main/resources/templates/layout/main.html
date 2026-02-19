@@ -14,7 +14,20 @@
   
   <link rel="stylesheet" th:href="@{/static-assets/css/main.min.css?v=1.0}"/>
 
+  <!-- SVG favicon -->
+  <link rel="icon" type="image/svg+xml" th:href="@{/static-assets/icons/favicon.svg}">
+
+  <!-- PNG/ICO fallbacks -->
+  <link rel="icon" type="image/png" th:href="@{/static-assets/icons/favicon-96x96.png}" sizes="96x96">
   <link rel="icon" th:href="@{/favicon.ico}" sizes="any">
+
+  <!-- Apple iOS -->
+  <link rel="apple-touch-icon" th:href="@{/static-assets/icons/apple-touch-icon.png}">
+
+  <!-- PWA / Android -->
+  <link rel="manifest" th:href="@{/static-assets/icons/site.webmanifest}">
+  <link rel="icon" type="image/png" th:href="@{/static-assets/icons/web-app-manifest-192x192.png}" sizes="192x192">
+  <link rel="icon" type="image/png" th:href="@{/static-assets/icons/web-app-manifest-512x512.png}" sizes="512x512">
 
   <!-- Theme colours -->
   <meta name="theme-color" content="#111111">
