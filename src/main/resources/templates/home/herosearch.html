@@ -48,6 +48,12 @@
           </div>
         </form>
 
+        <p class="bulma-mt-4 bulma-mb-1">
+          <a class="bulma-is-size-6 bulma-has-text-weight-medium" th:href="${settings.dspace_site+'?locale-attribute='+language}">
+            <span th:text="#{mnu_search}">Search</span> &rarr;
+          </a>
+        </p>
+
         <div class="bulma-mt-4" role="group" aria-label="Browse by">
           <h3 class="bulma-is-size-6 bulma-mb-2 bulma-has-text-weight-normal">Browse</h3>
           <ul class="bulma-tags">

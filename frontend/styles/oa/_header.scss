@@ -7,10 +7,6 @@
 @use "../oa-colours" as *;
 
 .oa-header {
-  position: sticky;
-  top: 0;
-  z-index: 25;
-
   // homepage-only white header before scroll
   &.oa-is-home {
     .bulma-navbar {
@@ -22,6 +18,9 @@
 
   // expanded state (default)
   .bulma-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 25;
     transition: min-height .25s ease, background-color .25s ease, color .25s ease, border-color .25s ease;
     will-change: min-height;
     min-height: 100px;
@@ -110,6 +109,102 @@
     border-color: inherit;
   }
 
+  .oa-header-utility {
+    background: color-mix(in srgb, var(--bulma-brand) 34%, var(--bulma-paper) 66%);
+    border-bottom: 0;
+  }
+
+  .oa-header-utility__inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: .75rem 0;
+  }
+
+  .oa-header-utility__controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .bulma-select {
+      display: inline-flex;
+      align-items: center;
+      height: 2.15rem;
+    }
+
+    .bulma-select select {
+      height: 2.15rem;
+      min-height: 2.15rem;
+      border: 0;
+      background-color: var(--bulma-ink);
+      color: var(--bulma-paper);
+      font-size: .85rem;
+      font-weight: 500;
+      padding-inline: .7rem 1.6rem;
+      padding-block: 0;
+      border-radius: 999px;
+      box-shadow: none;
+      box-sizing: border-box;
+      line-height: 1;
+      vertical-align: middle;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1.41 1.59L6 6.17l4.59-4.58' fill='none' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right .6rem center;
+      background-size: .72rem .5rem;
+    }
+
+    .bulma-select select:hover {
+      background-color: color-mix(in srgb, var(--bulma-ink) 88%, var(--bulma-paper) 12%);
+    }
+
+    .bulma-select select:focus,
+    .bulma-select select:focus-visible {
+      outline: 2px solid var(--bulma-paper);
+      outline-offset: 1px;
+    }
+
+    .bulma-select:not(.bulma-is-multiple):not(.bulma-is-loading)::after {
+      display: none;
+    }
+  }
+
+  .oa-header-utility__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.15rem;
+    padding: 0 .95rem;
+    border: 0;
+    border-radius: 999px;
+    background-color: var(--bulma-ink);
+    color: var(--bulma-paper);
+    font-size: .85rem;
+    font-weight: 500;
+    text-decoration: none;
+    line-height: 1;
+    white-space: nowrap;
+    transition: background-color .15s ease, border-color .15s ease, transform .15s ease;
+  }
+
+  .oa-header-utility__link:hover,
+  .oa-header-utility__link:focus-visible {
+    background-color: color-mix(in srgb, var(--bulma-ink) 88%, var(--bulma-paper) 12%);
+    text-decoration: none;
+  }
+
+  .oa-header-utility__link:active {
+    transform: translateY(1px);
+  }
+
+  .oa-header-utility__link:focus-visible {
+    outline: 2px solid var(--bulma-paper);
+    outline-offset: 1px;
+  }
+
   .oa-nav-section {
     --oa-nav-colour: currentColor;
     --oa-nav-colour-pastel: currentColor;
@@ -130,10 +225,12 @@
 // Desktop dropdowns (simple list)
 @media screen and (min-width: 1024px) {
 
-  .oa-header {
+    .oa-header {
 
-    .bulma-navbar { 
-      position: relative; 
+    .bulma-navbar {
+      position: sticky;
+      top: 0;
+      z-index: 25;
     }
 
     .bulma-navbar-item.bulma-has-dropdown { 
@@ -245,7 +342,7 @@
     display: block; 
   }
 
-  .oa-nav-mobile {
+    .oa-nav-mobile {
       padding: 0;
       background: var(--bulma-stone-light); // expanded
       color: var(--bulma-ink);
@@ -288,6 +385,22 @@
           font-weight: 600; 
         }
       }
+    }
+
+    .oa-header-utility__inner {
+      justify-content: flex-start;
+      padding: .85rem 1rem;
+      gap: .65rem;
+      flex-wrap: wrap;
+    }
+
+    .oa-header-utility__controls {
+      gap: .65rem;
+    }
+
+    .oa-header-utility__link {
+      font-size: .84rem;
+      padding-inline: .8rem;
     }
   }
 
