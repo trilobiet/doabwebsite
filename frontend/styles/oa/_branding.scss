@@ -21,7 +21,13 @@
 
   .oa-sponsors__tier-label {
     padding-bottom: .35rem;
-    border-bottom: 1px solid currentColor;
+    border-bottom: 2px solid currentColor;
+  }
+
+  // Safety guard: if an oa-section-header is ever used in this block, keep it star-free.
+  .oa-section-header::before,
+  .oa-section-header::after {
+    display: none;
   }
 
   .oa-logo-link {
