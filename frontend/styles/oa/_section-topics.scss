@@ -69,7 +69,8 @@
 }
 
 .oa-section-topics--funders .oa-section-topic-card,
-.oa-section-topics--funder .oa-section-topic-card {
+.oa-section-topics--funder .oa-section-topic-card,
+.oa-section-topics--trusted-platform-network .oa-section-topic-card {
   @include oa-topic-swatch("amber");
 }
 
@@ -77,6 +78,7 @@
 .oa-section-topics--service-provider .oa-section-topic-card,
 .oa-section-topics--serviceproviders .oa-section-topic-card,
 .oa-section-topics--providers .oa-section-topic-card,
-.oa-section-topics--partners .oa-section-topic-card {
+.oa-section-topics--partners .oa-section-topic-card,
+.oa-section-topics--doab .oa-section-topic-card {
   @include oa-topic-swatch("orange");
 }
