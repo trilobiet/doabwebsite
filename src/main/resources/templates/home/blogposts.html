@@ -23,7 +23,7 @@
        th:each="blogPost : ${blogItems}">
     <th:block th:insert="~{home/feed_card :: card(
       title=${blogPost.title},
-      url=@{'/'+${language}+'/blog/?link=' + ${@viewhelpers.urlEncode(blogPost.link)}},
+      url=${blogPost.link},
       summary=${@viewhelpers.abbreviate(blogPost.description, 220)},
       category=#{blogpost}
     )}"></th:block>
