@@ -7,7 +7,7 @@
           class="oa-header"
           role="banner"
           th:classappend="${#httpServletRequest.requestURI == '/' || #httpServletRequest.requestURI == '/' + language} ? ' oa-is-home' : ''">
-    <nav class="bulma-navbar bulma-is-shadowless"
+    <nav class="bulma-navbar bulma-is-shadowless bulma-is-black"
         role="navigation" th:aria-label="#{main_navigation}">
       <h2 class="bulma-is-sr-only" th:text="#{main_navigation}">Main navigation</h2>
       <div class="bulma-container">
@@ -30,7 +30,7 @@
         </div>
 
         <!-- Full menu -->
-        <div id="oa-nav" class="bulma-navbar-menu oa-nav-mobile">
+        <div id="oa-nav" class="bulma-navbar-menu bulma-is-black bulma-is-shadowless">
           <ul class="bulma-navbar-end oa-navbar-list" role="menubar">
             <!-- Originally left section -->
             <li th:each="mnusection,stat : ${menuLeftSections}"

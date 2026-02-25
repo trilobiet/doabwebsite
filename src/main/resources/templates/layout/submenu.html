@@ -14,16 +14,16 @@
   Drop down submenu
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <th:block th:fragment="section_navigation">
-  <a class="bulma-navbar-link bulma-has-text-weight-medium bulma-is-block bulma-is-flex bulma-is-align-items-center bulma-is-align-self-stretch bulma-pr-5"
+  <a class="bulma-navbar-link bulma-has-text-weight-medium bulma-is-block bulma-is-flex bulma-is-align-items-center bulma-is-align-self-stretch bulma-pr-5 bulma-px-4 bulma-has-background-black bulma-has-text-white"
      data-no-caret
      th:href="@{'/'+${language}+'/'+${mnusection.slug}}"
      th:text="${@translator.translate(mnusection,language).name}"
      th:classappend="${#httpServletRequest.requestURI.startsWith('/' + language + '/' + mnusection.slug)} ? ' bulma-is-active' : ''">
   </a>
 
-  <div class="bulma-navbar-dropdown bulma-is-shadowless oa-nav-dropdown"
+  <div class="bulma-navbar-dropdown bulma-is-shadowless oa-nav-dropdown bulma-has-background-white bulma-py-0 bulma-px-0"
        th:if="${mnusection.topics != null and !#lists.isEmpty(mnusection.topics)}">
-    <a class="bulma-navbar-item bulma-is-shadowless bulma-has-text-weight-medium"
+    <a class="bulma-navbar-item bulma-is-shadowless bulma-has-text-weight-medium bulma-has-background-white bulma-has-text-black bulma-px-4"
        th:each="mnutopic : ${mnusection.topics}"
        th:href="@{'/'+${language}+'/'+${mnusection.slug}+'/'+${mnutopic.slug}}"
        th:text="${@translator.translate(mnutopic,language).name}"
