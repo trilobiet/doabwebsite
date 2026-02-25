@@ -21,9 +21,11 @@
      th:classappend="${#httpServletRequest.requestURI.startsWith('/' + language + '/' + mnusection.slug)} ? ' bulma-is-active' : ''">
   </a>
 
-  <div class="bulma-navbar-dropdown bulma-is-shadowless oa-nav-dropdown bulma-has-background-white bulma-py-0 bulma-px-0"
+  <div class="bulma-navbar-dropdown bulma-is-shadowless oa-nav-dropdown bulma-py-0 bulma-px-0"
+       style="background: var(--oa-nav-colour); color: var(--bulma-ink);"
        th:if="${mnusection.topics != null and !#lists.isEmpty(mnusection.topics)}">
-    <a class="bulma-navbar-item bulma-is-shadowless bulma-has-text-weight-medium bulma-has-background-white bulma-has-text-black bulma-px-4"
+    <a class="bulma-navbar-item bulma-is-shadowless bulma-has-text-weight-medium bulma-has-text-black bulma-px-4"
+       style="background: var(--oa-nav-colour); color: var(--bulma-ink);"
        th:each="mnutopic : ${mnusection.topics}"
        th:href="@{'/'+${language}+'/'+${mnusection.slug}+'/'+${mnutopic.slug}}"
        th:text="${@translator.translate(mnutopic,language).name}"
