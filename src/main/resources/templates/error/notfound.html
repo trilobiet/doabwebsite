@@ -3,18 +3,17 @@
       xmlns:layout="http://www.thymeleaf.org"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>DOAB - 404 Not Found</title>
+  <title>DOAB - 404</title>
 </head>
 
 <body>
   <div layout:fragment="content">
-    <p class="bulma-is-uppercase bulma-is-size-7 bulma-has-text-weight-semibold bulma-mb-2">Page not found</p>
+    <p class="bulma-is-uppercase bulma-is-size-7 bulma-has-text-weight-semibold bulma-mb-2" th:text="#{page_not_found}">Page not found</p>
     <h1 class="bulma-title bulma-is-1 bulma-mb-3">404</h1>
-    <p class="bulma-is-size-5 bulma-mb-0">The page you are looking for does not exist or has moved.</p>
+    <p class="bulma-is-size-5 bulma-mb-0" th:text="#{page_not_found_description}">The page you are looking for does not exist or has moved.</p>
   </div>
 </body>
 </html>
-
 
 
 

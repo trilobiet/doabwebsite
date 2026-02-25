@@ -11,10 +11,10 @@
   Featured Titles (new additions)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <th:block th:fragment="featured">
-  <div id="FeaturedTitles" class="oa-featured-titles" role="region" aria-label="New additions">
+  <div id="FeaturedTitles" class="oa-featured-titles" role="region" th:aria-label="#{new_additions}">
     <!-- Splide carousel -->
     <div class="splide oa-carousel"
-         aria-label="New additions – book covers"
+         th:aria-label="#{new_additions_book_covers}"
          data-splide='{"perPage":8,"gap":"1rem","breakpoints":{"1400":{"perPage":7},"1200":{"perPage":6},"1024":{"perPage":5},"820":{"perPage":4},"640":{"perPage":3},"480":{"perPage":2}}}'>
       <div class="splide__track">
         <ul class="splide__list">
@@ -46,8 +46,8 @@
       </div>
 
       <div class="splide__arrows bulma-is-flex bulma-is-justify-content-space-between bulma-is-align-items-center bulma-mt-2 oa-carousel__arrows">
-        <button class="splide__arrow splide__arrow--prev bulma-button bulma-has-background-inherit oa-carousel__arrow" aria-label="Previous">‹</button>
-        <button class="splide__arrow splide__arrow--next bulma-button bulma-has-background-inherit oa-carousel__arrow" aria-label="Next">›</button>
+        <button class="splide__arrow splide__arrow--prev bulma-button bulma-has-background-inherit oa-carousel__arrow" th:aria-label="#{previous}">‹</button>
+        <button class="splide__arrow splide__arrow--next bulma-button bulma-has-background-inherit oa-carousel__arrow" th:aria-label="#{next}">›</button>
       </div>
     </div>
   </div>

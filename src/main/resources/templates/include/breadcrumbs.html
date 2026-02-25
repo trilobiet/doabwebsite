@@ -12,10 +12,10 @@
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<main class="bulma-section doab-main" layout:fragment="content">
 
-		<nav th:fragment="breadcrumbs" class="bulma-breadcrumb" aria-label="breadcrumbs">
+		<nav th:fragment="breadcrumbs" class="bulma-breadcrumb" th:aria-label="#{breadcrumbs}">
 			<ul>
 				<li>
-					<a th:href="@{'/'+${language}}">Home</a>
+					<a th:href="@{'/'+${language}}" th:text="#{home}">Home</a>
 				</li>
 				<li th:if="${section}">
 					<a th:href="@{'/'+${language}+'/'+${section.slug}}" 
@@ -36,6 +36,5 @@
 </body>
 
 </html>
-
 
 

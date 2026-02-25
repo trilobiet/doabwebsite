@@ -46,7 +46,7 @@
 
       <!-- CTA -->
       <div class="bulma-mt-5 bulma-has-text-right">
-        <a th:href="${url}"th:attrappend="aria-label=${'Read more: ' + title}">Read more &rarr;
+        <a th:href="${url}" th:attrappend="aria-label=${#messages.msg('read_more_about', title)}"><span th:text="#{read_more}">Read more</span> &rarr;
         </a>
       </div>
     </div>
@@ -60,4 +60,3 @@
 
 </body>
 </html>
-

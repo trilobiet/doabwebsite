@@ -3,7 +3,7 @@
       th:with="width=${w} ?: 180, height=${h} ?: null, classes=${#strings.isEmpty(cls) ? 'oa-logo-stack' : 'oa-logo-stack ' + cls}"
       th:class="${classes}"
       role="img"
-      aria-label="Directory of Open Access Books logo">
+      th:aria-label="#{doab_logo}">
   <svg class="oa-logo oa-logo-svg"
        th:classappend=" ${cls}"
        xmlns="http://www.w3.org/2000/svg"

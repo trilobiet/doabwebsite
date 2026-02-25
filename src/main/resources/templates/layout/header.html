@@ -8,20 +8,20 @@
           role="banner"
           th:classappend="${#httpServletRequest.requestURI == '/' || #httpServletRequest.requestURI == '/' + language} ? ' oa-is-home' : ''">
     <nav class="bulma-navbar bulma-is-shadowless"
-        role="navigation" aria-label="Main navigation">
-      <h2 class="bulma-is-sr-only">Main navigation</h2>
+        role="navigation" th:aria-label="#{main_navigation}">
+      <h2 class="bulma-is-sr-only" th:text="#{main_navigation}">Main navigation</h2>
       <div class="bulma-container">
 
         <!-- brand + burger -->
         <div class="bulma-navbar-brand">
           <a class="bulma-navbar-item oa-logo"
              th:href="@{'/'+${language}}"
-             aria-label="Directory of Open Access Books homepage">
+             th:aria-label="#{doab_homepage}">
             <th:block th:replace="~{include/logotype :: logo(160, 50, 'oa-logo-svg')}"></th:block>
           </a>
           <a role="button"
             class="bulma-navbar-burger bulma-burger"
-            aria-label="menu" aria-expanded="false"
+            th:aria-label="#{menu}" aria-expanded="false"
             data-target="oa-nav">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -71,7 +71,8 @@
             </div>
           </div>
           <a class="oa-header-utility__link"
-             th:href="${settings.dspace_site+'login?locale-attribute='+language}">Publisher login</a>
+             th:href="${settings.dspace_site+'login?locale-attribute='+language}"
+             th:text="#{mnu_login}">Publisher login</a>
         </div>
       </div>
     </div>

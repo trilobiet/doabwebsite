@@ -8,12 +8,11 @@
 
 <body>
   <div layout:fragment="content">
-    <p class="bulma-is-uppercase bulma-is-size-7 bulma-has-text-weight-semibold bulma-mb-2">Application error</p>
+    <p class="bulma-is-uppercase bulma-is-size-7 bulma-has-text-weight-semibold bulma-mb-2" th:text="#{application_error}">Application error</p>
     <h1 class="bulma-title bulma-is-1 bulma-mb-3">500</h1>
-    <p class="bulma-is-size-5 bulma-mb-0">Something went wrong while loading this page. Please try again later.</p>
+    <p class="bulma-is-size-5 bulma-mb-0" th:text="#{application_error_description}">Something went wrong while loading this page. Please try again later.</p>
   </div>
 </body>
 </html>
-
 
 

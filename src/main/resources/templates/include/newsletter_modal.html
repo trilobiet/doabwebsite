@@ -15,14 +15,14 @@
       <header class="bulma-modal-card-head bulma-p-4 bulma-has-background-paper bulma-is-shadowless">
         <h2 id="newsletter-modal-title" 
           class="bulma-modal-card-title bulma-is-size-6 bulma-has-text-weight-semibold">
-          Sign up to the OAPEN newsletter
+          <span th:text="#{newsletter_modal_title}">Sign up to the OAPEN newsletter</span>
         </h2>
-        <button class="bulma-delete bulma-has-background-brand js-close-modal" aria-label="Close dialog"></button>
+        <button class="bulma-delete bulma-has-background-brand js-close-modal" th:aria-label="#{close_dialog}"></button>
       </header>
 
       <section class="bulma-modal-card-body bulma-p-4">
         <p id="newsletter-modal-desc" class="bulma-is-sr-only">
-          Subscribe to receive news and updates by email.
+          <span th:text="#{newsletter_modal_description}">Subscribe to receive news and updates by email.</span>
         </p>
 
         <!-- Mailchimp form -->
@@ -32,34 +32,34 @@
           target="_blank"
           novalidate>
           <div class="bulma-field">
-            <label class="bulma-is-block bulma-pb-2" for="mce-EMAIL">Email Address <span aria-hidden="true">*</span></label>
+            <label class="bulma-is-block bulma-pb-2" for="mce-EMAIL"><span th:text="#{email_address}">Email Address</span> <span aria-hidden="true">*</span></label>
             <input class="bulma-input bulma-is-shadowless" type="email" name="EMAIL" id="mce-EMAIL" required autocomplete="email">
           </div>
 
           <div class="bulma-field">
-            <label class="bulma-is-block bulma-pb-2" for="mce-FNAME">First Name</label>
+            <label class="bulma-is-block bulma-pb-2" for="mce-FNAME" th:text="#{first_name}">First Name</label>
             <input class="bulma-input bulma-is-shadowless" type="text" name="FNAME" id="mce-FNAME" autocomplete="given-name">
           </div>
 
           <div class="bulma-field">
-            <label class="bulma-is-block bulma-pb-2" for="mce-LNAME">Last Name</label>
+            <label class="bulma-is-block bulma-pb-2" for="mce-LNAME" th:text="#{last_name}">Last Name</label>
             <input class="bulma-input bulma-is-shadowless" type="text" name="LNAME" id="mce-LNAME" autocomplete="family-name">
           </div>
 
           <div class="bulma-field">
-            <label class="bulma-is-block bulma-pb-2" for="mce-AFFILIATIO">Affiliation</label>
+            <label class="bulma-is-block bulma-pb-2" for="mce-AFFILIATIO" th:text="#{affiliation}">Affiliation</label>
             <input class="bulma-input bulma-is-shadowless" type="text" name="AFFILIATIO" id="mce-AFFILIATIO">
           </div>
 
           <fieldset class="bulma-field">
-            <legend class="bulma-is-block bulma-pb-2">Role</legend>
-            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][1]"  id="mce-group[71160]-71160-0"> Researcher</label><br>
-            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][2]"  id="mce-group[71160]-71160-1"> Librarian</label><br>
-            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][4]"  id="mce-group[71160]-71160-2"> Research Support</label><br>
-            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][8]"  id="mce-group[71160]-71160-3"> Publisher</label><br>
-            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][16]" id="mce-group[71160]-71160-4"> Funder</label><br>
-            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][32]" id="mce-group[71160]-71160-5"> Service Provider</label><br>
-            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][64]" id="mce-group[71160]-71160-6"> Other</label>
+            <legend class="bulma-is-block bulma-pb-2" th:text="#{role}">Role</legend>
+            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][1]"  id="mce-group[71160]-71160-0"> <span th:text="#{role_researcher}">Researcher</span></label><br>
+            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][2]"  id="mce-group[71160]-71160-1"> <span th:text="#{role_librarian}">Librarian</span></label><br>
+            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][4]"  id="mce-group[71160]-71160-2"> <span th:text="#{role_research_support}">Research Support</span></label><br>
+            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][8]"  id="mce-group[71160]-71160-3"> <span th:text="#{publisher}">Publisher</span></label><br>
+            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][16]" id="mce-group[71160]-71160-4"> <span th:text="#{role_funder}">Funder</span></label><br>
+            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][32]" id="mce-group[71160]-71160-5"> <span th:text="#{role_service_provider}">Service Provider</span></label><br>
+            <label class="bulma-checkbox bulma-pb-2"><input type="checkbox" name="group[71160][64]" id="mce-group[71160]-71160-6"> <span th:text="#{role_other}">Other</span></label>
           </fieldset>
 
           <div id="mce-responses" class="bulma-mt-3" aria-live="polite" role="status">
@@ -75,7 +75,7 @@
           <div class="bulma-field bulma-mt-4">
             <button type="submit" name="subscribe" id="mc-embedded-subscribe"
                     class="bulma-button bulma-is-primary bulma-is-shadowless">
-              Subscribe
+              <span th:text="#{subscribe}">Subscribe</span>
             </button>
           </div>
         </form>

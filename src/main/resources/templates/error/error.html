@@ -19,7 +19,7 @@
         <div class="bulma-column bulma-is-8-desktop bulma-is-10-tablet">
           <article class="bulma-box bulma-p-5 bulma-p-6-desktop">
             <p class="bulma-mb-5">
-              <a th:href="@{'/'}" aria-label="Directory of Open Access Books homepage">
+              <a th:href="@{'/'}" th:aria-label="#{doab_homepage}">
                 <th:block th:replace="~{include/logotype :: logo(220, 0, 'oa-logo-svg')}"></th:block>
               </a>
             </p>
@@ -30,7 +30,7 @@
 
             <p class="bulma-mt-5">
               <a th:href="@{/}" class="bulma-button bulma-is-outlined bulma-is-shadowless bulma-has-text-ink" style="border-color: currentColor;">
-                Back to homepage
+                <span th:text="#{back_to_homepage}">Back to homepage</span>
               </a>
             </p>
           </article>
