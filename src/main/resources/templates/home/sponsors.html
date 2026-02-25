@@ -5,17 +5,16 @@
   <section class="bulma-section bulma-py-6 bulma-has-background-tropic-teal-pastel bulma-has-text-ink oa-sponsors">
     <div class="bulma-container">
       <header class="bulma-mb-6">
-        <h2 class="bulma-title bulma-is-2 bulma-mb-4 bulma-has-text-weight-bold bulma-has-text-ink">
-          Our Sponsors
-        </h2>
+        <h2 class="bulma-title bulma-is-2 bulma-mb-4 bulma-has-text-weight-bold bulma-has-text-ink" th:text="#{our_sponsors}">Our Sponsors</h2>
         <p class="bulma-is-size-5 bulma-mb-0 oa-readable">
-          Thank you to the following publishers whose sponsorship helps to sustain and develop DOAB and its services. Learn more about <a href=" https://www.doabooks.org/en/publishers/sponsor-doab" class="oa-link-arrow">DOAB sponsorship</a>.
+          <span th:text="#{our_sponsors_intro}">Thank you to the following publishers whose sponsorship helps to sustain and develop DOAB and its services.</span>
+          <a href="https://www.doabooks.org/en/publishers/sponsor-doab" class="oa-link-arrow" th:text="#{learn_more_doab_sponsorship}">Learn more about DOAB sponsorship.</a>
         </p>
       </header>
 
       <div class="bulma-columns bulma-is-variable bulma-is-1 bulma-is-multiline bulma-m-0 bulma-is-justify-content-flex-start">
         <section class="bulma-column bulma-is-4-desktop bulma-is-6-tablet bulma-is-12-mobile">
-          <p class="oa-sponsors__tier-label bulma-is-uppercase bulma-has-text-weight-semibold bulma-is-size-7 bulma-mb-3 bulma-has-text-left">Gold</p>
+          <p class="oa-sponsors__tier-label bulma-is-uppercase bulma-has-text-weight-semibold bulma-is-size-7 bulma-mb-3 bulma-has-text-left" th:text="#{sponsor_tier_gold}">Gold</p>
           <a class="oa-logo-link" href="https://taylorandfrancis.com/books/" target="_blank" rel="noopener" aria-label="Taylor and Francis">
             <figure class="bulma-image oa-logo-box bulma-m-0">
               <img src="/static-assets/images/sponsors/taylorfrancis.png" alt="Taylor and Francis" loading="lazy" decoding="async"/>
@@ -24,7 +23,7 @@
         </section>
 
         <section class="bulma-column bulma-is-4-desktop bulma-is-6-tablet bulma-is-12-mobile">
-          <p class="oa-sponsors__tier-label bulma-is-uppercase bulma-has-text-weight-semibold bulma-is-size-7 bulma-mb-3 bulma-has-text-left">Silver</p>
+          <p class="oa-sponsors__tier-label bulma-is-uppercase bulma-has-text-weight-semibold bulma-is-size-7 bulma-mb-3 bulma-has-text-left" th:text="#{sponsor_tier_silver}">Silver</p>
           <a class="oa-logo-link" href="https://www.springer.com/gp/open-access/books/" target="_blank" rel="noopener" aria-label="Springer Nature">
             <figure class="bulma-image oa-logo-box bulma-m-0">
               <img src="/static-assets/images/sponsors/springernature.png" alt="Springer Nature" loading="lazy" decoding="async"/>
@@ -33,7 +32,7 @@
         </section>
 
         <section class="bulma-column bulma-is-4-desktop bulma-is-12-tablet bulma-is-12-mobile">
-          <p class="oa-sponsors__tier-label bulma-is-uppercase bulma-has-text-weight-semibold bulma-is-size-7 bulma-mb-3 bulma-has-text-left">Bronze</p>
+          <p class="oa-sponsors__tier-label bulma-is-uppercase bulma-has-text-weight-semibold bulma-is-size-7 bulma-mb-3 bulma-has-text-left" th:text="#{sponsor_tier_bronze}">Bronze</p>
           <div class="bulma-columns bulma-is-mobile bulma-is-variable bulma-is-1 bulma-m-0 bulma-is-justify-content-flex-start">
             <div class="bulma-column bulma-is-half">
               <a class="oa-logo-link" href="https://www.degruyterbrill.com/" target="_blank" rel="noopener" aria-label="De Gruyter Brill">
