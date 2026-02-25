@@ -14,7 +14,7 @@
 
 		<nav class="doab-section-topics bulma-panel bulma-is-shadowless" th:fragment="topics" th:if="${section}">
 
-			<div class="bulma-panel-heading bulma-has-text-weight-semibold"
+			<div class="bulma-panel-heading bulma-has-text-weight-semibold bulma-has-text-paper"
 				th:text="${@translator.translate(section,language).name}">This section</div>
 			
 			<ul>
@@ -36,6 +36,5 @@
 </body>
 
 </html>
-
 
 

@@ -61,7 +61,7 @@
 			
 						<nav class="bulma-panel bulma-is-shadowless">
 			
-							<div class="doab-toc-header bulma-panel-heading bulma-has-text-weight-semibold" th:text="#{this_topic}">In this topic</div>
+							<div class="doab-toc-header bulma-panel-heading bulma-has-text-weight-semibold bulma-has-text-paper" th:text="#{this_topic}">In this topic</div>
 							
 							<a th:each="article, iStat : ${articles}" th:if="${iStat.index gt 0}"
 								th:href="@{'/'+${language}+'/'+${section.slug}+'/'+${topic.slug}+'/article/'+${article.slug}}"
@@ -89,7 +89,7 @@
 							<div class="bulma-level-left">
 								<h2
 									id="sidenav-title"
-									class="bulma-title bulma-is-6 bulma-pb-4 bulma-has-text-weight-semibold"
+									class="bulma-title bulma-is-6 bulma-pb-4 bulma-has-text-weight-semibold bulma-has-text-paper"
 									th:text="${@translator.translate(section,language).name}">
 									Section name
 								</h2>
@@ -117,6 +117,5 @@
 
 </body>
 </html>
-
 
 
