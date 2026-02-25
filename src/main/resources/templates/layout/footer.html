@@ -97,6 +97,7 @@
       <div class="bulma-content bulma-has-text-centered bulma-mt-6">
         <div class="bulma-is-size-7">
           <span th:text="#{website_by}">Website by</span> <a href="https://www.trilobiet.nl" target="_blank" rel="noopener">Trilobiet</a> &amp; <a href="https://github.com/sssoz" target="_blank" rel="noopener">@sssoz</a>
+		  | version <span th:text="${@environment.getProperty('application.version')}"></span>
         </div>
       </div>
     </div>
