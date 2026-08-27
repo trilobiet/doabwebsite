@@ -1,0 +1,77 @@
+// ————————————————————————————————————————
+// oa-colours.scss
+// Our custom colour and type variables
+// ————————————————————————————————————————
+
+// For map/list functions
+@use "sass:map";
+@use "sass:list";
+
+// ————————————————————————————————————————
+// Monochrome palette
+// ————————————————————————————————————————
+
+// Core neutrals
+$oa-colour-ink:        #000000 !default; // main body text / inverted (dark theme) background
+$oa-colour-paper:      #ffffff !default; // main background / inverted (dark theme) body text
+$oa-colour-stone-600:  #555555 !default; // secondary text / inverted (dark theme) borders
+$oa-colour-stone-300:  #bfbfbf !default; // subtle borders / inverted (dark theme) text
+
+// Tropical palette
+// Neon = logo-forward vivid tones
+// Pastel = lighter companion tones for backgrounds
+$oa-tropical-neon-colours: (
+  "teal":         #00B3A4,
+  "emerald":      #00C853,
+  "lime":         #AEEA00,
+  "amber":        #FFB300,
+  "orange":       #FF6D00
+) !default;
+
+$oa-tropical-pastel-colours: (
+  "teal":         #BDEDE8,
+  "emerald":      #C2F3D4,
+  "lime":         #E9F8B8,
+  "amber":        #FFE4A8,
+  "orange":       #FFC9A3
+) !default;
+
+$oa-electric-colours: $oa-tropical-neon-colours !default;
+$oa-electric-accent: map.get($oa-tropical-neon-colours, "teal") !default;
+
+// Helper to derive ordered lists (skip accent)
+@function oa-colour-list($map) {
+  $vals: ();
+  @each $key, $value in $map {
+    @if $key != "accent" {
+      $vals: list.append($vals, $value);
+    }
+  }
+  @return $vals;
+}
+
+$oa-tropical-neon-list: oa-colour-list($oa-tropical-neon-colours) !default;
+$oa-tropical-pastel-list: oa-colour-list($oa-tropical-pastel-colours) !default;
+$oa-electric-list: $oa-tropical-neon-list !default;
+
+// Ordered lists for cycling in UI elements (covers, pills, etc.)
+$oa-brand-colour-list: $oa-tropical-neon-list;
+
+// ————————————————————————————————————————
+// Primary colour family (tropical)
+// Tones: 700=hero/dark sections, 600=primary UI, 500=links/focus
+// ————————————————————————————————————————
+
+// Single source of truth for the site primary colour
+$oa-primary-name: "lime" !default;
+
+$brand-primary-700: map.get($oa-tropical-neon-colours, $oa-primary-name);
+$brand-primary-600: map.get($oa-tropical-neon-colours, $oa-primary-name);
+$brand-primary-500: map.get($oa-tropical-neon-colours, $oa-primary-name);
+$brand-accent:      map.get($oa-tropical-neon-colours, "teal");
+
+// Support accents
+// ***Use sparingly for semantics & emphasis***
+$oa-colour-moss-600:      #000000 !default; // success (monochrome)
+$oa-colour-ochre-500:     #000000 !default; // warning (monochrome)
+$oa-colour-rust-600:      #000000 !default; // danger (monochrome)

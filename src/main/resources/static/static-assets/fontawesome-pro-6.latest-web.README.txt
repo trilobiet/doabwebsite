@@ -1,2 +1,0 @@
-
-Create a folder `fontawesome-pro-6.latest-web` in this directory and download fontawsome-pro-6.x 

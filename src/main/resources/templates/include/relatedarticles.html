@@ -12,16 +12,14 @@
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<main class="doab-main" layout:fragment="content">
 
-		<nav class="doab-related-articles" th:fragment="linked" th:if="${not #lists.isEmpty(linked)}">
+		<nav class="doab-related-articles bulma-panel bulma-is-shadowless" th:fragment="linked" th:if="${not #lists.isEmpty(linked)}">
 
-			<div class="is-title is-5 doab-section-caption">Linked</div>
-			
-			<hr class="is-hidden"/>
+			<div class="bulma-panel-heading bulma-has-text-weight-semibold bulma-has-text-paper">Linked</div>
 
 			<ul>
 
 				<li th:each="article:${linked}">
-					<a th:href="@{'/'+${language}+'/article/'+${article.slug}}"
+					<a class="bulma-panel-block" th:href="@{'/'+${language}+'/article/'+${article.slug}}"
 					   th:text="${article.title}">article title</a>
 				</li>
 
@@ -29,16 +27,14 @@
 
 		</nav>
 
-		<nav class="doab-linked-articles" th:fragment="related" th:if="${not #lists.isEmpty(related)}">
+		<nav class="doab-linked-articles bulma-panel bulma-is-shadowless" th:fragment="related" th:if="${not #lists.isEmpty(related)}">
 
-			<div class="is-title is-5 doab-section-caption">Related</div>
-			
-			<hr class="is-hidden"/>
+			<div class="bulma-panel-heading bulma-has-text-weight-semibold bulma-has-text-paper">Related</div>
 
 			<ul>
 
 				<li th:each="article:${related}">
-					<a th:href="@{'/'+${language}+'/article/'+${article.slug}}"
+					<a class="bulma-panel-block" th:href="@{'/'+${language}+'/article/'+${article.slug}}"
 					   th:text="${article.title}">article title</a>
 				</li>
 
@@ -51,7 +47,5 @@
 </body>
 
 </html>
-
-
 
 

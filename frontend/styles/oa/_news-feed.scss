@@ -1,0 +1,67 @@
+// oa/_news-feed.scss
+// List of news feed items 
+// Used on: homepage news (incl. news, spotlight, and Bluesky feed item)
+
+@use "sass:list";
+@use "../oa-colours" as oa;
+
+.oa-feed-header {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.oa-news-feed {
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    height: 100%;
+  }
+
+  // Align all titles to the same visual height
+  &__title {
+    --oa-title-lines: 2;
+    line-height: 1.2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--oa-title-lines);
+    overflow: hidden;
+    min-height: calc(1em * 1.2 * var(--oa-title-lines));
+    margin-bottom: .25rem;
+
+    @media (max-width: 1023.98px) {
+      --oa-title-lines: 3;
+    }
+  }
+
+  // Clamp the excerpt so cards stay even
+  &__excerpt {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+
+     @media (max-width: 1023.98px) {
+      --oa-excerpt-lines: 5;
+    }
+  }
+}
+
+// Gradient backgrounds for cards (cycles palette, skips accents)
+@mixin oa-news-card-gradients($palette) {
+  @if $palette != null {
+    $len: list.length($palette);
+    @for $i from 1 through $len {
+      .oa-news-feed > .bulma-column:nth-child(#{$len}n + #{$i}) .bulma-card {
+        // step through the palette skipping every other colour to reduce repeats
+        $index: ((($i - 1) * 2) % $len) + 1;
+        $base: list.nth($palette, $index);
+        background-color: $base;
+        background-color: color-mix(in srgb, #{$base} 40%, #{oa.$oa-colour-paper} 60%);
+      }
+    }
+  }
+}
+
+// Electric palette (tropical)
+@include oa-news-card-gradients(oa.$oa-electric-list);

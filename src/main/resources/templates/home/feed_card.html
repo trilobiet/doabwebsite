@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Boot Thymeleaf Application - Fragments</title>
+</head>
+<body>
+
+<div th:fragment="header">
+    <h1>Thymeleaf Fragments</h1>
+</div>
+
+<!--
+	Feed card 
+  (shared by blogposts and 
+  spotlights)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<th:block th:fragment="card(title, url, summary, category)">
+  <article class="bulma-card bulma-is-radiusless bulma-is-shadowless oa-news-feed__item">
+
+    <div class="bulma-card-content bulma-is-flex bulma-is-flex-direction-column bulma-is-flex-grow-1">
+      <span class="bulma-tag bulma-is-rounded bulma-is-dark bulma-is-uppercase bulma-is-size-7 bulma-mb-3 bulma-is-align-self-flex-start"
+            th:text="${category}">Category</span>
+
+      <!-- Title -->
+      <h3 class="bulma-title bulma-is-5 bulma-mb-2 oa-feed__title">
+        <a class="bulma-has-text-current bulma-has-text-weight-normal"
+           th:href="${url}"
+           th:text="${title}">Title</a>
+      </h3>
+
+      <!-- MEDIA SLOT (image if available, else excerpt) -->
+      <div class="bulma-mt-3">
+        <figure class="bulma-image bulma-is-3by2 bulma-mb-0" th:if="${imageUrl}">
+          <img th:src="${imageUrl}" th:alt="|${title} – image|">
+        </figure>
+
+        <p class="bulma-is-size-6 oa-news-feed__excerpt"
+          th:unless="${imageUrl}" th:utext="${summary}">
+          Summary
+        </p>
+      </div>
+
+      <!-- Spacer to push CTA to bottom -->
+      <div class="bulma-is-flex-grow-1"></div>
+
+      <!-- CTA -->
+      <div class="bulma-mt-5 bulma-has-text-right">
+        <a th:href="${url}" th:attrappend="aria-label=${#messages.msg('read_more_about', title)}"><span th:text="#{read_more}">Read more</span> &rarr;
+        </a>
+      </div>
+    </div>
+
+  </article>
+</th:block>
+
+<footer th:fragment="footer">
+	<p>2020 trilobiet.nl</p>
+</footer>
+
+</body>
+</html>

@@ -14,26 +14,39 @@
 	Showcases
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <th:block th:fragment="showcases">
+	<section class="bulma-section bulma-py-6" th:if="${showcases != null and !#lists.isEmpty(showcases)}">
+		<div class="bulma-container">
+			<article th:each="article, stat : ${showcases}">
+				<div class="bulma-columns bulma-is-variable bulma-is-6">
+					<div class="bulma-column bulma-is-4-desktop bulma-is-5-tablet">
+						<h2 class="bulma-title bulma-is-3 bulma-mb-0 bulma-has-text-weight-normal">
+							<a class="bulma-has-text-current"
+								 th:href="@{'/'+${language}+'/article/'+${article.slug}}"
+								 th:text="${article.title}">
+								Showcase title
+							</a>
+						</h2>
+					</div>
 
-	<div class="title is-6 doab-section-caption is-hidden">Showcase</div>
-	
-	<hr class="is-hidden"/>
-
-	<div th:each="article: ${showcases}" class="doab-home-showcase content" th:classappend="${article.cssClass}">
-
-		<h2 class="title is-4">
-			<a th:href="@{'/'+${language}+'/article/'+${article.slug}}" th:text="${article.title}">
-				Showcase title
-			</a>
-		</h2>
-		<th:block th:utext="${article.summary}">
-			Showcase dummy text
-		</th:block>
-		<a th:href="@{'/'+${language}+'/article/'+${article.slug}}" th:text="#{read_more}" class="doab-more">
-			Read more
-		</a>
-
-	</div>
+					<div class="bulma-column bulma-is-8-desktop bulma-is-7-tablet">
+						<div class="bulma-content bulma-is-size-5 bulma-mb-0">
+							<th:block th:utext="${article.summary}">
+								Showcase dummy text
+							</th:block>
+						</div>
+						<p class="bulma-mt-4">
+							<a class="bulma-button bulma-is-outlined bulma-is-shadowless bulma-has-text-ink"
+								 style="border-color: currentColor;"
+								 th:href="@{'/'+${language}+'/article/'+${article.slug}}">
+								<span th:text="#{see_more}">See more</span> &rarr;
+							</a>
+						</p>
+					</div>
+				</div>
+				<hr class="bulma-my-5" th:if="${!stat.last}">
+			</article>
+		</div>
+	</section>
 
 </th:block>
 
@@ -43,9 +56,3 @@
 
 </body>
 </html>
-
-
-			
-
-
-

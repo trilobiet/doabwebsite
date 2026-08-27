@@ -1,83 +1,31 @@
-<!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Spring Boot Thymeleaf Application - Fragments</title>
-</head>
-<body>
-
-<div th:fragment="header">
-    <h1>Thymeleaf Fragments</h1>
-</div>
-
+ <!--
+  Hero section (search + tagline + featured titles)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <th:block th:fragment="hero">
+  <section class="bulma-hero" role="region" aria-label="Homepage hero">
+    <div class="bulma-hero-body bulma-pt-6 bulma-pb-6">
+      <div class="bulma-container bulma-is-max-fullhd">
 
-	<!--
-		HERO
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-	<div class="doab-home-hero">
+        <div class="bulma-columns bulma-is-variable bulma-is-6 bulma-is-vcentered">
+          <!-- Tagline + intro -->
+          <div class="bulma-column bulma-is-half-desktop bulma-is-full-tablet">
+            <th:block th:insert="home/herotagline :: tagline">Tagline</th:block>
+          </div>
+          <!-- Search + browse tags -->
+          <div class="bulma-column bulma-is-half-desktop bulma-is-full-tablet">
+            <th:block th:insert="home/herosearch :: search">Search</th:block>
+          </div>
+        </div>
 
-		<div class="container">
-	
-			<div class="columns">
-			
-				<div class="column is-three-fifths">
-					<h1 class="title is-1">Directory of <br/>Open Access Books</h1>
-					<div class="doab-hero-sub" 
-						 th:text="#{books_from_publishers(
-						 	${#numbers.formatInteger(count_titles,1,'DEFAULT')},
-						 	${#numbers.formatInteger(count_publishers,1,'DEFAULT')}
-						 )}">
-						<!-- /* 33385 Livres académiques validés par les pairs provenant de 406 éditeurs */ --> 
-					</div>
-				</div>
-				
-				<form th:action="${settings.dspace_site+'discover'}" class="column doab-hero-search-form" method="get">
-				
-					<div>
-		
-						<div class="field has-addons doab-hero-search-input">
-							<div class="control">
-								<label for="ipt_search" class="is-hidden">Search query</label>
-								<input class="input" type="text" name="query" th:placeholder="#{search_doab_placeholder}" id="ipt_search">
-								<input type="hidden" name="locale-attribute" th:value="${language}" />
-							</div>
-							<div class="control">
-								<button type="submit" class="button is-dark" th:text="#{search_button}">
-									Search
-								</button>
-							</div>
-						</div>
-			
-						<div class="field doab-hero-search-browse">
-			
-							<span th:text="#{browse_by}">
-								Browse by:
-							</span>
-							<ul>
-								<li><a th:href="${settings.dspace_site+'browse?type=classification_text&locale-attribute='+language}" th:text="#{browse_subject_btn}">Subject</a></li>
-								<li><a th:href="${settings.dspace_site+'browse?type=language&locale-attribute='+language}" th:text="#{browse_language_btn}">Language</a></li>
-								<li><a th:href="${settings.dspace_site+'browse?type=publisher&locale-attribute='+language}" th:text="#{browse_publisher_btn}">Publisher</a></li>
-							</ul>
-			
-						</div>
-					
-					</div>	
-		
-				</form>
-		
-			</div>
-			
-		</div>
-		
-	</div>		
+        <!-- Featured titles -->
+        <div class="bulma-mt-6" role="region" aria-label="New additions" aria-live="polite">
+          <header class="bulma-mb-4 oa-section-header">
+            <h2 class="bulma-title bulma-is-5 bulma-pb-4 bulma-mb-0 bulma-has-text-weight-normal" th:text="#{new_from_doab}">New from DOAB</h2>
+          </header>
+          <div class="carouselloader" th:data-src="|@{'/' + ${language} + '/featuredtitles'} #FeaturedTitles|"></div>
+        </div>
 
+      </div>
+    </div>
+  </section>
 </th:block>
-
-<footer th:fragment="footer">
-	<p>2020 trilobiet.nl</p>
-</footer>
-
-</body>
-</html>
-

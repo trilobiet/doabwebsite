@@ -1,30 +1,18 @@
 <!doctype html>
 <html layout:decorate="~{error/error}"
       xmlns:layout="http://www.thymeleaf.org"
-      xmlns:th="http://www.thymeleaf.org"
-      style="height:100%">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Doabooks - 500 Error</title>
+  <title>DOAB - 500 Error</title>
 </head>
 
 <body>
-
-	<!--
-		BODY
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-	<main class="doab-main">
-	
-		<div class="container content" layout:fragment="content">
-			<h1 class="doab-is500">500</h1>
-			Some outer space error occurred...
-		</div>
-	
-	</main>
-
+  <div layout:fragment="content">
+    <p class="bulma-is-uppercase bulma-is-size-7 bulma-has-text-weight-semibold bulma-mb-2" th:text="#{application_error}">Application error</p>
+    <h1 class="bulma-title bulma-is-1 bulma-mb-3">500</h1>
+    <p class="bulma-is-size-5 bulma-mb-0" th:text="#{application_error_description}">Something went wrong while loading this page. Please try again later.</p>
+  </div>
 </body>
-
 </html>
-
-
 
 

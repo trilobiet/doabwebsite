@@ -2,7 +2,7 @@
 <html layout:decorate="~{layout/main}"
       xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
 <head>
-    <title>Blog</title>
+    <title th:text="#{blog}">Blog</title>
 </head>
 
 <body>
@@ -14,13 +14,13 @@
 	
 		<div class="container">
 		
-			<nav class="breadcrumb" aria-label="breadcrumbs">
+			<nav class="breadcrumb" th:aria-label="#{breadcrumbs}">
 				<ul>
 					<li>
-						<a th:href="@{'/'}">Home</a>
+						<a th:href="@{'/'}" th:text="#{home}">Home</a>
 					</li>
 					<li class="is-active">
-						<a href="#" aria-current="page">Blog</a>
+						<a href="#" aria-current="page" th:text="#{blog}">Blog</a>
 					</li>
 				</ul>
 			</nav>
@@ -30,7 +30,7 @@
 				<!-- main content left -->
 				<div class="column is-three-quarters">
 				
-					<p th:if="${featuredPost==null}">Nothing here yet...</p>
+					<p th:if="${featuredPost==null}" th:text="#{no_articles}">Nothing here yet...</p>
 
 					<article th:if="${featuredPost}"
 						class="is-clearfix doab-blogpost">
@@ -45,7 +45,7 @@
 							</p>	
 							
 							<div class="doab-blogpost-hbar">
-								Read this article at 
+								<span th:text="#{read_this_article_at}">Read this article at</span>
 								<a th:href="${featuredPost.link}" target="_blank">
 									<img th:src="@{/static-assets/images/logo-hypotheses.png}" alt="hypothèses.org" width="100"/>
 								</a>
@@ -78,7 +78,5 @@
 
 </body>
 </html>
-
-
 
 

@@ -26,7 +26,7 @@ public class RootController {
 	 */
 	@RequestMapping("/favicon.ico")
 	public ModelAndView showFavicon() {
-		return new ModelAndView("forward:/static-assets/images/favicon.ico");
+		return new ModelAndView("forward:/static-assets/icons/favicon.ico");
 	}
 	
 	@CacheEvict(value={

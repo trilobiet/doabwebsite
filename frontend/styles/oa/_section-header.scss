@@ -1,0 +1,13 @@
+// oa/_section-header.scss
+// Section headers with simple divider line
+// Used on: homepage section intros, secondary page headers
+
+.oa-section-header {
+  padding-bottom: 1rem;
+
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-size: 100% 2px;
+  background-position: 0 calc(100% - 1px);
+}
+

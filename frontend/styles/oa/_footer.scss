@@ -1,0 +1,15 @@
+// oa/_footer.scss
+// Footer layout
+// Used globally
+
+.oa-footer {
+  &__list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+
+    li + li {
+      margin-top: .25rem;
+    }
+  }
+}

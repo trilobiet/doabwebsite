@@ -1,0 +1,24 @@
+ <!--
+  Feed (news + spotlights + bluesky) 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<th:block th:fragment="feed">
+  <section class="bulma-section">
+    <div class="bulma-container">
+      <header class="bulma-mb-4 oa-section-header">
+        <div class="bulma-columns bulma-is-vcentered bulma-pb-4">
+          <div class="bulma-column bulma-is-half-tablet">
+            <h2 class="bulma-title bulma-is-4 bulma-has-text-weight-normal" th:text="#{latest_from_doab}">The latest from DOAB</h2>
+          </div>
+          <div class="bulma-column bulma-is-half-tablet bulma-has-text-right-tablet">
+            <a href="https://oapen.hypotheses.org/" class="bulma-button bulma-is-brand bulma-is-shadowless"><span th:text="#{see_all_news}">See all news</span> →</a>
+          </div>
+        </div>
+      </header>
+      <ul class="bulma-columns bulma-is-multiline bulma-is-variable bulma-is-6 bulma-is-align-items-stretch oa-news-feed" role="list">
+        <th:block th:insert="home/spotlights :: spotlights">Spotlights</th:block>
+        <th:block th:insert="home/blogposts :: blogposts">Blog posts</th:block>
+        <th:block th:insert="home/blueskycard :: blueskycard">Bluesky feed</th:block>
+      </ul>
+    </div>
+  </section>
+</th:block>

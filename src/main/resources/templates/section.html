@@ -10,46 +10,68 @@
 	<!--
 		BODY
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-	<main layout:fragment="content" class="section doab-main" th:classappend="${bodyClass}">
-
-		<div class="container">
-		
+	<main layout:fragment="content" class="bulma-section" th:classappend="${bodyClass}">
+		<div class="bulma-container">
 			<th:block th:insert="include/breadcrumbs :: breadcrumbs"/>
-		
-			<div class="content doab-primary">
 
-				<h1 th:text="${@translator.translate(section,language).name}">Section name</h1>
-
-				<div th:utext="${@translator.translate(section,language).description}">
-					Section description
+			<header class="bulma-level bulma-is-mobile bulma-pb-2 oa-section-header">
+				<div class="bulma-level-left">
+					<h1
+						class="bulma-title bulma-is-3 bulma-pb-4 bulma-mb-0 bulma-has-text-weight-normal"
+						th:text="${@translator.translate(section,language).name}"
+					>
+						Section name
+					</h1>
 				</div>
+			</header>
 
+			<div class="bulma-columns bulma-mt-6">
+				<div class="bulma-column bulma-is-full-mobile bulma-is-two-thirds-desktop bulma-is-size-4">
+					<div th:utext="${@translator.translate(section,language).description}">
+						Section description
+					</div>
+				</div>
 			</div>
-			
-			<div class="doab-toc content" th:if="${#lists.size(section.topics) gt 0}">
 
-				<div class="doab-toc-header" th:text="#{this_section}">In this section</div>
-				
-				<hr class="is-hidden"/>
+			<nav class="bulma-mt-6" aria-labelledby="section-nav-title" th:if="${#lists.size(section.topics) gt 0}">
+				<h2 id="section-nav-title"
+					class="bulma-title bulma-is-6 bulma-mb-3 bulma-has-text-weight-semibold"
+					th:text="#{this_section}">
+					In this section
+				</h2>
 
-				<ul th:classappend="${#lists.size(section.topics) gt 7} ? 'doab-two-col'">
-					<li th:each="topic: ${section.topics}">
-						<a th:href="@{'/'+${language}+'/'+${section.slug}+'/'+${topic.slug}}" 
-						   th:text="${@translator.translate(topic,language).name}">
-							Topic name
-						</a>
+				<ul class="bulma-columns bulma-is-multiline bulma-mt-4"
+					th:classappend="${' oa-section-topics--' + section.slug}">
+					<li th:each="topic : ${section.topics}"
+							class="bulma-column
+										bulma-is-full-mobile
+										bulma-is-half-tablet
+										bulma-is-one-third-desktop
+										bulma-is-one-quarter-widescreen">
+						<div class="bulma-panel bulma-is-shadowless oa-h-100">
+							<a th:href="@{'/'+${language}+'/'+${section.slug}+'/'+${topic.slug}}"
+								class="bulma-panel-block
+												oa-section-topic-card
+												bulma-is-flex
+												bulma-is-justify-content-space-between
+												bulma-is-align-items-flex-start
+												bulma-is-flex-grow-1
+												oa-h-100">
+								<span th:text="${@translator.translate(topic,language).name}" class="bulma-is-size-4">Topic name</span>
+								<span class="bulma-ml-5 bulma-icon bulma-tag bulma-is-large bulma-is-stone-light bulma-is-rounded" aria-hidden="true">
+									<svg width="18" height="18" viewBox="0 0 24 24" focusable="false">
+										<path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="2"
+													stroke-linecap="round" stroke-linejoin="round"/>
+									</svg>
+								</span>
+							</a>
+						</div>
 					</li>
 				</ul>
-
-			</div>
+			</nav>
 
 		</div>
-
 	</main>
 
 </body>
 </html>
-
-
-
-

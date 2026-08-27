@@ -1,0 +1,80 @@
+<!--
+  HEADER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<th:block th:fragment="header">
+  <header id="oa-header"
+          class="oa-header"
+          role="banner"
+          th:classappend="${#httpServletRequest.requestURI == '/' || #httpServletRequest.requestURI == '/' + language} ? ' oa-is-home' : ''">
+    <nav class="bulma-navbar bulma-is-shadowless bulma-is-black"
+        role="navigation" th:aria-label="#{main_navigation}">
+      <h2 class="bulma-is-sr-only" th:text="#{main_navigation}">Main navigation</h2>
+      <div class="bulma-container">
+
+        <!-- brand + burger -->
+        <div class="bulma-navbar-brand">
+          <a class="bulma-navbar-item oa-logo"
+             th:href="@{'/'+${language}}"
+             th:aria-label="#{doab_homepage}">
+            <th:block th:replace="~{include/logotype :: logo(160, 50, 'oa-logo-svg')}"></th:block>
+          </a>
+          <a role="button"
+            class="bulma-navbar-burger bulma-burger"
+            th:aria-label="#{menu}" aria-expanded="false"
+            data-target="oa-nav">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <!-- Full menu -->
+        <div id="oa-nav" class="bulma-navbar-menu bulma-is-black bulma-is-shadowless">
+          <ul class="bulma-navbar-end oa-navbar-list" role="menubar">
+            <!-- Originally left section -->
+            <li th:each="mnusection,stat : ${menuLeftSections}"
+                class="bulma-navbar-item oa-nav-section"
+                th:classappend="${' oa-nav-section--' + ((stat.index % 5) + 1) + (#lists.isEmpty(mnusection.topics) ? '' : ' bulma-has-dropdown bulma-is-hoverable')}">
+              <th:block th:insert="layout/submenu :: section_navigation">submenu</th:block>
+            </li>
+
+            <!-- Originally right section -->
+            <li th:each="mnusection,stat : ${menuRightSections}"
+                class="bulma-navbar-item oa-nav-section"
+                th:classappend="${' oa-nav-section--' + (((#lists.size(menuLeftSections) + stat.index) % 5) + 1) + (#lists.isEmpty(mnusection.topics) ? '' : ' bulma-has-dropdown bulma-is-hoverable')}">
+              <th:block th:insert="layout/submenu :: section_navigation">submenu</th:block>
+            </li>
+
+            <!-- Newsletter -->
+            <li class="bulma-navbar-item">
+              <a class="bulma-button bulma-is-small bulma-is-outlined bulma-is-shadowless js-open-modal"
+                 data-modal="newsletter-modal" aria-haspopup="dialog" aria-controls="newsletter-modal">
+                 <span th:text="#{newsletter}">Newsletter</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+    <div class="oa-header-utility">
+      <div class="bulma-container">
+        <div class="oa-header-utility__inner">
+          <div class="oa-header-utility__controls">
+            <div class="bulma-select bulma-is-small">
+              <select name="setlanguage" onchange="window.location.href=this.value">
+                <option th:value="@{'/setlanguage?lang=en'}" th:selected="${language == 'en'}">English</option>
+                <option th:value="@{'/setlanguage?lang=fr'}" th:selected="${language == 'fr'}">Français</option>
+              </select>
+            </div>
+          </div>
+          <a class="oa-header-utility__link"
+             th:href="${settings.dspace_site+'login?locale-attribute='+language}"
+             th:text="#{mnu_login}">Publisher login</a>
+        </div>
+      </div>
+    </div>
+  </header>
+</th:block>
